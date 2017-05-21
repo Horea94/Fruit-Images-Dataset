@@ -45,4 +45,4 @@ Rect r_box(850, 330, 680, 680);
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\apple2_2017 02 25 13 34 34";
 Rect r_box(825, 330, 730, 730);
 #define motor_shaft_height 19
-#define color_distance 5
+#define color_distance 11
