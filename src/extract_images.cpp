@@ -7,6 +7,7 @@
 // if you get stack overflow ... just increase the stack reserve size from menu Linker ...
 
 #define SAVE_IMAGES_TO_DISK
+//#define DISPLAY_ONLY
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -15,6 +16,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "fruits_definition.h"
+
 using namespace std;
 using namespace cv;
 
@@ -22,39 +25,7 @@ struct t_bbox {
 	Point min, max;
 };
 
-
-
 #define smaller_image_size 100
-
-//pomegranate_2017 05 10 17 33 10 ; OK
-/*
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pomegranate_2017 05 10 17 33 10";
-Rect r_box(760, 120, 800, 800); 
-#define motor_shaft_height 15
-#define color_distance 5
-*
-
-//pear_2017 02 28 10 31 28
-/*
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_2017 02 28 10 31 28";
-Rect r_box(745, 235, 775, 775); 
-#define motor_shaft_height 0
-#define color_distance 1
-*/
-
-//plum1_2017 05 10 17 17 53
-/*
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\plum1_2017 05 10 17 17 53";
-Rect r_box(870, 230, 500, 500); 
-#define motor_shaft_height 7
-#define color_distance 7
-*/
-
-//apple1_2017 02 25 13 33 44
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\apple1_2017 02 25 13 33 44";
-Rect r_box(850, 330, 680, 680);
-#define motor_shaft_height 17
-#define color_distance 5
 
 //---------------------------------------------------------------------
 int get_color_distance(Vec3b &color1, Vec3b &color2)
@@ -153,7 +124,11 @@ bool remove_background(Mat &image)
 	
 	// try to remove the motor shaft
 	for (int i = 0; i < smaller_image_size; i++)
-		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, color_distance + 2);
+		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, 3);
+
+	// right side
+	for (int i = 0; i < smaller_image_size; i++)
+		flood_fill(i, smaller_image_size - 1, &image, matrix, color_distance);
 
 	// now I start from the center and fill the object
 	// I did that because we can have multiple islands and only 1 is of interest
@@ -231,8 +206,10 @@ int main(void)
 			break;
 
 		smaller_image = input_image(r_box);
+
+#ifndef DISPLAY_ONLY
+
 		// resize
-		
 		resize(smaller_image, smaller_image, Size(100, 100));
 		// remove margins
 		if (remove_background(smaller_image)) {
@@ -253,7 +230,7 @@ int main(void)
 			if (frame_index >= 328) // keep only the first 328 images
 				break;
 		}
-		
+#endif		
 		imshow("image", smaller_image);
 
 		int key = waitKey(1); // key pressed
