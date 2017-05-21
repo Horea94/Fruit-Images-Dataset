@@ -121,14 +121,14 @@ bool remove_background(Mat &image)
 	// star	point is every pixel from the border
 	for (int i = 0; i < smaller_image_size; i++)
 		flood_fill(0, i, &image, matrix, color_distance);
-	
-	// try to remove the motor shaft
-	for (int i = 0; i < smaller_image_size; i++)
-		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, 3);
 
 	// right side
 	for (int i = 0; i < smaller_image_size; i++)
 		flood_fill(i, smaller_image_size - 1, &image, matrix, color_distance);
+
+	// try to remove the motor shaft
+	for (int i = 0; i < smaller_image_size; i++)
+		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, 3);
 
 	// now I start from the center and fill the object
 	// I did that because we can have multiple islands and only 1 is of interest
