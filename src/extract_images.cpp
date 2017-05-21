@@ -6,6 +6,8 @@
 // compiled with Visual Studio 2015 Community Edition
 // if you get stack overflow ... just increase the stack reserve size from menu Linker ...
 
+#define SAVE_IMAGES_TO_DISK
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 
@@ -20,14 +22,31 @@ struct t_bbox {
 	Point min, max;
 };
 
-#define color_distance 5
+
 
 #define smaller_image_size 100
 
+//pomegranate_2017 05 10 17 33 10
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pomegranate_2017 05 10 17 33 10";
-
-Rect r_box(760, 120, 800, 800); //pomegranate_2017 05 10 17 33 10
+Rect r_box(760, 120, 800, 800); 
 #define motor_shaft_height 15
+#define color_distance 5
+
+//pear_2017 02 28 10 31 28
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_2017 02 28 10 31 28";
+Rect r_box(745, 235, 775, 775); 
+#define motor_shaft_height 0
+#define color_distance 1
+*/
+
+//plum1_2017 05 10 17 17 53
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\plum1_2017 05 10 17 17 53";
+Rect r_box(870, 230, 500, 500); 
+#define motor_shaft_height 7
+#define color_distance 7
+*/
 
 //---------------------------------------------------------------------
 int get_color_distance(Vec3b &color1, Vec3b &color2)
@@ -126,7 +145,7 @@ void remove_background(Mat &image)
 	
 	// try to remove the motor shaft
 	for (int i = 0; i < smaller_image_size; i++)
-		flood_fill(smaller_image_size - motor_shaft_height, i, &image, matrix, color_distance + 2);
+		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, color_distance + 2);
 
 	// now I start from the center and fill the object
 	// I did that because we can have multiple islands and only 1 is of interest
@@ -144,13 +163,24 @@ void remove_background(Mat &image)
 				image.at<Vec3b>(Point(j, i))[2] = 255;
 			}
 
-	// extract the fruit only
-	cv::Mat tmp = image(cv::Rect(bbox.min.y, bbox.min.x, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)).clone();
-	// make the existing image white
-	image.setTo(Scalar(255, 255, 255));
-	// copy the fruit in the center
-	tmp.copyTo(image(cv::Rect((smaller_image_size - (bbox.max.y - bbox.min.y + 1)) / 2, (smaller_image_size - (bbox.max.x - bbox.min.x + 1)) / 2, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)));
+	if ((bbox.min.x < bbox.max.x) && (bbox.min.y < bbox.max.y)) {
+		// extract the fruit only
+		cv::Mat tmp = image(cv::Rect(bbox.min.y, bbox.min.x, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)).clone();
+		// make the existing image white
+		image.setTo(Scalar(255, 255, 255));
 
+		int max_size = bbox.max.y - bbox.min.y + 1;
+		if (max_size < bbox.max.x - bbox.min.x + 1)
+			max_size = bbox.max.x - bbox.min.x + 1;
+
+		Mat tmp_new = Mat(max_size, max_size, image.type());
+		tmp.copyTo(tmp_new(cv::Rect((max_size - (bbox.max.y - bbox.min.y + 1)) / 2, (max_size - (bbox.max.x - bbox.min.x + 1)) / 2, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)));
+
+		image = tmp_new;
+
+		// copy the fruit in the center
+		//tmp.copyTo(image(cv::Rect((smaller_image_size - (bbox.max.y - bbox.min.y + 1)) / 2, (smaller_image_size - (bbox.max.x - bbox.min.x + 1)) / 2, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)));
+	}
 	// delete memory
 	for (int i = 0; i < smaller_image_size; i++)
 		delete[] matrix[i];
@@ -191,20 +221,25 @@ int main(void)
 			break;
 
 		smaller_image = input_image(r_box);
-
-		resize(smaller_image, smaller_image, Size(smaller_image_size, smaller_image_size));
+		// resize
+		resize(smaller_image, smaller_image, Size(100, 100));
 		// remove margins
 		remove_background(smaller_image);
+		// resize again
+		resize(smaller_image, smaller_image, Size(100, 100));
 		// show the results on the screen
+		
 		imshow("image", smaller_image);
 
 		// image file name
 		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg" ;
 
+		#ifdef SAVE_IMAGES_TO_DISK
 		if (!imwrite(out_filename, smaller_image)) {
 			printf("Cannot write image!\n");
 			break;
 		}
+		#endif
 
 		int key = waitKey(1); // key pressed
 		if (key == 27) // Escape pressed ?
@@ -212,7 +247,7 @@ int main(void)
 
 		frame_index++;
 
-		if (frame_index >= 327) // keep only the first 327 images
+		if (frame_index >= 328) // keep only the first 328 images
 			break; 
 	}
 
