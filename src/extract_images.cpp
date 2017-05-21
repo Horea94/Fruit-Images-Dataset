@@ -16,6 +16,10 @@
 using namespace std;
 using namespace cv;
 
+struct t_bbox {
+	Point min, max;
+};
+
 #define color_distance 5
 
 #define smaller_image_size 100
@@ -23,6 +27,7 @@ using namespace cv;
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pomegranate_2017 05 10 17 33 10";
 
 Rect r_box(760, 120, 800, 800); //pomegranate_2017 05 10 17 33 10
+#define motor_shaft_height 15
 
 //---------------------------------------------------------------------
 int get_color_distance(Vec3b &color1, Vec3b &color2)
@@ -81,46 +86,80 @@ void flood_fill2(int x, int y, char** filled_matrix)
 	}
 }
 //---------------------------------------------------------------------
+t_bbox compute_bbox(char** matrix)
+{
+	t_bbox bbox;
+	// maximal bbox is :
+	bbox.min.x = smaller_image_size;
+	bbox.min.y = smaller_image_size;
+	bbox.max.x = 0;
+	bbox.max.y = 0;
+
+	for (int i = 0; i < smaller_image_size; i++)
+		for (int j = 0; j < smaller_image_size; j++)
+			if (matrix[i][j] == 2) {
+				if (bbox.min.x > i)
+					bbox.min.x = i;
+				if (bbox.min.y > j)
+					bbox.min.y = j;
+				if (bbox.max.x < i)
+					bbox.max.x = i;
+				if (bbox.max.y < j)
+					bbox.max.y = j;
+			}
+	return bbox;
+}
+//---------------------------------------------------------------------
 void remove_background(Mat &image)
 {
-	int image_height = image.rows;
-	int image_width = image.cols;
-
-	char **matrix = new char*[image_height];
-	for (int i = 0; i < image_height; i++) {
-		matrix[i] = new char[image_width];
-		for (int j = 0; j < image_width; j++)
+	// allocate memory
+	char **matrix = new char*[smaller_image_size];
+	for (int i = 0; i < smaller_image_size; i++) {
+		matrix[i] = new char[smaller_image_size];
+		for (int j = 0; j < smaller_image_size; j++)
 			matrix[i][j] = 0; // 2 - fruit // 1- background
 	}
 		
 	// star	point is every pixel from the border
-	for (int i = 0; i < image_width; i++)
+	for (int i = 0; i < smaller_image_size; i++)
 		flood_fill(0, i, &image, matrix, color_distance);
 	
 	// try to remove the motor shaft
-	for (int i = 0; i < image_width; i++)
-		flood_fill(image_height - 15, i, &image, matrix, color_distance + 2);
+	for (int i = 0; i < smaller_image_size; i++)
+		flood_fill(smaller_image_size - motor_shaft_height, i, &image, matrix, color_distance + 2);
 
 	// now I start from the center and fill the object
-	flood_fill2(image_width / 2, image_height / 2, matrix);
+	// I did that because we can have multiple islands and only 1 is of interest
+	flood_fill2(smaller_image_size / 2, smaller_image_size / 2, matrix);
 	
-	for (int i = 0; i < image_width; i++)
-		for (int j = 0; j < image_height; j++)
+	// find bounding box
+	t_bbox bbox = compute_bbox(matrix);
+
+	// now apply the mask and make bakground white
+	for (int i = 0; i < smaller_image_size; i++)
+		for (int j = 0; j < smaller_image_size; j++)
 			if (matrix[i][j] != 2) {// not fruit
 				image.at<Vec3b>(Point(j, i))[0] = 255; // make it WHITE
 				image.at<Vec3b>(Point(j, i))[1] = 255;
 				image.at<Vec3b>(Point(j, i))[2] = 255;
 			}
 
-	for (int i = 0; i < image_height; i++)
+	// extract the fruit only
+	cv::Mat tmp = image(cv::Rect(bbox.min.y, bbox.min.x, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)).clone();
+	// make the existing image white
+	image.setTo(Scalar(255, 255, 255));
+	// copy the fruit in the center
+	tmp.copyTo(image(cv::Rect((smaller_image_size - (bbox.max.y - bbox.min.y + 1)) / 2, (smaller_image_size - (bbox.max.x - bbox.min.x + 1)) / 2, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)));
+
+	// delete memory
+	for (int i = 0; i < smaller_image_size; i++)
 		delete[] matrix[i];
 	delete[] matrix;
 }
 //---------------------------------------------------------------------
 int main(void)
 {
-	// open video 
-
+	// open video
 	VideoCapture input_video(input_file_name + ".avi");
 
 	if (!input_video.isOpened())
@@ -160,7 +199,7 @@ int main(void)
 		imshow("image", smaller_image);
 
 		// image file name
-		string out_filename = input_file_name + "\\" + to_string(frame_index) + ".jpg" ;
+		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg" ;
 
 		if (!imwrite(out_filename, smaller_image)) {
 			printf("Cannot write image!\n");
@@ -172,6 +211,9 @@ int main(void)
 			break;
 
 		frame_index++;
+
+		if (frame_index >= 327) // keep only the first 327 images
+			break; 
 	}
 
 	input_video.release();
