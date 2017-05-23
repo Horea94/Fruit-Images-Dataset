@@ -119,8 +119,13 @@ bool remove_background(Mat &image)
 	}
 		
 	// star	point is every pixel from the border
+	// top side
 	for (int i = 0; i < smaller_image_size; i++)
 		flood_fill(0, i, &image, matrix, color_distance);
+
+	// left side
+	for (int i = 0; i < smaller_image_size; i++)
+		flood_fill(i, 0, &image, matrix, color_distance);
 
 	// right side
 	for (int i = 0; i < smaller_image_size; i++)
