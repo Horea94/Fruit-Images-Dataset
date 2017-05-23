@@ -162,6 +162,7 @@ bool remove_background(Mat &image)
 			max_size = bbox.max.x - bbox.min.x + 1;
 
 		Mat tmp_new = Mat(max_size, max_size, image.type());
+		tmp_new.setTo(Scalar(255, 255, 255)); // make everything white, otherwise is grey
 		tmp.copyTo(tmp_new(cv::Rect((max_size - (bbox.max.y - bbox.min.y + 1)) / 2, (max_size - (bbox.max.x - bbox.min.x + 1)) / 2, bbox.max.y - bbox.min.y + 1, bbox.max.x - bbox.min.x + 1)));
 
 		image = tmp_new;
