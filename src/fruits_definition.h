@@ -331,7 +331,23 @@ Rect r_box(720, 325, 605, 605);
 */
 
 // apple_red_3_rotated_2017 03 07 12 10 37
+/*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\apple_red_3_rotated_2017 03 07 12 10 37";
 Rect r_box(650, 325, 745, 745);
 #define motor_shaft_height 20
 #define color_distance 3
+*/
+
+//apple_red_yellow_2017 02 28 10 18 13
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\apple_red_yellow_2017 02 28 10 18 13";
+Rect r_box(790, 255, 380, 380);
+#define motor_shaft_height 1
+#define color_distance 8
+*/
+
+//apple_red_yellow_rotated_2017 02 28 10 18 35
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\apple_red_yellow_rotated_2017 02 28 10 18 35";
+Rect r_box(785, 225, 390, 390);
+#define motor_shaft_height 2
+#define color_distance 8
