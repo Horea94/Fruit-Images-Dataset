@@ -17,14 +17,6 @@ Rect r_box(760, 120, 800, 800);
 #define color_distance 5
 */
 
-//pear_2017 02 28 10 31 28
-/*
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_2017 02 28 10 31 28";
-Rect r_box(745, 235, 775, 775);
-#define motor_shaft_height 0
-#define color_distance 1
-*/
-
 //plum1_2017 05 10 17 17 53 ; OK
 /*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\plum1_2017 05 10 17 17 53";
@@ -251,7 +243,48 @@ Rect r_box(880, 160, 490, 490);
 */
 
 //peach_flat_rotated_1_2017 05 10 17 22 20
+/*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\peach_flat_rotated_1_2017 05 10 17 22 20";
 Rect r_box(910, 170, 440, 440);
 #define motor_shaft_height 2
 #define color_distance 4
+*/
+
+//pear_long_2017 02 28 10 31 28
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_long_2017 02 28 10 31 28";
+Rect r_box(745, 235, 775, 775);
+#define motor_shaft_height 0
+#define color_distance 2
+*/
+
+//pear_2017 05 10 17 30 47
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_2017 05 10 17 30 47";
+Rect r_box(895, 145, 545, 545);
+#define motor_shaft_height 0
+#define color_distance 7
+*/
+
+//pear_rotated_2017 05 10 17 31 1_5
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_rotated_2017 05 10 17 31 1_5";
+Rect r_box(795, 145, 705, 705);
+#define motor_shaft_height 26
+#define color_distance 7
+*/
+
+//strawberry_2017 02 28 12 23 23
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry_2017 02 28 12 23 23";
+Rect r_box(795, 275, 405, 405);
+#define motor_shaft_height 2
+#define color_distance 8
+*/
+
+//strawberry_rotated_2017 02 28 12 23 50
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry_rotated_2017 02 28 12 23 50";
+Rect r_box(765, 275, 455, 455);
+#define motor_shaft_height 24
+#define color_distance 8
+
