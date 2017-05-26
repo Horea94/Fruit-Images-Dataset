@@ -6,6 +6,13 @@
 // compiled with Visual Studio 2015 Community Edition
 // if you get stack overflow ... just increase the stack reserve size from menu Linker ...
 
+// How to use: 
+// 1. modify the fruits_definition.h file for a new fruit; r_box parameters must be modified for each fruit (see step 2)
+// 2. comment SAVE_IMAGES_TO_DISK an uncomment DISPLAY_ONLY
+// 3. you must play with bbox parameters until the fruit fits inside the bbox
+// 4. uncomment SAVE_IMAGES_TO_DISK an comment DISPLAY_ONLY
+// 5. modify the motor_shaft_height and color_distance if needed
+
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
@@ -200,7 +207,7 @@ int main(void)
 	namedWindow("image", 1);
 	Mat smaller_image;
 
-	for (int i = 0; i < 3; i++)// skip 3 frames
+	for (int i = 0; i < 4; i++)// skip 3 frames
 		input_video >> input_image;
 
 	int frame_index = 0;
