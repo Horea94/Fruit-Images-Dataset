@@ -187,7 +187,39 @@ Rect r_box(780, 290, 390, 390);
 */
 
 //lemon_2017 02 28 10 35 34
+/*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\lemon_2017 02 28 10 35 34";
 Rect r_box(700, 200, 550, 550);
 #define motor_shaft_height 0
 #define color_distance 12
+*/
+
+//nectarine_2017 05 10 17 28 05
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nectarine_2017 05 10 17 28 05";
+Rect r_box(870, 200, 510, 510);
+#define motor_shaft_height 15
+#define color_distance 8
+*/
+
+//nectarine_rotated_2017 05 10 17 28 36
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nectarine_rotated_2017 05 10 17 28 36";
+Rect r_box(890, 160, 480, 480);
+#define motor_shaft_height 10
+#define color_distance 8
+*/
+
+//orange_2017 02 28 12 22 11
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\orange_2017 02 28 12 22 11";
+Rect r_box(730, 320, 510, 510);
+#define motor_shaft_height 8
+#define color_distance 10
+*/
+
+// orange_rotated_2017 02 28 12 22 32
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\orange_rotated_2017 02 28 12 22 32";
+Rect r_box(710, 120, 570, 570);
+#define motor_shaft_height 12
+#define color_distance 10
