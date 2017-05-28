@@ -140,12 +140,17 @@ bool remove_background(Mat &image)
 
 	// try to remove the motor shaft
 	for (int i = 0; i < smaller_image_size; i++)
-		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, 3);
+		flood_fill(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, 1);
 
 	// now I start from the center and fill the object
 	// I did that because we can have multiple islands and only 1 is of interest
 	flood_fill2(smaller_image_size / 2, smaller_image_size / 2, matrix);
 	
+	// ignore everything that below shaft
+	for (int i = smaller_image_size - motor_shaft_height; i < smaller_image_size; i++)
+		for (int j = 0; j < smaller_image_size; j++)
+			matrix[i][j] = 1;
+
 	// find bounding box
 	t_bbox bbox = compute_bbox(matrix);
 
@@ -153,6 +158,13 @@ bool remove_background(Mat &image)
 	for (int i = 0; i < smaller_image_size; i++)
 		for (int j = 0; j < smaller_image_size; j++)
 			if (matrix[i][j] != 2) {// not fruit
+				image.at<Vec3b>(Point(j, i))[0] = 255; // make it WHITE
+				image.at<Vec3b>(Point(j, i))[1] = 255;
+				image.at<Vec3b>(Point(j, i))[2] = 255;
+			}
+	// fill with WHITE everything below shaft position
+	for (int i = smaller_image_size - motor_shaft_height; i < smaller_image_size; i++)
+		for (int j = 0; j < smaller_image_size; j++){
 				image.at<Vec3b>(Point(j, i))[0] = 255; // make it WHITE
 				image.at<Vec3b>(Point(j, i))[1] = 255;
 				image.at<Vec3b>(Point(j, i))[2] = 255;
