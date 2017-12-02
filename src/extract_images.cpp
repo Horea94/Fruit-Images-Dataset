@@ -232,6 +232,9 @@ int main(void)
 
 		smaller_image = input_image(r_box);
 
+		// image file name
+		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg";
+
 #ifndef DISPLAY_ONLY
 
 		// resize
@@ -242,8 +245,6 @@ int main(void)
 			resize(smaller_image, smaller_image, Size(100, 100));
 			// show the results on the screen
 
-			// image file name
-			string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg";
 
 #ifdef SAVE_IMAGES_TO_DISK
 			if (!imwrite(out_filename, smaller_image)) {
@@ -256,7 +257,14 @@ int main(void)
 				break;
 		}
 #endif		
+
 		imshow("image", smaller_image);
+#ifdef SAVE_IMAGES_TO_DISK
+		if (!imwrite(out_filename, smaller_image)) {
+			printf("Cannot write image!\n");
+			break;
+		}
+#endif
 
 		int key = waitKey(1); // key pressed
 		if (key == 27) // Escape pressed ?

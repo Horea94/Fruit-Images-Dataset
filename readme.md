@@ -6,7 +6,9 @@ We introduce a new, high-quality, dataset of images containing fruits.
 
 Folder [White_bkg_only](White_bkg_only) contains all images with white background only.
 
-Folders [Training](Training) and [Validation](Validation) contains all images with various backgrounds.
+Folders [Training](Training) and [Validation](Validation) contain all images with various backgrounds.
+
+Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
 ## How we created the dataset ##
 
@@ -33,6 +35,6 @@ Different varieties of the same fruit (apple for instance) are shown having a di
 
 We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in the file from [papers](papers) folder.
 
-## Reference ##
+## How to cite ##
 
-Horea Muresan, Mihai Oltean, Fruit recognition from images using deep learning, Technical Report, Babes-Bolyai University, 2017
+Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Technical Report, Babes-Bolyai University, 2017
