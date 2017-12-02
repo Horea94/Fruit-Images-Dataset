@@ -31,7 +31,7 @@ Different varieties of the same fruit (apple for instance) are shown having a di
 
 ## Results ##
 
-We have run TensorFlow on these data and the results are presented in the file from [papers](papers) folder.
+We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in the file from [papers](papers) folder.
 
 ## Reference ##
 
