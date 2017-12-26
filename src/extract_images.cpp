@@ -8,7 +8,7 @@
 
 // How to use: 
 // 1. modify the fruits_definition.h file for a new fruit; r_box parameters must be modified for each fruit (see step 2)
-// 2. comment SAVE_IMAGES_TO_DISK an uncomment DISPLAY_ONLY
+// 2. comment SAVE_IMAGES_TO_DISK and uncomment DISPLAY_ONLY
 // 3. you must play with bbox parameters until the fruit fits inside the bbox
 // 4. uncomment SAVE_IMAGES_TO_DISK an comment DISPLAY_ONLY
 // 5. modify the motor_shaft_height and color_distance if needed
@@ -233,7 +233,7 @@ int main(void)
 		smaller_image = input_image(r_box);
 
 		// image file name
-		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg";
+		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + "x" + to_string(smaller_image_size) + ".jpg";
 
 #ifndef DISPLAY_ONLY
 

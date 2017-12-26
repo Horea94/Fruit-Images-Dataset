@@ -4,9 +4,9 @@ We introduce a new, high-quality, dataset of images containing fruits.
 
 ## Structure ##
 
-Folder [White_bkg_only](White_bkg_only) contains all images with white background only.
+Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
 
-Folders [Training](Training) and [Validation](Validation) contain all images with various backgrounds.
+Folder [colorful background](colorful background) contains all images with various colors for background.
 
 Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
