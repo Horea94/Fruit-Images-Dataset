@@ -10,12 +10,12 @@ using namespace std;
 using namespace cv;
 
 //quince_rotated_2017 12 25 15 25 27
-
+/*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\quince_rotated_2017 12 25 15 25 27";
 Rect r_box(650, 150, 870, 870);
 #define motor_shaft_height 13
 #define color_distance 5
-
+*/
 //quince_2017 12 25 15 24 39.avi; OK
 /*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\quince_2017 12 25 15 24 39";
@@ -25,12 +25,12 @@ Rect r_box(630, 150, 790, 790);
 */
 
 //avocado_ripe_rotated_2017 12 25 15 23 37; OK
-/*
+
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\avocado_ripe_rotated_2017 12 25 15 23 37";
 Rect r_box(630, 260, 820, 820);
 #define motor_shaft_height 12
 #define color_distance 13
-*/
+
 //avocado_ripe_2017 12 25 15 22 10 // OK
 /*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\avocado_ripe_2017 12 25 15 22 10";

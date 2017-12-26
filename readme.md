@@ -6,8 +6,6 @@ We introduce a new, high-quality, dataset of images containing fruits.
 
 Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
 
-Folder [colorful background] contains "some" images with various colors for background.
-
 Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
 ## How we created the dataset ##
