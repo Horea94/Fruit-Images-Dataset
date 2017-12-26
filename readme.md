@@ -6,7 +6,7 @@ We introduce a new, high-quality, dataset of images containing fruits.
 
 Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
 
-Folder [colorful background](colorful background) contains all images with various colors for background.
+Folder [colorful background] contains all images with various colors for background.
 
 Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
@@ -29,11 +29,11 @@ The maximum value for the distance between 2 neighbor pixels is a parameter of t
 
 Fruits were scaled to fit a 100x100 pixels image.
 
-The resulted dataset used for training consists of 11585 images of fruits spread across 25 labels. The testing data is made of 3867 images.
+The resulted dataset used for training consists of 15506 images of fruits spread across 33 labels. The testing data is made of 5195 images.
 
 Images associated with each fruit are placed in a separate folder.
 
-Different varieties of the same fruit (apple for instance) are shown having a different label.
+Different varieties of the same fruit (apple for instance) are shown having different labels.
 
 ## Results ##
 
