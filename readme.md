@@ -8,6 +8,24 @@ Folders [Training](Training) and [Validation](Validation) contain all images wit
 
 Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
+## Dataset properties ##
+
+Training set size: 15506 images.
+
+Validation set size: 5195.
+
+Number of classes: 33 (fruits).
+
+Image size: 100x100 pixels.
+
+Filename format: image_index_100.jpg (e.g. 32_100.jpg) or r_image_index_100.jpg (e.g. r_32_100.jpg). "r" stands for rotated fruit. "100" comes from image size (100x100 pixels).
+
+Different varieties of the same fruit (apple for instance) are shown having different labels.
+
+## How to cite ##
+
+Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Technical Report, Babes-Bolyai University, 2017
+
 ## How we created the dataset ##
 
 Fruits were planted in the shaft of a low speed motor (3 rpm) and a short movie of 20 seconds was recorded. 
@@ -23,23 +41,9 @@ All marked pixels are considered as being background (which is then filled with 
 
 The maximum value for the distance between 2 neighbor pixels is a parameter of the algorithm and is set (by trial and error) for each movie.
 
-## Dataset properties ##
-
-Fruits were scaled to fit a 100x100 pixels image.
-
-The resulted dataset used for training consists of 15506 images of fruits spread across 33 labels. The testing data is made of 5195 images.
-
-Images associated with each fruit are placed in a separate folder.
-
-Different varieties of the same fruit (apple for instance) are shown having different labels.
-
 ## Results ##
 
 We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in the file from [papers](papers) folder.
-
-## How to cite ##
-
-Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Technical Report, Babes-Bolyai University, 2017
 
 ## History ##
 
