@@ -12,7 +12,7 @@ Folder [src](src) contains the C++ code used for extracting the fruits from the 
 
 Training set size: 15506 images.
 
-Validation set size: 5195.
+Validation set size: 5195 images.
 
 Number of classes: 33 (fruits).
 
