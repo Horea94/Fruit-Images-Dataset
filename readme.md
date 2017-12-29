@@ -10,11 +10,11 @@ Folder [src](src) contains the C++ code used for extracting the fruits from the 
 
 ## Dataset properties ##
 
-Training set size: 15506 images.
+Training set size: 15956 images.
 
-Validation set size: 5195 images.
+Validation set size: 6025 images.
 
-Number of classes: 33 (fruits).
+Number of classes: 38 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -30,7 +30,7 @@ Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition 
 
 Fruits were planted in the shaft of a low speed motor (3 rpm) and a short movie of 20 seconds was recorded. 
 
-A Logitech C920 camera was used for filming the fruits. This is one of the best webcams.
+A Logitech C920 camera was used for filming the fruits. This is one of the best webcams available.
 
 Behind the fruits we placed a white sheet of paper as background. 
 
@@ -62,3 +62,5 @@ Fruits were filmed at the dates given below:
 2017.05.27 - Avocado, Papaya, Grape, Cherrie.
 
 2017.12.25 - Carambula, Cactus fruit, Granadilla, Kaki, Kumsquats, Passion fruit, Avocado ripe, Quince.
+
+2017.12.28 - Clementine, Cocos, Mango, Lime, Litchi.

@@ -233,7 +233,7 @@ int main(void)
 		smaller_image = input_image(r_box);
 
 		// image file name
-		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + "x" + to_string(smaller_image_size) + ".jpg";
+		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg";
 
 #ifndef DISPLAY_ONLY
 
