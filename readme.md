@@ -10,11 +10,11 @@ Folder [src](src) contains the C++ code used for extracting the fruits from the 
 
 ## Dataset properties ##
 
-Training set size: 15956 images.
+Training set size: 19426 images.
 
-Validation set size: 6025 images.
+Validation set size: 6523 images.
 
-Number of classes: 38 (fruits).
+Number of classes: 41 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -64,3 +64,5 @@ Fruits were filmed at the dates given below:
 2017.12.25 - Carambula, Cactus fruit, Granadilla, Kaki, Kumsquats, Passion fruit, Avocado ripe, Quince.
 
 2017.12.28 - Clementine, Cocos, Mango, Lime, Litchi.
+
+2017.12.31 - Apple Red Delicious, Pear Monster, Grape White.
