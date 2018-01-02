@@ -1,4 +1,4 @@
-# A dataset of images containing fruits #
+# Fruits-360: A dataset of images containing fruits #
 
 We introduce a new, high-quality, dataset of images containing fruits.
 
