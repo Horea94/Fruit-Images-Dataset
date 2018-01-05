@@ -8,6 +8,10 @@ Folders [Training](Training) and [Validation](Validation) contain all images wit
 
 Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
+Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
+
+Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
+
 ## Dataset properties ##
 
 Training set size: 19426 images.
