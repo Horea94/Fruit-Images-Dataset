@@ -1,6 +1,6 @@
 # Fruits-360: A dataset of images containing fruits #
 
-We introduce a new, high-quality, dataset of images containing fruits.
+A high-quality, dataset of images containing fruits.
 
 ## Structure ##
 
