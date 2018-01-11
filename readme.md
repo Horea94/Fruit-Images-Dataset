@@ -1,6 +1,7 @@
 # Fruits-360: A dataset of images containing fruits #
 
-A high-quality, dataset of images containing fruits.
+A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.10): 
+Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Cherry, Cactus fruit, Carambula, Clementine, Cocos, Granadilla, Grape (Pink, White), Grapefruit, Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mango, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Plum, Pomegranate, Quince, Strawberry.
 
 ## Structure ##
 
@@ -55,7 +56,7 @@ Fruits were filmed at the dates given below:
 
 2017.02.25 - Apple (golden).
 
-2017.02.28 - Apple (red-yellow, red, golden2), Kiwi, Pear, Grapefruit, Lemon, Orange, Strawberry, Banana.
+2017.02.28 - Apple (red-yellow, red, golden2), Kiwi, Pear, Grapefruit, Lemon, Orange, Strawberry.
 
 2017.03.05 - Apple (golden3, Braeburn, Granny Smith, red2).
 
