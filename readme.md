@@ -1,7 +1,7 @@
 # Fruits-360: A dataset of images containing fruits #
 
-A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.10): 
-Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Cherry, Cactus fruit, Carambula, Clementine, Cocos, Granadilla, Grape (Pink, White), Grapefruit, Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mango, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Plum, Pomegranate, Quince, Strawberry.
+A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.14): 
+Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cherry, Cactus fruit, Carambula, Clementine, Cocos, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Strawberry, Tangelo.
 
 ## Structure ##
 
@@ -15,11 +15,11 @@ Folder [test-multiple_fruits](test-multiple_fruits) contains images with multipl
 
 ## Dataset properties ##
 
-Training set size: 19426 images.
+Training set size: 21876 images.
 
-Validation set size: 6523 images.
+Validation set size: 7353 images.
 
-Number of classes: 41 (fruits).
+Number of classes: 46 (fruits).
 
 Image size: 100x100 pixels.
 
