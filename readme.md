@@ -71,3 +71,5 @@ Fruits were filmed at the dates given below:
 2017.12.28 - Clementine, Cocos, Mango, Lime, Litchi.
 
 2017.12.31 - Apple Red Delicious, Pear Monster, Grape White.
+
+2018.01.14 - Ananas, Grapefruit Pink, Mandarine, Pineapple, Tangelo.
