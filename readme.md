@@ -1,7 +1,7 @@
 # Fruits-360: A dataset of images containing fruits #
 
 A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.14): 
-Ananas, Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cherry, Cactus fruit, Carambula, Clementine, Cocos, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Strawberry, Tangelo.
+Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cherry, Cactus fruit, Carambula, Clementine, Cocos, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Strawberry, Tangelo.
 
 ## Structure ##
 
@@ -72,4 +72,4 @@ Fruits were filmed at the dates given below:
 
 2017.12.31 - Apple Red Delicious, Pear Monster, Grape White.
 
-2018.01.14 - Ananas, Grapefruit Pink, Mandarine, Pineapple, Tangelo.
+2018.01.14 - Banana, Grapefruit Pink, Mandarine, Pineapple, Tangelo.
