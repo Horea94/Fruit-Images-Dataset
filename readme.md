@@ -2,7 +2,7 @@
 
 # Version: 2018.01.26.1 #
 
-A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.19): 
+A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.26): 
 Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Huckleberry, Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
 ## Structure ##
