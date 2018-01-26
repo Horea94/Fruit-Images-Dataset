@@ -1,9 +1,9 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.01.26.0 #
+# Version: 2018.01.26.1 #
 
 A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.19): 
-Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cactus fruit, Carambula, Cherry, Clementine, Cocos, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Huckleberry, Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Raspberry, Strawberry, Tangelo.
+Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Huckleberry, Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
 ## Structure ##
 
@@ -17,11 +17,11 @@ Folder [test-multiple_fruits](test-multiple_fruits) contains images with multipl
 
 ## Dataset properties ##
 
-Training set size: 22856 images.
+Training set size: 24816 images.
 
-Validation set size: 7685 images.
+Validation set size: 8345 images.
 
-Number of classes: 48 (fruits).
+Number of classes: 52 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -77,3 +77,5 @@ Fruits were filmed at the dates given below:
 2018.01.14 - Banana, Grapefruit Pink, Mandarine, Pineapple, Tangelo.
 
 2018.01.19 - Huckleberry, Raspberry.
+
+2018.01.26 - Dates, Maracuja, Salak, Tamarillo.
