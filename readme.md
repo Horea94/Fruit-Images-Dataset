@@ -1,27 +1,27 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.01.26.1 #
+# Version: 2018.02.05.0 #
 
-A high-quality, dataset of images containing fruits. The following fruits are included (as of 2018.01.26): 
-Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White), Grapefruit (Pink, White), Huckleberry, Kiwi, Kaki, Kumsquats, Lemon, Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
+A high-quality, dataset of images containing fruits. The following fruits are included: 
+Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana, Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pear (different varieties, Monster), Pineapple, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
 ## Structure ##
 
 Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
 
-Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
-
-Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
-
 Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
+
+Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
+
+Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
 
 ## Dataset properties ##
 
-Training set size: 24816 images.
+Training set size: 26286 images.
 
-Validation set size: 8345 images.
+Validation set size: 8843 images.
 
-Number of classes: 52 (fruits).
+Number of classes: 55 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -79,3 +79,5 @@ Fruits were filmed at the dates given below:
 2018.01.19 - Huckleberry, Raspberry.
 
 2018.01.26 - Dates, Maracuja, Salak, Tamarillo.
+
+2018.02.05 - Guava, Grape White 2, Lemon Meyer
