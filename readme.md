@@ -1,9 +1,9 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.02.07.0 #
+# Version: 2018.02.08.0 #
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Monster), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
+Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
 ## Structure ##
 
@@ -17,11 +17,11 @@ Folder [src](src) contains the C++ code used for extracting the fruits from the 
 
 ## Dataset properties ##
 
-Training set size: 27756 images.
+Training set size: 28736 images.
 
-Validation set size: 9341 images.
+Validation set size: 9673 images.
 
-Number of classes: 58 (fruits).
+Number of classes: 60 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -82,4 +82,6 @@ Fruits were filmed at the dates given below:
 
 2018.02.05 - Guava, Grape White 2, Lemon Meyer
 
-2018.02.07 - Banana red, Pepino, Pitahaya Red.
+2018.02.07 - Banana Red, Pepino, Pitahaya Red.
+
+2018.02.08 - Pear Abate, Pear Williams.
