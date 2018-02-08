@@ -9,14 +9,286 @@
 using namespace std;
 using namespace cv;
 
+#define SAVE_IMAGES_TO_DISK
+//#define DISPLAY_ONLY
+
+//pear_williams_rotated_2018 02 07 14 33 35.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_williams_rotated_2018 02 07 14 33 35";
+Rect r_box(730, 190, 780, 780);
+#define motor_shaft_height 22
+#define color_distance 12
+
+////pear_williams_2018 02 07 14 31 03
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_williams_2018 02 07 14 31 03";
+//Rect r_box(560, 190, 750, 750);
+//#define motor_shaft_height 1
+//#define color_distance 9
+
+//pear_abate_rotated_2018 02 07 14 35 57
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_abate_rotated_2018 02 07 14 35 57";
+//Rect r_box(760, 30, 1050, 1050);
+//#define motor_shaft_height 19
+//#define color_distance 15
+
+////pear_abate_2018 02 07 14 34 45.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_abate_2018 02 07 14 34 45";
+//Rect r_box(950, 195, 780, 780);
+//#define motor_shaft_height 2
+//#define color_distance 15
+
+////banana_red_rotated_2018 02 07 15 50 22.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\banana_red_rotated_2018 02 07 15 50 22";
+//Rect r_box(750, 200, 840, 840);
+//#define motor_shaft_height 37
+//#define color_distance 15
+
+//banana_red_2018 02 07 14 40 22.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\banana_red_2018 02 07 14 40 22";
+//Rect r_box(780, 180, 900, 900);
+//#define motor_shaft_height 23
+//#define color_distance 14
+
+
+//pitahaya_red_rotated_2018 02 07 14 44 20.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pitahaya_red_rotated_2018 02 07 14 44 20";
+//Rect r_box(910, 400, 650, 650);
+//#define motor_shaft_height 25
+//#define color_distance 13
+
+////pitahaya_2018 02 07 14 43 40.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pitahaya_2018 02 07 14 43 40";
+//Rect r_box(940, 400, 570, 570);
+//#define motor_shaft_height 1
+//#define color_distance 13
+
+
+////pepino_rotated_2018 02 07 14 47 21.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pepino_rotated_2018 02 07 14 47 21";
+//Rect r_box(940, 380, 590, 590);
+//#define motor_shaft_height 21
+//#define color_distance 8
+
+
+//pepino_2018 02 07 14 45 39.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pepino_2018 02 07 14 45 39";
+//Rect r_box(990, 280, 550, 550);
+//#define motor_shaft_height 2
+//#define color_distance 7
+
+//grape_white2_rotated_2018 02 05 12 56 47
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\grape_white2_rotated_2018 02 05 12 56 47";
+//Rect r_box(1092, 500, 210, 210);
+//#define motor_shaft_height 9
+//#define color_distance 7
+
+//grape_white2_2018 02 05 12 57 12.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\grape_white2_2018 02 05 12 57 12";
+//Rect r_box(1095, 500, 200, 200);
+//#define motor_shaft_height 6
+//#define color_distance 7
+
+//lemon_meyer_2018 02 05 12 58 07.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\lemon_meyer_2018 02 05 12 58 07";
+//Rect r_box(920, 130, 570, 570);
+//#define motor_shaft_height 1
+//#define color_distance 15
+
+//lemon_meyer_rotated_2018 02 05 12 58 44.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\lemon_meyer_rotated_2018 02 05 12 58 44";
+//Rect r_box(920, 140, 590, 590);
+//#define motor_shaft_height 14
+//#define color_distance 15
+
+//guava_rotated_2018 02 05 13 02 23.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\guava_rotated_2018 02 05 13 02 23";
+//Rect r_box(870, 40, 760, 760);
+//#define motor_shaft_height 14
+//#define color_distance 15
+
+
+//guava_2018 02 05 13 01 24.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\guava_2018 02 05 13 01 24";
+//Rect r_box(930, 40, 670, 670);
+//#define motor_shaft_height 2
+//#define color_distance 15
+
+//pomelo_2018 01 26 15 00 58.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pomelo_2018 01 26 15 00 58";
+//Rect r_box(1000, 300, 720, 720);
+//#define motor_shaft_height 23
+//#define color_distance 9
+
+//tamarillo_rotated_2018 01 26 14 54 07.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\tamarillo_rotated_2018 01 26 14 54 07";
+//Rect r_box(570, 10, 560, 560);
+//#define motor_shaft_height 18
+//#define color_distance 5
+
+//tamarillo_2018 01 26 14 56 17.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\tamarillo_2018 01 26 14 56 17";
+//Rect r_box(650, 30, 590, 590);
+//#define motor_shaft_height 2
+//#define color_distance 10
+
+//maracuja_rotated_2018 01 26 14 49 36
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\maracuja_rotated_2018 01 26 14 49 36";
+//Rect r_box(500, 90, 990, 990);
+//#define motor_shaft_height 9
+//#define color_distance 10
+
+//maracuja_2018 01 26 14 47 21
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\maracuja_2018 01 26 14 47 21";
+//Rect r_box(500, 220, 860, 860);
+//#define motor_shaft_height 5
+//#define color_distance 8
+
+//dates_rotated_2018 01 26 14 40 58
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\dates_rotated_2018 01 26 14 40 58";
+//Rect r_box(600, 195, 440, 440);
+//#define motor_shaft_height 1
+//#define color_distance 20
+
+//dates_rotated_2018 01 26 14 40 58
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\dates_rotated_2018 01 26 14 40 58";
+//Rect r_box(600, 195, 440, 440);
+//#define motor_shaft_height 1
+//#define color_distance 20
+
+//dates_2018 01 26 14 26 25.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\dates_2018 01 26 14 26 25";
+//Rect r_box(800, 98, 540, 540);
+//#define motor_shaft_height 40
+//#define color_distance 20
+
+
+//salak_rotated_2018 01 26 14 40 03.avi
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\salak_rotated_2018 01 26 14 40 03";
+Rect r_box(500, 98, 580, 580);
+#define motor_shaft_height 1
+#define color_distance 15
+*/
+
+//salak_2018 01 26 14 23 35.avi
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\salak_2018 01 26 14 23 35";
+Rect r_box(860, 10, 680, 680);
+#define motor_shaft_height 43
+#define color_distance 15
+*/
+
+//cranberry_rotated_2018 01 19 10 43 08
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cranberry_rotated_2018 01 19 10 43 08";
+Rect r_box(600, 200, 220, 220);
+#define motor_shaft_height 2
+#define color_distance 12
+*/
+
+//cranberry_2018 01 19 10 42 43
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cranberry_2018 01 19 10 42 43";
+//Rect r_box(590, 200, 240, 240);
+//#define motor_shaft_height 9
+//#define color_distance 12
+
+//raspberry_rotated_2018 01 19 10 39 35
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\raspberry_rotated_2018 01 19 10 39 35";
+//Rect r_box(490, 100, 440, 440);
+//#define motor_shaft_height 26
+//#define color_distance 20
+
+//raspberry_2018 01 19 10 32 53
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\raspberry_2018 01 19 10 32 53";
+//Rect r_box(520, 50, 370, 370);
+//#define motor_shaft_height 0
+//#define color_distance 20
+
+//grapefruit_pink_rotated_2018 01 14 11 08 13
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\grapefruit_pink_rotated_2018 01 14 11 08 13";
+Rect r_box(630, 100, 710, 710);
+#define motor_shaft_height 6
+#define color_distance 15
+*/
+
+//grapefruit_pink_2018 01 14 11 06 04.avi
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\grapefruit_pink_2018 01 14 11 06 04";
+Rect r_box(770, 100, 830, 830);
+#define motor_shaft_height 20
+#define color_distance 15
+*/
+
+//tangelo_rotated_2018 01 14 11 18 39
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\tangelo_rotated_2018 01 14 11 18 39";
+Rect r_box(600, 150, 750, 750);
+#define motor_shaft_height 18
+#define color_distance 20
+*/
+
+//tangelo_2018 01 14 11 17 07
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\tangelo_2018 01 14 11 17 07";
+Rect r_box(650, 180, 690, 690);
+#define motor_shaft_height 1
+#define color_distance 15
+*/
+//mandarine_rotated_2018 01 14 11 19 53
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mandarine_rotated_2018 01 14 11 19 53";
+Rect r_box(650, 200, 670, 670);
+#define motor_shaft_height 2
+#define color_distance 25
+*/
+//mandarine_2018 01 14 11 19 19
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mandarine_2018 01 14 11 19 19";
+Rect r_box(650, 300, 660, 660);
+#define motor_shaft_height 18
+#define color_distance 25
+*/
+//banana_rotated_2018 01 14 12 16 03
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\banana_rotated_2018 01 14 12 16 03";
+Rect r_box(970, 100, 950, 950);
+#define motor_shaft_height 32
+#define color_distance 13
+*/
+
+//banana_2018 01 14 12 00 48
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\banana_2018 01 14 12 00 48";
+Rect r_box(970, 100, 950, 950);
+#define motor_shaft_height 32
+#define color_distance 13
+*/
+
+//pineapple_rotated_2018 01 14 11 44 51
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pineapple_rotated_2018 01 14 11 44 51";
+Rect r_box(1050, 220, 750, 750);
+#define motor_shaft_height 20
+#define color_distance 6
+*/
+//pineapple_2018 01 14 11 46 09.avi
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pineapple_2018 01 14 11 46 09";
+Rect r_box(1100, 120, 650, 650);
+#define motor_shaft_height 1
+#define color_distance 5
+*/
 
 //apple_red_delicios_rotated_2017 12 30 13 23 09
-
+/*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\apple_red_delicios_rotated_2017 12 30 13 23 09";
 Rect r_box(430, 10, 700, 700);
 #define motor_shaft_height 14
 #define color_distance 15
-
+*/
 
 //apple_red_delicios_2017 12 30 13 21 29
 /*

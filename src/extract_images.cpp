@@ -13,8 +13,6 @@
 // 4. uncomment SAVE_IMAGES_TO_DISK an comment DISPLAY_ONLY
 // 5. modify the motor_shaft_height and color_distance if needed
 
-#define SAVE_IMAGES_TO_DISK
-//#define DISPLAY_ONLY
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -202,8 +200,7 @@ int main(void)
 	// open video
 	VideoCapture input_video(input_file_name + ".avi");
 
-	if (!input_video.isOpened())
-	{
+	if (!input_video.isOpened()){
 		printf("Could not open the input video! Press ENTER to terminate.");
 		getchar();
 		return -1;
