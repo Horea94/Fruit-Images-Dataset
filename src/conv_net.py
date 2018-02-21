@@ -111,20 +111,20 @@ def conv_net(X, weights, biases, dropout):
 
 
 weights = {
-    'conv_weight1': _variable_with_weight_decay('conv_weight1', [5, 5, 3, 16], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight2': _variable_with_weight_decay('conv_weight2', [5, 5, 16, 32], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight3': _variable_with_weight_decay('conv_weight3', [5, 5, 32, 64], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight4': _variable_with_weight_decay('conv_weight4', [5, 5, 64, 128], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight1': _variable_with_weight_decay('fcl_weight1', [7 * 7 * 128, 1024], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight2': _variable_with_weight_decay('fcl_weight2', [1024, 256], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight1': _variable_with_weight_decay('conv_weight1', [5, 5, 3, 32], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight2': _variable_with_weight_decay('conv_weight2', [5, 5, 32, 64], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight3': _variable_with_weight_decay('conv_weight3', [5, 5, 64, 128], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight4': _variable_with_weight_decay('conv_weight4', [5, 5, 128, 256], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight1': _variable_with_weight_decay('fcl_weight1', [7 * 7 * 256, 2048], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight2': _variable_with_weight_decay('fcl_weight2', [2048, 256], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
     'out_weight': _variable_with_weight_decay('out_weight', [256, num_classes], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
 }
 biases = {
-    'conv_bias1': tf.Variable(tf.zeros([16])),
-    'conv_bias2': tf.Variable(tf.zeros([32])),
-    'conv_bias3': tf.Variable(tf.zeros([64])),
-    'conv_bias4': tf.Variable(tf.zeros([128])),
-    'fcl_bias1': tf.Variable(tf.zeros([1024])),
+    'conv_bias1': tf.Variable(tf.zeros([32])),
+    'conv_bias2': tf.Variable(tf.zeros([64])),
+    'conv_bias3': tf.Variable(tf.zeros([128])),
+    'conv_bias4': tf.Variable(tf.zeros([256])),
+    'fcl_bias1': tf.Variable(tf.zeros([2048])),
     'fcl_bias2': tf.Variable(tf.zeros([256])),
     'out_bias': tf.Variable(tf.zeros([num_classes]))
 }
