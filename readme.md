@@ -11,9 +11,9 @@ Folders [Training](Training) and [Validation](Validation) contain all images wit
 
 Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
 
-Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
+Folder [src](src) contains the python code for training the neural network. It uses the TensorFlow library.
 
-Folder [src](src) contains the C++ code used for extracting the fruits from the background. 
+Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits from the background. 
 
 ## Dataset properties ##
 
