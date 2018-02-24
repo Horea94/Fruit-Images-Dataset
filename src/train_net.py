@@ -5,10 +5,6 @@ import os
 
 import network
 
-initial_learning_rate = 0.001
-final_learning_rate = 0.0001
-learning_rate = initial_learning_rate
-
 num_steps = 10000
 step = 50
 useCkpt = False
@@ -52,7 +48,7 @@ def train_model():
 
             if i % step == 0 or i == 1:
                 loss, acc = sess.run([loss_op, accuracy], feed_dict={network.X: batch_x, network.Y: batch_y, keep_prob: 1})
-                learning_rate = update_learning_rate(acc, learn_rate=initial_learning_rate)
+                learning_rate = update_learning_rate(acc, learn_rate=network.initial_learning_rate)
                 saver.save(sess, checkpoint_dir + 'model.ckpt')
                 time2 = time.time()
                 print("time: %.4f step: %d loss: %.4f accuracy: %.4f" % (time2 - time1, i, loss, acc))

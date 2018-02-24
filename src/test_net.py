@@ -5,12 +5,6 @@ import os
 
 import network
 
-initial_learning_rate = 0.001
-final_learning_rate = 0.0001
-learning_rate = initial_learning_rate
-
-step = 50
-
 checkpoint_dir = os.getcwd() + '\\models\\'
 keep_prob = tf.placeholder(tf.float32)
 
@@ -44,7 +38,7 @@ prediction = tf.nn.softmax(logits)
 
 loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits,
                                                                         labels=network.Y))
-optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+optimizer = tf.train.AdamOptimizer(learning_rate=network.learning_rate)
 train_op = optimizer.minimize(loss=loss_op)
 
 correct_pred = tf.equal(tf.argmax(prediction, 1), network.Y)

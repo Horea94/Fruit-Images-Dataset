@@ -12,6 +12,10 @@ dropout = 0.8
 X = tf.placeholder(tf.float32, [None, input_size], name="X")
 Y = tf.placeholder(tf.int64, [batch_size], name="Y")
 
+initial_learning_rate = 0.001
+final_learning_rate = 0.0001
+learning_rate = initial_learning_rate
+
 
 def _int64_feature(value):
     if not isinstance(value, list):
