@@ -33,8 +33,10 @@ Different varieties of the same fruit (apple for instance) are shown having diff
 
 Use the build_image_data.py script to generate the train-00000-of-00001 and validation-00000-of-00001 tfrecords file which are needed for the train and test scripts. In the build_image_data.py file you can modify the path to the dataset as well as the location where the tfrecords are saved.
 
-Run the conv_net.py to train the network - currently the network runs for 10000 iterations and saves the network state every 50 steps. This will generate the models/ folder where the network parameters are saved.
+Run the train_net.py to train the network - currently the network runs for 10000 iterations and saves the network state every 50 steps. This will generate the models/ folder where the network parameters are saved.
 After completing the training, run the test_net.py file to evaluate the accuracy.
+
+The network.py file contains the network definition as well as parameters used for building the network like the weights, biases, learning rate etc.
 
 ## How to cite ##
 
