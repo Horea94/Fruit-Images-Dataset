@@ -22,19 +22,12 @@ and
 where we have selected 1024 and 128 shards for each data set. Each record
 within the TFRecord file is a serialized Example proto. The Example proto
 contains the following fields:
-  image/encoded: string containing JPEG encoded image in RGB colorspace
-  image/height: integer, image height in pixels
-  image/width: integer, image width in pixels
-  image/colorspace: string, specifying the colorspace, always 'RGB'
-  image/channels: integer, specifying the number of channels, always 3
-  image/format: string, specifying the format, always'JPEG'
-  image/filename: string containing the basename of the image file
-            e.g. 'n01440764_10026.JPEG' or 'ILSVRC2012_val_00000293.JPEG'
-  image/class/label: integer specifying the index in a classification layer.
+  height: integer, image height in pixels
+  width: integer, image width in pixels
+  label: integer specifying the index in a classification layer.
     The label ranges from [0, num_labels] where 0 is unused and left as
     the background class.
-  image/class/text: string specifying the human-readable version of the label
-    e.g. 'dog'
+  image_raw: string containing JPEG encoded image in RGB colorspace
 If you data set involves bounding boxes, please look at build_imagenet_data.py.
 """
 from __future__ import absolute_import
