@@ -9,7 +9,7 @@ num_steps = 10000
 step = 50
 useCkpt = False
 checkpoint_dir = os.getcwd() + '\\models\\'
-keep_prob = tf.placeholder(tf.float32)
+keep_prob = tf.placeholder(tf.float32, name='keep_prob')
 
 
 def inputs(filename, batch_size):
