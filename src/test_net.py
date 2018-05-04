@@ -29,7 +29,7 @@ def test_model():
         acc = sess.run([correct_pred], feed_dict={network.X: batch_x, network.Y: batch_y, keep_prob: 1})
         image_number = image_number - network.batch_size
         correct = correct + numpy.sum(acc)
-        print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_images - image_number, correct / (total_images - image_number)))
+        print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_images - image_number, correct / float(total_images - image_number)))
     print(correct/total_images)
 
 
