@@ -22,12 +22,19 @@ and
 where we have selected 1024 and 128 shards for each data set. Each record
 within the TFRecord file is a serialized Example proto. The Example proto
 contains the following fields:
-  height: integer, image height in pixels
-  width: integer, image width in pixels
-  label: integer specifying the index in a classification layer.
+  image/encoded: string containing JPEG encoded image in RGB colorspace
+  image/height: integer, image height in pixels
+  image/width: integer, image width in pixels
+  image/colorspace: string, specifying the colorspace, always 'RGB'
+  image/channels: integer, specifying the number of channels, always 3
+  image/format: string, specifying the format, always'JPEG'
+  image/filename: string containing the basename of the image file
+            e.g. 'n01440764_10026.JPEG' or 'ILSVRC2012_val_00000293.JPEG'
+  image/class/label: integer specifying the index in a classification layer.
     The label ranges from [0, num_labels] where 0 is unused and left as
     the background class.
-  image_raw: string containing JPEG encoded image in RGB colorspace
+  image/class/text: string specifying the human-readable version of the label
+    e.g. 'dog'
 If you data set involves bounding boxes, please look at build_imagenet_data.py.
 """
 from __future__ import absolute_import
@@ -49,7 +56,7 @@ tf.app.flags.DEFINE_string('train_directory', 'D:\\Robots\\Fruit-Images-Dataset\
 tf.app.flags.DEFINE_string('validation_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Validation',
                            'Validation data directory')
 
-tf.app.flags.DEFINE_string('output_directory', 'D:\\Robots\\fruit_network',
+tf.app.flags.DEFINE_string('output_directory', 'D:\\Robots\\',
                            'Output data directory')
 
 tf.app.flags.DEFINE_integer('train_shards', 1,
@@ -67,7 +74,7 @@ tf.app.flags.DEFINE_integer('num_threads', 1,
 #   flower
 # where each line corresponds to a label. We map each label contained in
 # the file to an integer corresponding to the line number starting from 0.
-tf.app.flags.DEFINE_string('labels_file', 'labels', 'Labels file')
+tf.app.flags.DEFINE_string('labels_file', './labels', 'Labels file')
 
 FLAGS = tf.app.flags.FLAGS
 
