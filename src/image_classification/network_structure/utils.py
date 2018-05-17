@@ -4,14 +4,15 @@ HEIGHT = 100
 WIDTH = 100
 # number of channels for an image - jpeg image has RGB channels
 CHANNELS = 3
-# number of channels for the input layer of the network: RGB + gray scale
+# number of channels for the input layer of the network: HSV + gray scale
 NETWORK_DEPTH = 4
 
 
 # perform data augmentation on images
 # add random hue and saturation
 # randomly flip the image vertically and horizontally
-# add a 4th channel to the RGB ones that contains the image in gray scale
+# converts the image from RGB to HSV and
+# adds a 4th channel to the HSV ones that contains the image in gray scale
 def adjust_image_for_train(image):
     image = tf.image.convert_image_dtype(image, tf.float32)
     image = tf.image.random_hue(image, 0.02)
@@ -26,7 +27,7 @@ def adjust_image_for_train(image):
     return rez
 
 
-# for test just add the 4th channel to the original RGB image
+# for test just convert the image to HSV and add the gray scale channel
 def adjust_image_for_test(image):
     image = tf.image.convert_image_dtype(image, tf.float32)
     gray_image = tf.image.rgb_to_grayscale(image)
