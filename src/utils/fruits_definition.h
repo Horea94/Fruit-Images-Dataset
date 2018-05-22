@@ -12,11 +12,25 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//pear_williams_rotated_2018 02 07 14 33 35.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_williams_rotated_2018 02 07 14 33 35";
-Rect r_box(730, 190, 780, 780);
-#define motor_shaft_height 22
+
+//pomegranate_rotated_2018 05 22 18 07 35.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pomegranate_rotated_2018 05 22 18 07 35";
+Rect r_box(920, 190, 560, 560);
+#define motor_shaft_height 23
 #define color_distance 12
+
+////lemon_rotated_2018 05 22 17 33 25.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\lemon_rotated_2018 05 22 17 33 25";
+//Rect r_box(960, 95, 540, 540);
+//#define motor_shaft_height 28
+//#define color_distance 16
+
+
+//pear_williams_rotated_2018 02 07 14 33 35.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_williams_rotated_2018 02 07 14 33 35";
+//Rect r_box(730, 190, 780, 780);
+//#define motor_shaft_height 22
+//#define color_distance 12
 
 ////pear_williams_2018 02 07 14 31 03
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pear_williams_2018 02 07 14 31 03";
