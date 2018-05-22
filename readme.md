@@ -94,4 +94,4 @@ Fruits were filmed at the dates given below:
 
 2018.02.08 - Pear Abate, Pear Williams.
 
-2018.05.28 - Lemon rotated, Pomegranate rotated
+2018.05.22 - Lemon rotated, Pomegranate rotated
