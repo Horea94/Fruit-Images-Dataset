@@ -1,9 +1,9 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.05.22.0 #
+# Version: 2018.05.25.0 #
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples - (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Carambula, Cherry, Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
+Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
 ## Structure ##
 
@@ -17,17 +17,17 @@ Folder [src/utils](src/utils) contains the C++ code used for extracting the frui
 
 ## Dataset properties ##
 
-Total number of images: 39065.
+Total number of images: 41033.
 
-Training set size: 29228 images.
+Training set size: 30704 images.
 
-Validation set size: 9837 images.
+Validation set size: 10329 images.
 
-Number of classes: 60 (fruits).
+Number of classes: 62 (fruits).
 
 Image size: 100x100 pixels.
 
-Filename format: image_index_100.jpg (e.g. 32_100.jpg) or r_image_index_100.jpg (e.g. r_32_100.jpg). "r" stands for rotated fruit. "100" comes from image size (100x100 pixels).
+Filename format: image_index_100.jpg (e.g. 32_100.jpg) or r_image_index_100.jpg (e.g. r_32_100.jpg) or r2_image_index_100.jpg. "r" stands for rotated fruit. "r2" means that the fruit was rotated around the 3rd axis. "100" comes from image size (100x100 pixels).
 
 Different varieties of the same fruit (apple for instance) are shown having different labels.
 
@@ -95,3 +95,5 @@ Fruits were filmed at the dates given below:
 2018.02.08 - Pear Abate, Pear Williams.
 
 2018.05.22 - Lemon rotated, Pomegranate rotated
+
+2018.05.24 - Cherry Rainier, Cherry 2
