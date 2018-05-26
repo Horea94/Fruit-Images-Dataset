@@ -33,7 +33,7 @@ Different varieties of the same fruit (apple for instance) are shown having diff
 
 ## Neural network code ##
 
-We have implemented a convolutional network for classifying the images. See the src/image_classification folder for more details
+We have implemented a convolutional network for classifying the images. See the [src/image_classification](src/image_classification) folder for more details
 
 ## How to cite ##
 
