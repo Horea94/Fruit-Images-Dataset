@@ -1,9 +1,9 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.05.25.0 #
+# Version: 2018.05.26.0 #
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
+Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
 ## Structure ##
 
@@ -17,13 +17,13 @@ Folder [src/utils](src/utils) contains the C++ code used for extracting the frui
 
 ## Dataset properties ##
 
-Total number of images: 41033.
+Total number of images: 42345.
 
-Training set size: 30704 images.
+Training set size: 31688 images.
 
-Validation set size: 10329 images.
+Validation set size: 10657 images.
 
-Number of classes: 62 (fruits).
+Number of classes: 64 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -95,3 +95,5 @@ Fruits were filmed at the dates given below:
 2018.05.22 - Lemon rotated, Pomegranate rotated
 
 2018.05.24 - Cherry Rainier, Cherry 2
+
+2018.05.26 - Cantaloupe (2 varieties)
