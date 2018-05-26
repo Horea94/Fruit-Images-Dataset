@@ -5,16 +5,6 @@
 A high-quality, dataset of images containing fruits. The following fruits are included: 
 Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry, Tamarillo, Tangelo.
 
-## Structure ##
-
-Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
-
-Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
-
-Folder [src](src) contains the python code for training the neural network. It uses the TensorFlow library.
-
-Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits from the background. 
-
 ## Dataset properties ##
 
 Total number of images: 42345.
@@ -29,7 +19,18 @@ Image size: 100x100 pixels.
 
 Filename format: image_index_100.jpg (e.g. 32_100.jpg) or r_image_index_100.jpg (e.g. r_32_100.jpg) or r2_image_index_100.jpg. "r" stands for rotated fruit. "r2" means that the fruit was rotated around the 3rd axis. "100" comes from image size (100x100 pixels).
 
-Different varieties of the same fruit (apple for instance) are shown having different labels.
+Different varieties of the same fruit (apple for instance) are stored as belonging to different classes.
+
+## Repository structure ##
+
+Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
+
+Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
+
+Folder [src](src) contains the python code for training the neural network. It uses the TensorFlow library.
+
+Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits from the background. 
+
 
 ## Neural network code ##
 
