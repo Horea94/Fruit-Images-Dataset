@@ -27,10 +27,13 @@ Folders [Training](Training) and [Validation](Validation) contain all images wit
 
 Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
 
-Folder [src](src) contains the python code for training the neural network. It uses the TensorFlow library.
+Folder [src/image_classification](src/image_classification) contains the python code for training the neural network. It uses the TensorFlow library.
 
 Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits from the background. 
 
+## Alternate download ##
+
+The dataset can also be downloaded from: https://www.kaggle.com/moltean/fruits
 
 ## Neural network code ##
 
