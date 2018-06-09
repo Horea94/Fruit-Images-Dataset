@@ -12,11 +12,48 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//melon_piel_de_sapo_rotated2_2018 05 31 09 28 23.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\melon_piel_de_sapo_rotated2_2018 05 31 09 28 23";
-Rect r_box(600, 0, 1020, 1020);
-#define motor_shaft_height 16
-#define color_distance 22
+//strawberry-wedge_rotated2_2018 05 24 13 49 41.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_rotated2_2018 05 24 13 49 41";
+Rect r_box(730, 190, 620, 620);
+#define motor_shaft_height 12
+#define color_distance 20
+
+////strawberry-wedge_rotated_2018 05 24 13 49 13.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_rotated_2018 05 24 13 49 13";
+//Rect r_box(750, 190, 580, 580);
+//#define motor_shaft_height 2
+//#define color_distance 17
+
+//////strawberry-wedge_2018 05 24 13 48 40.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_2018 05 24 13 48 40";
+//Rect r_box(710, 210, 670, 670);
+//#define motor_shaft_height 12
+//#define color_distance 17
+
+
+////pineapple_mini_2018 06 05 10 24 26.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pineapple_mini_2018 06 05 10 24 26";
+//Rect r_box(550, 200, 710, 710);
+//#define motor_shaft_height 3
+//#define color_distance 20
+
+////pineapple_mini_rotated_2018 06 05 10 26 45.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pineapple_mini_rotated_2018 06 05 10 26 45";
+//Rect r_box(150, 120, 960, 960);
+//#define motor_shaft_height 30
+//#define color_distance 12
+
+////pineapple_mini_2018 06 05 09 59 18.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\pineapple_mini_2018 06 05 09 59 18";
+//Rect r_box(500, 120, 960, 960);
+//#define motor_shaft_height 4
+//#define color_distance 12
+
+////melon_piel_de_sapo_rotated2_2018 05 31 09 28 23.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\melon_piel_de_sapo_rotated2_2018 05 31 09 28 23";
+//Rect r_box(600, 0, 1020, 1020);
+//#define motor_shaft_height 16
+//#define color_distance 22
 
 ////melon_piel_de_sapo_2018 05 31 09 35 00.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\melon_piel_de_sapo_2018 05 31 09 35 00";
@@ -29,12 +66,6 @@ Rect r_box(600, 0, 1020, 1020);
 //Rect r_box(580, 10, 1050, 1050);
 //#define motor_shaft_height 32
 //#define color_distance 14
-
-//////strawberry-wedge_2018 05 24 13 48 40.avi
-//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_2018 05 24 13 48 40";
-//Rect r_box(710, 210, 670, 670);
-//#define motor_shaft_height 12
-//#define color_distance 17
 
 ////cantaloupe2_rotated_2018 05 26 10 32 38.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cantaloupe2_rotated_2018 05 26 10 32 38";
