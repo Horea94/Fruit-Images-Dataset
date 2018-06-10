@@ -1,19 +1,19 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.06.09.0 #
+# Version: 2018.06.10.0 #
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
 Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Pineapple, Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo.
 
 ## Dataset properties ##
 
-Total number of images: 44295.
+Total number of images: 44969.
 
-Training set size: 33146 images.
+Training set size: 33657 images.
 
-Validation set size: 11149 images.
+Validation set size: 11312 images.
 
-Number of classes: 66 (fruits).
+Number of classes: 67 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -96,10 +96,12 @@ Fruits were filmed at the dates given below:
 
 2018.02.08 - Pear Abate, Pear Williams.
 
-2018.05.22 - Lemon rotated, Pomegranate rotated
+2018.05.22 - Lemon rotated, Pomegranate rotated.
 
 2018.05.24 - Cherry Rainier, Cherry 2, Strawberry Wedge.
 
-2018.05.26 - Cantaloupe (2 varieties)
+2018.05.26 - Cantaloupe (2 varieties).
 
-2018.05.31 - Melon Piel de Sapo
+2018.05.31 - Melon Piel de Sapo.
+
+2018.06.05 - Pineapple Mini.
