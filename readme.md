@@ -64,7 +64,7 @@ We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data
 
 ## History ##
 
-Fruits were filmed at the dates given below:
+Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2017.02.25 - Apple (golden).
 
