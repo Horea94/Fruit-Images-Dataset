@@ -12,11 +12,25 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//strawberry-wedge_rotated2_2018 05 24 13 49 41.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_rotated2_2018 05 24 13 49 41";
-Rect r_box(730, 190, 620, 620);
-#define motor_shaft_height 12
-#define color_distance 20
+
+//mulberry_rotated_2018 06 08 13 27 59.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mulberry_rotated_2018 06 08 13 27 59";
+Rect r_box(705, 280, 265, 265);
+#define motor_shaft_height 15
+#define color_distance 0
+
+////mulberry_2018 06 08 13 27 30.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mulberry_2018 06 08 13 27 30";
+//Rect r_box(730, 250, 250, 250);
+//#define motor_shaft_height 1
+//#define color_distance 10
+
+
+////strawberry-wedge_rotated2_2018 05 24 13 49 41.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_rotated2_2018 05 24 13 49 41";
+//Rect r_box(730, 190, 620, 620);
+//#define motor_shaft_height 12
+//#define color_distance 20
 
 ////strawberry-wedge_rotated_2018 05 24 13 49 13.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\strawberry-wedge_rotated_2018 05 24 13 49 13";
