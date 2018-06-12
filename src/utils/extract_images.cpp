@@ -26,6 +26,8 @@
 using namespace std;
 using namespace cv;
 
+#define VERSION "2018.06.12.0"
+
 //---------------------------------------------------------------------
 struct t_bounding_box { // rectangular bounding box
 	Point min, max;
@@ -209,6 +211,7 @@ bool remove_background(Mat &image)
 //---------------------------------------------------------------------
 int main(void)
 {
+	printf("Program version = %s\n", VERSION);
 	// open video
 	VideoCapture input_video(input_file_name + ".avi");
 
