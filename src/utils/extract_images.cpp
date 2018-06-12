@@ -1,6 +1,6 @@
 // Extracts fruits images from videos
 // background should be uniform with small fluctuations
-// color_distance constant tells how to which extent 2 pixels from background are considered similar.
+// color_distance constant tells how to which extent 2 background pixels can be considered similar; more is better
 
 // authors: Mihai Oltean & Horea Muresan
 // MIT license
@@ -233,7 +233,7 @@ int main(void)
 	namedWindow("image", 1);
 	Mat smaller_image;
 
-	for (int i = 0; i < 4; i++)// skip 3 frames
+	for (int i = 0; i < 4; i++)// skip first 3 frames
 		input_video >> input_image;
 
 	int frame_index = 0;
@@ -244,7 +244,7 @@ int main(void)
 		if (input_image.empty())
 			break;
 		// extract a submatrix (having corners stored in r_box) from the original matrix
-		// note 
+		
 		smaller_image = input_image(r_box);
 
 		// compute image file name
@@ -253,11 +253,11 @@ int main(void)
 #ifndef DISPLAY_ONLY
 
 		// resize
-		resize(smaller_image, smaller_image, Size(100, 100));
+		resize(smaller_image, smaller_image, Size(smaller_image_size, smaller_image_size));
 		// remove margins
 		if (remove_background(smaller_image)) {
 			// resize again
-			resize(smaller_image, smaller_image, Size(100, 100));
+			resize(smaller_image, smaller_image, Size(smaller_image_size, smaller_image_size));
 			// show the results on the screen
 
 
