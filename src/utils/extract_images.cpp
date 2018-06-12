@@ -5,7 +5,7 @@
 // authors: Mihai Oltean & Horea Muresan
 // MIT license
 
-// compiled with Visual Studio 2015 Community Edition
+// compiled with Visual Studio 2017 Community Edition
 // if you get stack overflow ... just increase the stack reserve size from Linker menu  ...
 
 // How to use: 
@@ -28,7 +28,7 @@
 using namespace std;
 using namespace cv;
 
-#define VERSION "2018.06.12.0"
+#define VERSION "2018.06.12.1"
 
 //---------------------------------------------------------------------
 struct t_bounding_box { // rectangular bounding box
@@ -107,8 +107,8 @@ t_bounding_box compute_fruit_bounding_box(char** matrix)
 {// compute the bounding box of the fruit
 	t_bounding_box bbox;
 	// maximal bbox is :
-	bbox.min.x = smaller_image_size;
-	bbox.min.y = smaller_image_size;
+	bbox.min.x = smaller_image_size - 1;
+	bbox.min.y = smaller_image_size - 1;
 	bbox.max.x = 0;
 	bbox.max.y = 0;
 
