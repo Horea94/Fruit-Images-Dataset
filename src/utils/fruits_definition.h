@@ -12,12 +12,24 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
+//physalis_rotated_2018 06 05 09 47 14.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_rotated_2018 06 05 09 47 14";
+Rect r_box(790, 300, 260, 260);
+#define motor_shaft_height 2
+#define color_distance 8
 
-//mulberry_rotated_2018 06 08 13 27 59.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mulberry_rotated_2018 06 08 13 27 59";
-Rect r_box(705, 280, 265, 265);
-#define motor_shaft_height 15
-#define color_distance 0
+////physalis_2018 06 05 09 45 49.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_2018 06 05 09 45 49";
+//Rect r_box(790, 300, 260, 260);
+//#define motor_shaft_height 3
+//#define color_distance 8
+
+
+////mulberry_rotated_2018 06 08 13 27 59.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mulberry_rotated_2018 06 08 13 27 59";
+//Rect r_box(705, 280, 265, 265);
+//#define motor_shaft_height 15
+//#define color_distance 0
 
 ////mulberry_2018 06 08 13 27 30.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\mulberry_2018 06 08 13 27 30";
