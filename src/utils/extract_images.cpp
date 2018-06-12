@@ -1,10 +1,12 @@
 // Extracts fruits images from videos
+// background should be uniform with small fluctuations
+// color_distance constant tells how to which extent 2 pixels from background are considered similar.
 
 // authors: Mihai Oltean & Horea Muresan
 // MIT license
 
 // compiled with Visual Studio 2015 Community Edition
-// if you get stack overflow ... just increase the stack reserve size from menu Linker ...
+// if you get stack overflow ... just increase the stack reserve size from Linker menu  ...
 
 // How to use: 
 // 1. modify the fruits_definition.h file for a new fruit; r_box parameters must be modified for each fruit (see step 3)

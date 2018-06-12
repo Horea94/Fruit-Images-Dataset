@@ -9,6 +9,11 @@
 using namespace std;
 using namespace cv;
 
+// Rect(int x, int y, int width, int height) - OpenCV definition
+// (x, y) is the top corner of the subimage boxing the fruit
+// x + width <= image width
+// y + height <= image heigth
+
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
