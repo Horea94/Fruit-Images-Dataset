@@ -7,7 +7,7 @@ Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Deliciou
 
 ## Dataset properties ##
 
-Total number of images: 46937.
+Total number of images: 46937 (one fruit per image).
 
 Training set size: 35133 images.
 
