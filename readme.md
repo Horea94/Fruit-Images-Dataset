@@ -41,7 +41,7 @@ We have implemented a convolutional network for classifying the images. See the 
 
 ## How to cite ##
 
-Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Technical Report, Babes-Bolyai University, 2017
+Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Acta Univ. Sapientiae, Informatica Vol. 10, Issue 1, pp. 24-41, 2018.
 
 ## How we created the dataset ##
 
