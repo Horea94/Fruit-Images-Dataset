@@ -23,7 +23,7 @@ Different varieties of the same fruit (apple for instance) are stored as belongi
 
 ## Repository structure ##
 
-Folders [Training](Training) and [Validation](Validation) contain all images with white backgrounds only.
+Folders [Training](Training) and [Test](Test) contain all images for training and testing.
 
 Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
 
