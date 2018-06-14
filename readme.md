@@ -1,19 +1,19 @@
 # Fruits-360: A dataset of images containing fruits #
 
-# Version: 2018.06.13.0 #
+# Version: 2018.06.14.0 #
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Quince, Raspberry, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo.
+Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Litchi, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Quince, Rambutan, Raspberry, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo.
 
 ## Dataset properties ##
 
-Total number of images: 46937 (one fruit per image).
+Total number of images: 47593 (one fruit per image).
 
-Training set size: 35133 images.
+Training set size: 35625 images.
 
-Validation set size: 11804 images.
+Validation set size: 11968 images.
 
-Number of classes: 70 (fruits).
+Number of classes: 71 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -23,7 +23,7 @@ Different varieties of the same fruit (apple for instance) are stored as belongi
 
 ## Repository structure ##
 
-Folders [Training](Training) and [Test](Test) contain all images for training and testing.
+Folders [Training](Training) and [Test](Test) contain images for training and testing purposes.
 
 Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
 
@@ -104,6 +104,6 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2018.05.31 - Melon Piel de Sapo.
 
-2018.06.05 - Pineapple Mini, Physalis, Physalis with Husk.
+2018.06.05 - Pineapple Mini, Physalis, Physalis with Husk, Rumbutan.
 
 2018.06.08 - Mulberry.

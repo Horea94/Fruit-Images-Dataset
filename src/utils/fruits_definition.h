@@ -17,11 +17,37 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//physalis_rotated_2018 06 05 09 47 14.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_rotated_2018 06 05 09 47 14";
-Rect r_box(790, 300, 260, 260);
-#define motor_shaft_height 2
-#define color_distance 8
+//rambutan_rotated_2018 06 05 09 56 17.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\rambutan_rotated_2018 06 05 09 56 17";
+Rect r_box(700, 300, 780, 780);
+#define motor_shaft_height 18
+#define color_distance 20
+
+
+////rambutan_2018 06 05 09 55 23.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\rambutan_2018 06 05 09 55 23";
+//Rect r_box(700, 400, 680, 680);
+//#define motor_shaft_height 12
+//#define color_distance 15
+
+////physalis_with_husk_rotated_2018 06 05 09 50 34.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_with_husk_rotated_2018 06 05 09 50 34";
+//Rect r_box(500, 10, 800, 800);
+//#define motor_shaft_height 27
+//#define color_distance 10
+
+////physalis_with_husk_2018 06 05 09 48 48.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_with_husk_2018 06 05 09 48 48";
+//Rect r_box(650, 10, 600, 600);
+//#define motor_shaft_height 2
+//#define color_distance 10
+
+
+////physalis_rotated_2018 06 05 09 47 14.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_rotated_2018 06 05 09 47 14";
+//Rect r_box(790, 300, 260, 260);
+//#define motor_shaft_height 2
+//#define color_distance 8
 
 ////physalis_2018 06 05 09 45 49.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\physalis_2018 06 05 09 45 49";
