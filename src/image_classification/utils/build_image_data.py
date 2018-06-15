@@ -53,16 +53,16 @@ import tensorflow as tf
 tf.app.flags.DEFINE_string('train_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Training',
                            'Training data directory')
 
-tf.app.flags.DEFINE_string('validation_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Validation',
-                           'Validation data directory')
+tf.app.flags.DEFINE_string('test_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Test',
+                           'Test data directory')
 
 tf.app.flags.DEFINE_string('output_directory', 'D:\\Robots\\',
                            'Output data directory')
 
 tf.app.flags.DEFINE_integer('train_shards', 1,
                             'Number of shards in training TFRecord files.')
-tf.app.flags.DEFINE_integer('validation_shards', 1,
-                            'Number of shards in validation TFRecord files.')
+tf.app.flags.DEFINE_integer('test_shards', 1,
+                            'Number of shards in test TFRecord files.')
 
 tf.app.flags.DEFINE_integer('num_threads', 1,
                             'Number of threads to preprocess the images.')
@@ -389,14 +389,14 @@ def _process_dataset(name, directory, num_shards, labels_file):
 def main(unused_argv):
     assert not FLAGS.train_shards % FLAGS.num_threads, (
         'Please make the FLAGS.num_threads commensurate with FLAGS.train_shards')
-    assert not FLAGS.validation_shards % FLAGS.num_threads, (
+    assert not FLAGS.test_shards % FLAGS.num_threads, (
         'Please make the FLAGS.num_threads commensurate with '
-        'FLAGS.validation_shards')
+        'FLAGS.test_shards')
     print('Saving results to %s' % FLAGS.output_directory)
 
     # Run it!
-    _process_dataset('validation', FLAGS.validation_directory,
-                     FLAGS.validation_shards, FLAGS.labels_file)
+    _process_dataset('test', FLAGS.test_diectory,
+                     FLAGS.test_shards, FLAGS.labels_file)
     _process_dataset('train', FLAGS.train_directory,
                      FLAGS.train_shards, FLAGS.labels_file)
 

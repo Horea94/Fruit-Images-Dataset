@@ -10,9 +10,9 @@ from utils import constants
 checkpoint_dir = os.getcwd() + '\\..\\fruit_models\\'
 keep_prob = tf.placeholder(tf.float32)
 
-images_left_to_process = 9673
+images_left_to_process = 11968
 # total number of images used to test
-total_test_images = 9673
+total_test_images = 11968
 
 # create a map to add for each label the amount of images that were labeled incorrectly
 mislabeled = {}
@@ -73,7 +73,7 @@ saver = tf.train.Saver()
 
 with tf.Session() as sess:
     sess.run(init)
-    tfrecords_name = constants.data_dir + 'validation-00000-of-00001'
+    tfrecords_name = constants.data_dir + 'test-00000-of-00001'
     images, labels = inputs(tfrecords_name, network.batch_size)
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
