@@ -41,11 +41,13 @@ The dataset can also be downloaded from: https://www.kaggle.com/moltean/fruits
 
 ## Neural network code ##
 
-We have implemented a convolutional network for classifying the images. See the [src/image_classification](src/image_classification) folder for more details
+We have implemented a convolutional network for classifying the images. See the [src/image_classification](src/image_classification) folder for more details. Results of the numerical experiments are presented in the article from [papers](papers) folder.
 
 ## How to cite ##
 
 Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Acta Univ. Sapientiae, Informatica Vol. 10, Issue 1, pp. 26-42, 2018.
+
+Last version of the paper can be read from [papers](papers) folder.
 
 ## How we created the dataset ##
 
