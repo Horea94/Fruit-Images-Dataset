@@ -17,11 +17,23 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//rambutan_rotated_2018 06 05 09 56 17.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\rambutan_rotated_2018 06 05 09 56 17";
-Rect r_box(700, 300, 780, 780);
-#define motor_shaft_height 18
-#define color_distance 20
+//cherry_wax_yellow_rotated_2018 06 17 13 59 12.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_yellow_rotated_2018 06 17 13 59 12";
+Rect r_box(1125, 640, 105, 105);
+#define motor_shaft_height 10
+#define color_distance 8
+
+////cherry_wax_yellow_2018 06 17 13 58 42.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_yellow_2018 06 17 13 58 42";
+//Rect r_box(1125, 640, 100, 100);
+//#define motor_shaft_height 5
+//#define color_distance 13
+
+////rambutan_rotated_2018 06 05 09 56 17.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\rambutan_rotated_2018 06 05 09 56 17";
+//Rect r_box(700, 300, 780, 780);
+//#define motor_shaft_height 18
+//#define color_distance 20
 
 
 ////rambutan_2018 06 05 09 55 23.avi
