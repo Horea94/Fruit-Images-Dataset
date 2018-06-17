@@ -31,7 +31,9 @@ Folder [test-multiple_fruits](test-multiple_fruits) contains images with multipl
 
 Folder [src/image_classification](src/image_classification) contains the python code for training the neural network. It uses the TensorFlow library.
 
-Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits from the background. 
+Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits from background.
+
+Folder [papers](papers) contains the research papers related to this dataset.
 
 ## Alternate download ##
 
@@ -116,7 +118,7 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 MIT License
 
-Copyright (c) 2017 Mihai Oltean, Horea Muresan
+Copyright (c) 2017-2018 [Mihai Oltean](https://mihaioltean.github.io), Horea Muresan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
