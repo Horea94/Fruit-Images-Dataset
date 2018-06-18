@@ -17,11 +17,43 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//cherry_wax_yellow_rotated_2018 06 17 13 59 12.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_yellow_rotated_2018 06 17 13 59 12";
-Rect r_box(1125, 640, 105, 105);
-#define motor_shaft_height 10
-#define color_distance 8
+//cherry_wax_maroon_rotated_2018 06 17 14 01 06
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_maroon_rotated_2018 06 17 14 01 06";
+Rect r_box(1123, 638, 108, 108);
+#define motor_shaft_height 11
+#define color_distance 5
+#define shaft_left 35
+#define shaft_right 72
+
+////cherry_was_maroon_2018 06 17 14 00 33.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_was_maroon_2018 06 17 14 00 33";
+//Rect r_box(1125, 638, 100, 100);
+//#define motor_shaft_height 4
+//#define color_distance 5
+//#define shaft_left 35
+//#define shaft_right 72
+
+////cherry_wax_red_rotated_2018 06 17 14 05 47.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_red_rotated_2018 06 17 14 05 47";
+//Rect r_box(1118, 630, 115, 115);
+//#define motor_shaft_height 10
+//#define color_distance 5
+//#define shaft_left 38
+//#define shaft_right 78
+
+////cherry_wax_red_2018 06 17 14 03 38.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_red_2018 06 17 14 03 38";
+//Rect r_box(1120, 630, 110, 110);
+//#define motor_shaft_height 5
+//#define color_distance 5
+//#define shaft_left 38
+//#define shaft_right 75
+
+////cherry_wax_yellow_rotated_2018 06 17 13 59 12.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_yellow_rotated_2018 06 17 13 59 12";
+//Rect r_box(1125, 640, 105, 105);
+//#define motor_shaft_height 10
+//#define color_distance 8
 
 ////cherry_wax_yellow_2018 06 17 13 58 42.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_yellow_2018 06 17 13 58 42";

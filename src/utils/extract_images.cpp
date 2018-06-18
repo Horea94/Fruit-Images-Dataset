@@ -152,6 +152,7 @@ bool remove_background(Mat &image)
 
 	// try to remove the motor shaft
 	for (int i = 0; i < smaller_image_size; i++)
+		if (i < shaft_left || i > shaft_right)
 		flood_fill_background(smaller_image_size - motor_shaft_height - 1, i, &image, matrix, 1);
 
 	// now I start from the center and fill the object
@@ -233,7 +234,7 @@ int main(void)
 	namedWindow("image", 1);
 	Mat smaller_image;
 
-	for (int i = 0; i < 4; i++)// skip first 3 frames
+	for (int i = 0; i < 6; i++)// skip first 3 frames
 		input_video >> input_image;
 
 	int frame_index = 0;
@@ -272,15 +273,18 @@ int main(void)
 				break;
 		}
 #endif		
-
-		imshow("image", smaller_image);
 #ifdef SAVE_IMAGES_TO_DISK
 		if (!imwrite(out_filename, smaller_image)) {
 			printf("Cannot write image!\n");
 			break;
 		}
+#else
+		// draw shaft
+		rectangle(smaller_image, Rect(shaft_left, smaller_image.rows - motor_shaft_height, shaft_right - shaft_left, motor_shaft_height), Scalar(255, 255, 255));
+
 #endif
 
+		imshow("image", smaller_image);
 		int key = waitKey(1); // key pressed
 		if (key == 27) // Escape pressed ?
 			break;
