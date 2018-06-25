@@ -12,7 +12,7 @@ iterations = 20000
 # amount of iterations after we display the loss and accuracy
 display_interval = 50
 # use the saved model and continue training
-useCkpt = True
+useCkpt = False
 # placeholder for probability to keep the network parameters after an iteration
 keep_prob = tf.placeholder(tf.float32, name='keep_prob')
 
