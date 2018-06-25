@@ -10,9 +10,9 @@ from utils import constants
 checkpoint_dir = os.getcwd() + '\\..\\fruit_models\\'
 keep_prob = tf.placeholder(tf.float32)
 
-images_left_to_process = 11968
+images_left_to_process = 12460
 # total number of images used to test
-total_test_images = 11968
+total_test_images = 12460
 
 # create a map to add for each label the amount of images that were labeled incorrectly
 mislabeled = {}

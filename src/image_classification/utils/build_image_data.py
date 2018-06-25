@@ -395,7 +395,7 @@ def main(unused_argv):
     print('Saving results to %s' % FLAGS.output_directory)
 
     # Run it!
-    _process_dataset('test', FLAGS.test_diectory,
+    _process_dataset('test', FLAGS.test_directory,
                      FLAGS.test_shards, FLAGS.labels_file)
     _process_dataset('train', FLAGS.train_directory,
                      FLAGS.train_shards, FLAGS.labels_file)
