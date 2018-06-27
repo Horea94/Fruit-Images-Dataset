@@ -36,6 +36,14 @@ are saved.
 
 After training the network run the network/fruit_test_net.py to test the obtained model.
 
+### Use the trained model ###
+
+The fruit_detection/detect_fruits.py script contains a basic example on how to load the trained model, how to read an image and how to feed it to the network and how to get the output and interpret it.
+
+The script has only a flag:
+
+--image_path=path to the image to be read and classified
+
 ### Customization ###
 
 The network_structure/network.py file contains the network definition as well as parameters used for building the network: 
