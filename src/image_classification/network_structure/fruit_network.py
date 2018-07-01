@@ -4,7 +4,7 @@ from . import utils
 batch_size = 50
 input_size = utils.HEIGHT * utils.WIDTH * utils.NETWORK_DEPTH
 # number of classes: 60 fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
-num_classes = 72
+num_classes = 75
 # probability to keep the values after a training iteration
 dropout = 0.8
 

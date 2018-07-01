@@ -27,12 +27,22 @@ The available options are:
 ### Train the network ###
 
 Run the network/fruit_train_net.py to train the network - currently the network runs for 20000 iterations and saves the 
-network state every 50 steps. This will generate the fruit_models/ folder where the network parameters and the graph meta data 
+network state every 50 steps. 
+By default, the network/fruit_train_net.py and the network/fruit_test_net.py scripts expect the tfrecords files(obtained using the build_image_data.py script) to be in a folder called "data", at the same level as the network folder. This can be changed in the utils/constants.py by changing the "data_dir" variable.
+This script will generate the fruit_models/ folder where the network parameters and the graph meta data 
 are saved.
 
 ### Test the network ###
 
 After training the network run the network/fruit_test_net.py to test the obtained model.
+
+### Use the trained model ###
+
+The fruit_detection/detect_fruits.py script contains a basic example on how to load the trained model, how to read an image and how to feed it to the network and how to get the output and interpret it.
+
+The script has only a flag:
+
+--image_path=path to the image to be read and classified
 
 ### Customization ###
 
