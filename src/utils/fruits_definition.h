@@ -17,13 +17,49 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
+// nut_rotated2_2018 06 16 11 55 09.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nut_rotated2_2018 06 16 11 55 09";
+Rect r_box(935, 600, 165, 165);
+#define motor_shaft_height_original 19
+#define motor_shaft_height_scaled 1
+#define color_distance 10
+#define shaft_left 65
+#define shaft_right 105
+
+//nut_rotated_2018 06 16 11 54 24.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nut_rotated_2018 06 16 11 54 24";
+//Rect r_box(945, 600, 150, 150);
+//#define motor_shaft_height_original 5
+//#define motor_shaft_height_scaled 1
+//#define color_distance 10
+//#define shaft_left 55
+//#define shaft_right 91
+
+//nut_2018 06 16 11 53 06.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nut_2018 06 16 11 53 06";
+//Rect r_box(945, 600, 150, 150);
+//#define motor_shaft_height_original 4
+//#define motor_shaft_height_scaled 1
+//#define color_distance 10
+//#define shaft_left 55
+//#define shaft_right 90
+
+////banana_lady_finger_2018 06 16 11 42 10.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\banana_lady_finger_2018 06 16 11 42 10";
+//Rect r_box(800, 200, 530, 530);
+//#define motor_shaft_height_original 15
+//#define motor_shaft_height_scaled 1
+//#define color_distance 2
+//#define shaft_left 208
+//#define shaft_right 224
+
 //cherry_wax_maroon_rotated_2018 06 17 14 01 06
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_maroon_rotated_2018 06 17 14 01 06";
-Rect r_box(1123, 638, 108, 108);
-#define motor_shaft_height 11
-#define color_distance 5
-#define shaft_left 35
-#define shaft_right 72
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_wax_maroon_rotated_2018 06 17 14 01 06";
+//Rect r_box(1123, 638, 108, 108);
+//#define motor_shaft_height 11
+//#define color_distance 5
+//#define shaft_left 35
+//#define shaft_right 72
 
 ////cherry_was_maroon_2018 06 17 14 00 33.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry_was_maroon_2018 06 17 14 00 33";

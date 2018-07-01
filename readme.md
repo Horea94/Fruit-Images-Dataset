@@ -1,17 +1,17 @@
 # Fruits-360: A dataset of images containing fruits #
 
-## Version: 2018.06.18.0 ##
+## Version: 2018.07.01.0 ##
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Quince, Rambutan, Raspberry, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo.
+Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Clementine, Cocos, Dates, Granadilla, Grape (Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach, Pepino, Pear (different varieties, Abate, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Quince, Rambutan, Raspberry, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Walnut.
 
 ## Dataset properties ##
 
-Total number of images: 49606.
+Total number of images: 50590.
 
-Training set size: 37101 images (one fruit per image).
+Training set size: 37836 images (one fruit per image).
 
-Test set size: 12460 images (one fruit per image).
+Test set size: 12709 images (one fruit per image).
 
 Multi-fruits set size: 45 images (more than one fruit (or fruit class) per image)
 
@@ -109,6 +109,8 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 2018.06.05 - Pineapple Mini, Physalis, Physalis with Husk, Rumbutan.
 
 2018.06.08 - Mulberry.
+
+2018.06.16 - Walnut.
 
 2018.06.17 - Cherry Wax (Yellow, Red, Black).
 
