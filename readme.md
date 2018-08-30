@@ -37,7 +37,7 @@ Folder [papers](papers) contains the research papers related to this dataset.
 
 ## Alternate download ##
 
-The dataset can also be downloaded from: https://www.kaggle.com/moltean/fruits
+The dataset can also be downloaded from: [Kaggle](https://www.kaggle.com/moltean/fruits)
 
 ## How to cite ##
 
