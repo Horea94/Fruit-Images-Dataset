@@ -12,7 +12,7 @@ the path to the labels file. The labels file contains the labels(names of folder
 
 Alternatively, the build_image_data.py can be run from the command line like this:
 
-    python build_image_data.py \[flags\]
+    python build_image_data.py [flags]
 
 The available options are:
 
@@ -57,6 +57,7 @@ The [network_structure/network.py](network_structure/network.py) file contains t
 
 The [network_structure/utils.py](network_structure/utils.py) file contains a few helper methods. The most important ones are:
 
-    adjust_image_for_train #performs data augmentation on images by altering the hue and saturation and by randomly flipping the image vertically and orizontally; this method converts the image to HSV and adds a new layer with the grayscale version of the input image
-
-    adjust_image_for_test #converts the image to HSV and adds the grayscale channel
+| Method name            | Effect |
+|------------------------|--------|
+| adjust_image_for_train | performs data augmentation on images by altering the hue and saturation and by randomly flipping the image vertically and orizontally; this method converts the image to HSV and adds a new layer with the grayscale version of the input image |
+| adjust_image_for_test  | converts the image to HSV and adds the grayscale channel |
