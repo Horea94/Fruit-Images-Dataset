@@ -60,7 +60,7 @@ The maximum value for the distance between 2 neighbor pixels is a parameter of t
 
 ## Results ##
 
-We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in [this research paper](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning) folder.
+We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in [this research paper](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning).
 
 ## History ##
 
