@@ -43,8 +43,6 @@ The dataset can also be downloaded from: [Kaggle](https://www.kaggle.com/moltean
 
 Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), [Fruit recognition from images using deep learning](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning), Acta Univ. Sapientiae, Informatica Vol. 10, Issue 1, pp. 26-42, 2018.
 
-Last version of the paper can be read from [papers](papers) folder.
-
 ## How we created the dataset ##
 
 Fruits were planted in the shaft of a low speed motor (3 rpm) and a short movie of 20 seconds was recorded. 
