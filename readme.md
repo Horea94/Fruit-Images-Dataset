@@ -41,7 +41,7 @@ The dataset can also be downloaded from: [Kaggle](https://www.kaggle.com/moltean
 
 ## How to cite ##
 
-Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), Fruit recognition from images using deep learning, Acta Univ. Sapientiae, Informatica Vol. 10, Issue 1, pp. 26-42, 2018.
+Horea Muresan, [Mihai Oltean](https://mihaioltean.github.io), [Fruit recognition from images using deep learning](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning), Acta Univ. Sapientiae, Informatica Vol. 10, Issue 1, pp. 26-42, 2018.
 
 Last version of the paper can be read from [papers](papers) folder.
 
@@ -62,7 +62,7 @@ The maximum value for the distance between 2 neighbor pixels is a parameter of t
 
 ## Results ##
 
-We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in the file from [papers](papers) folder.
+We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in [this research paper](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning) folder.
 
 ## History ##
 
