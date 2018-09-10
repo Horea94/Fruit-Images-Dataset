@@ -1,19 +1,16 @@
 import tensorflow as tf
 from utils import constants
 
-# build an array of labels from the labels file so we can translate the result of the network to a human readable label
 with open(constants.root_dir + '\\utils\\labels') as f:
     labels = f.readlines()
 labels = [x.strip() for x in labels]
 labels = ["nothing"] + labels
 
-
-tf.app.flags.DEFINE_string('image_path', 'path_to_image.jpg', 'Path to image')
+tf.app.flags.DEFINE_string('image_path', 'images\\cherryWaxYellow.jpg', 'Path to image')
 FLAGS = tf.app.flags.FLAGS
 
 
 # load image
-# similar to the method used for train/test, only here we read a jpeg image, not a tfrecords file
 def read_image(image_path, image_reader):
     filename_queue = tf.train.string_input_producer([image_path])
     _, image_file = image_reader.read(filename_queue)
@@ -29,7 +26,6 @@ def read_image(image_path, image_reader):
     final_image = tf.concat([local_image, gray_image], 2)
     return final_image, local_height, local_width, local_depth + 1
 
-	
 
 def predict(sess, X, softmax, keep_prob, images):
     images = sess.run(images)
@@ -37,7 +33,8 @@ def predict(sess, X, softmax, keep_prob, images):
     probability = sess.run(softmax, feed_dict={X: images, keep_prob: 1.0})
     # get the highest probability from the array and that should be the result
     prediction = sess.run(tf.argmax(probability, 1))
-    return prediction
+    # print(probability)
+    return prediction, probability[0][prediction]
 
 
 def process_image(sess, X, softmax, keep_prob, image, image_height, image_width, image_depth):
@@ -46,14 +43,13 @@ def process_image(sess, X, softmax, keep_prob, image, image_height, image_width,
     image_width = sess.run(image_width)
     # resize the image to 100 x 100 pixels and shape it to be like an array of one image, since that is the required input for the network
     # for smaller parts of an image and feed those to the network, tensorflow has a method called "extract_image_patches"
-    img = tf.image.resize_images(tf.reshape(image, [1, image_height, image_width, image_depth]), [100, 100])
+    img = tf.image.resize_images(tf.reshape(image, [-1, image_height, image_width, image_depth]), [100, 100])
     img = tf.reshape(img, [-1, 100 * 100 * 4])
-    rez = predict(sess, X, softmax, keep_prob, img)
-    print('Label index: %d - Label: %s' % (rez, labels[rez[0]]))
+    rez, prob = predict(sess, X, softmax, keep_prob, img)
+    print('Label index: %d - Label: %s - Probability: %.4f' % (rez, labels[rez[0]], prob))
 
 
 with tf.Session() as sess:
-
     image_path = FLAGS.image_path
     image_reader = tf.WholeFileReader()
 

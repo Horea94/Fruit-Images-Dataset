@@ -1,10 +1,17 @@
 import tensorflow as tf
+import math
 from . import utils
 
 batch_size = 50
 input_size = utils.HEIGHT * utils.WIDTH * utils.NETWORK_DEPTH
-# number of classes: 60 fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
-num_classes = 75
+# number of max pool operations used in the network structure;
+# used when calculating the input size for the first fully connected layer
+# MUST BE UPDATED if the number of max pool operations changes or if the type of max pool changes
+number_of_max_pools = 4
+new_width = math.ceil(utils.WIDTH/(1 << number_of_max_pools))
+new_height = math.ceil(utils.HEIGHT/(1 << number_of_max_pools))
+# number of classes: number of fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
+num_classes = 82
 # probability to keep the values after a training iteration
 dropout = 0.8
 
@@ -45,13 +52,13 @@ def conv_net(X, weights, biases, dropout):
 
 
 weights = {
-    'conv_weight1': utils._variable_with_weight_decay('conv_weight1', [5, 5, 4, 16], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight2': utils._variable_with_weight_decay('conv_weight2', [5, 5, 16, 32], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight3': utils._variable_with_weight_decay('conv_weight3', [5, 5, 32, 64], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight4': utils._variable_with_weight_decay('conv_weight4', [5, 5, 64, 128], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight1': utils._variable_with_weight_decay('fcl_weight1', [7 * 7 * 128, 1024], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight2': utils._variable_with_weight_decay('fcl_weight2', [1024, 256], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'out_weight': utils._variable_with_weight_decay('out_weight', [256, num_classes], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight1': utils.variable_with_weight_decay('conv_weight1', [5, 5, utils.NETWORK_DEPTH, 16], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight2': utils.variable_with_weight_decay('conv_weight2', [5, 5, 16, 32], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight3': utils.variable_with_weight_decay('conv_weight3', [5, 5, 32, 64], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight4': utils.variable_with_weight_decay('conv_weight4', [5, 5, 64, 128], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight1': utils.variable_with_weight_decay('fcl_weight1', [new_width * new_height * 128, 1024], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight2': utils.variable_with_weight_decay('fcl_weight2', [1024, 256], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'out_weight': utils.variable_with_weight_decay('out_weight', [256, num_classes], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
 }
 biases = {
     'conv_bias1': tf.Variable(tf.zeros([16])),

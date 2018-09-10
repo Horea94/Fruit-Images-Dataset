@@ -1,6 +1,8 @@
 import tensorflow as tf
 import numpy as np
 import time
+import os
+import re
 
 from network_structure import fruit_network as network
 from network_structure import utils
@@ -8,7 +10,7 @@ from network_structure import utils
 from utils import constants
 
 # number of iterations to run the training
-iterations = 20000
+iterations = 50000
 # amount of iterations after we display the loss and accuracy
 display_interval = 50
 # use the saved model and continue training
@@ -18,13 +20,14 @@ keep_prob = tf.placeholder(tf.float32, name='keep_prob')
 
 
 # prepare the input tensors for the network
-def inputs(filename, batch_size):
-    image, label = utils.read_file(filename)
+def inputs(filenames, batch_size):
+    image, label = utils.read_file(filenames)
     image = utils.adjust_image_for_train(image)
     images, labels = tf.train.shuffle_batch([image, label],
                                             batch_size=batch_size,
-                                            capacity=30000 + batch_size,
-                                            min_after_dequeue=10000)
+                                            capacity=35000 + batch_size,
+                                            min_after_dequeue=5000,
+                                            allow_smaller_final_batch=True)
     return images, labels
 
 
@@ -74,8 +77,8 @@ saver = tf.train.Saver()
 with tf.Session() as sess:
     sess.run(init)
     # input tfrecord file
-    tfrecords_name = constants.data_dir + 'train-00000-of-00001'
-    images, labels = inputs(tfrecords_name, network.batch_size)
+    tfrecords_files = [(constants.data_dir + f) for f in os.listdir(constants.data_dir) if re.match('train', f)]
+    images, labels = inputs(tfrecords_files, network.batch_size)
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 

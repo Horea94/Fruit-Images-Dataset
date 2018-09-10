@@ -2,23 +2,31 @@ import numpy
 import tensorflow as tf
 import numpy as np
 import os
+import re
 
 from network_structure import fruit_network as network
 from network_structure import utils
 from utils import constants
 
+useTrain = False
+
 checkpoint_dir = os.getcwd() + '\\..\\fruit_models\\'
 keep_prob = tf.placeholder(tf.float32)
 
-images_left_to_process = 12460
-# total number of images used to test
-total_test_images = 12460
+if useTrain:
+    images_left_to_process = constants.number_train_images
+    total_number_of_images = constants.number_train_images
+    file_name = 'train'
+else:
+    images_left_to_process = constants.number_test_images
+    total_number_of_images = constants.number_test_images
+    file_name = 'test'
 
-# create a map to add for each label the amount of images that were labeled incorrectly
+# create a map to add for each label the number of images that were labeled incorrectly
 mislabeled = {}
 
 # associate the label number with the actual human readable label name
-with open(constants.data_dir + 'labels') as f:
+with open(constants.root_dir + '\\utils\\labels') as f:
     labels_text = f.readlines()
 labels_text = [x.strip() for x in labels_text]
 for label in labels_text:
@@ -33,7 +41,7 @@ def inputs(filename, batch_size):
     image = utils.adjust_image_for_test(image)
     images, labels = tf.train.batch([image, label],
                                     batch_size=batch_size,
-                                    capacity=total_test_images + batch_size)
+                                    capacity=images_left_to_process + batch_size)
     return images, labels
 
 
@@ -51,8 +59,8 @@ def test_model():
                 mislabeled[labels_text[batch_y[i]]] += 1
 
         correct = correct + numpy.sum(results)
-        print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_test_images - images_left_to_process, correct / (total_test_images - images_left_to_process)))
-    print(correct / total_test_images)
+        print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_number_of_images - images_left_to_process, correct / (total_number_of_images - images_left_to_process)))
+    print("Final accuracy on %s data: %.8f" % (file_name, correct / total_number_of_images))
 
 
 logits = network.conv_net(network.X, network.weights, network.biases, keep_prob)
@@ -73,8 +81,8 @@ saver = tf.train.Saver()
 
 with tf.Session() as sess:
     sess.run(init)
-    tfrecords_name = constants.data_dir + 'test-00000-of-00001'
-    images, labels = inputs(tfrecords_name, network.batch_size)
+    tfrecords_files = [(constants.data_dir + f) for f in os.listdir(constants.data_dir) if re.match(file_name, f)]
+    images, labels = inputs(tfrecords_files, network.batch_size)
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 

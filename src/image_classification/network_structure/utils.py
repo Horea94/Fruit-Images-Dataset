@@ -47,8 +47,8 @@ def _bytes_feature(value):
 
 
 # read an image tensor from the tfrecord file
-def read_file(filename):
-    file_queue = tf.train.string_input_producer([filename])
+def read_file(filenames):
+    file_queue = tf.train.string_input_producer(filenames)
     reader = tf.TFRecordReader()
     _, serialized_example = reader.read(file_queue)
     features = tf.parse_single_example(
@@ -68,7 +68,7 @@ def read_file(filename):
     return image, label
 
 
-def _variable_with_weight_decay(name, shape, initializer):
+def variable_with_weight_decay(name, shape, initializer):
     return tf.get_variable(name, shape, initializer=initializer, dtype=tf.float32)
 
 

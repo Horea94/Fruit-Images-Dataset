@@ -15,10 +15,10 @@ a sharded data set consisting of TFRecord files
   ...
   train_directory/train-00127-of-01024
 and
-  validation_directory/validation-00000-of-00128
-  validation_directory/validation-00001-of-00128
+  test_directory/test-00000-of-00128
+  test_directory/test-00001-of-00128
   ...
-  validation_directory/validation-00127-of-00128
+  test_directory/test-00127-of-00128
 where we have selected 1024 and 128 shards for each data set. Each record
 within the TFRecord file is a serialized Example proto. The Example proto
 contains the following fields:
@@ -50,21 +50,23 @@ import threading
 import numpy as np
 import tensorflow as tf
 
+from utils import constants
+
 tf.app.flags.DEFINE_string('train_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Training',
                            'Training data directory')
 
 tf.app.flags.DEFINE_string('test_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Test',
                            'Test data directory')
 
-tf.app.flags.DEFINE_string('output_directory', 'D:\\Robots\\',
+tf.app.flags.DEFINE_string('output_directory', constants.data_dir,
                            'Output data directory')
 
-tf.app.flags.DEFINE_integer('train_shards', 1,
+tf.app.flags.DEFINE_integer('train_shards', 3,
                             'Number of shards in training TFRecord files.')
-tf.app.flags.DEFINE_integer('test_shards', 1,
+tf.app.flags.DEFINE_integer('test_shards', 3,
                             'Number of shards in test TFRecord files.')
 
-tf.app.flags.DEFINE_integer('num_threads', 1,
+tf.app.flags.DEFINE_integer('num_threads', 3,
                             'Number of threads to preprocess the images.')
 
 # The labels file contains a list of valid labels are held in this file.
