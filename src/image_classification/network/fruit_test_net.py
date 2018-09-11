@@ -41,7 +41,8 @@ def inputs(filename, batch_size):
     image = utils.adjust_image_for_test(image)
     images, labels = tf.train.batch([image, label],
                                     batch_size=batch_size,
-                                    capacity=images_left_to_process + batch_size)
+                                    capacity=total_number_of_images,
+                                    allow_smaller_final_batch=True)
     return images, labels
 
 
@@ -53,12 +54,16 @@ def test_model():
         batch_x = np.reshape(batch_x, [network.batch_size, network.input_size])
         # the results of the classification is an array of 1 and 0, 1 is a correct classification
         results = sess.run(correct_pred, feed_dict={network.X: batch_x, network.Y: batch_y, keep_prob: 1})
-        images_left_to_process = images_left_to_process - network.batch_size
-        for i in range(len(results)):
+        if images_left_to_process < network.batch_size:
+            length = images_left_to_process
+        else:
+            length = network.batch_size
+        images_left_to_process = images_left_to_process - length
+        for i in range(length):
             if not results[i]:
                 mislabeled[labels_text[batch_y[i]]] += 1
 
-        correct = correct + numpy.sum(results)
+        correct = correct + numpy.sum(results[0:length])
         print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_number_of_images - images_left_to_process, correct / (total_number_of_images - images_left_to_process)))
     print("Final accuracy on %s data: %.8f" % (file_name, correct / total_number_of_images))
 
@@ -75,7 +80,6 @@ correct_pred = tf.equal(tf.argmax(prediction, 1), network.Y)
 accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
 init = tf.global_variables_initializer()
-
 
 saver = tf.train.Saver()
 
