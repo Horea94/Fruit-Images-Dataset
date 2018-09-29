@@ -10,8 +10,6 @@ input_size = utils.HEIGHT * utils.WIDTH * utils.NETWORK_DEPTH
 number_of_max_pools = 4
 new_width = math.ceil(utils.WIDTH/(1 << number_of_max_pools))
 new_height = math.ceil(utils.HEIGHT/(1 << number_of_max_pools))
-# number of classes: number of fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
-num_classes = 82
 # probability to keep the values after a training iteration
 dropout = 0.8
 
@@ -20,8 +18,21 @@ X = tf.placeholder(tf.float32, [None, input_size], name="X")
 # placeholder for actual labels
 Y = tf.placeholder(tf.int64, [batch_size], name="Y")
 
+# number of activation maps for each convolutional layer
+number_of_act_maps_conv1 = 16
+number_of_act_maps_conv2 = 32
+number_of_act_maps_conv3 = 32
+number_of_act_maps_conv4 = 128
+
+# number of outputs for each fully connected layer
+number_of_fcl_outputs1 = 1024
+number_of_fcl_outputs2 = 256
+
+# number of classes: number of fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
+num_classes = 82
+
 initial_learning_rate = 0.001
-final_learning_rate = 0.0001
+final_learning_rate = 0.00001
 learning_rate = initial_learning_rate
 
 
@@ -52,20 +63,27 @@ def conv_net(X, weights, biases, dropout):
 
 
 weights = {
-    'conv_weight1': utils.variable_with_weight_decay('conv_weight1', [5, 5, utils.NETWORK_DEPTH, 16], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight2': utils.variable_with_weight_decay('conv_weight2', [5, 5, 16, 32], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight3': utils.variable_with_weight_decay('conv_weight3', [5, 5, 32, 64], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight4': utils.variable_with_weight_decay('conv_weight4', [5, 5, 64, 128], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight1': utils.variable_with_weight_decay('fcl_weight1', [new_width * new_height * 128, 1024], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight2': utils.variable_with_weight_decay('fcl_weight2', [1024, 256], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'out_weight': utils.variable_with_weight_decay('out_weight', [256, num_classes], tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight1': utils.variable_with_weight_decay('conv_weight1', [5, 5, utils.NETWORK_DEPTH, number_of_act_maps_conv1],
+                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight2': utils.variable_with_weight_decay('conv_weight2', [5, 5, number_of_act_maps_conv1, number_of_act_maps_conv2],
+                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight3': utils.variable_with_weight_decay('conv_weight3', [5, 5, number_of_act_maps_conv2, number_of_act_maps_conv3],
+                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight4': utils.variable_with_weight_decay('conv_weight4', [5, 5, number_of_act_maps_conv3, number_of_act_maps_conv4],
+                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight1': utils.variable_with_weight_decay('fcl_weight1', [new_width * new_height * number_of_act_maps_conv4, number_of_fcl_outputs1],
+                                                    tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight2': utils.variable_with_weight_decay('fcl_weight2', [number_of_fcl_outputs1, number_of_fcl_outputs2],
+                                                    tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'out_weight': utils.variable_with_weight_decay('out_weight', [number_of_fcl_outputs2, num_classes],
+                                                   tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
 }
 biases = {
-    'conv_bias1': tf.Variable(tf.zeros([16])),
-    'conv_bias2': tf.Variable(tf.zeros([32])),
-    'conv_bias3': tf.Variable(tf.zeros([64])),
-    'conv_bias4': tf.Variable(tf.zeros([128])),
-    'fcl_bias1': tf.Variable(tf.zeros([1024])),
-    'fcl_bias2': tf.Variable(tf.zeros([256])),
+    'conv_bias1': tf.Variable(tf.zeros([number_of_act_maps_conv1])),
+    'conv_bias2': tf.Variable(tf.zeros([number_of_act_maps_conv2])),
+    'conv_bias3': tf.Variable(tf.zeros([number_of_act_maps_conv3])),
+    'conv_bias4': tf.Variable(tf.zeros([number_of_act_maps_conv4])),
+    'fcl_bias1': tf.Variable(tf.zeros([number_of_fcl_outputs1])),
+    'fcl_bias2': tf.Variable(tf.zeros([number_of_fcl_outputs2])),
     'out_bias': tf.Variable(tf.zeros([num_classes]))
 }

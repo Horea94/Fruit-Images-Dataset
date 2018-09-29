@@ -9,10 +9,10 @@ from network_structure import utils
 
 from utils import constants
 
-# number of iterations to run the training
-iterations = 50000
-# amount of iterations after we display the loss and accuracy
-display_interval = 50
+# default number of iterations to run the training
+iterations = 70000
+# default amount of iterations after we display the loss and accuracy
+display_interval = 250
 # use the saved model and continue training
 useCkpt = False
 # placeholder for probability to keep the network parameters after an iteration
