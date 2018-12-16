@@ -17,7 +17,99 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
+//cherry2_rotated2_2018 05 24 11 37 40.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry2_rotated2_2018 05 24 11 37 40";
+Rect r_box(650, 140, 300, 300);
+#define motor_shaft_height_original 4
+#define motor_shaft_height_scaled 1
+#define color_distance 4
+#define shaft_left 105
+#define shaft_right 175
+#define frame_start_index 0
+
+//cherry2_rotated_2018 05 24 11 36 15.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry2_rotated_2018 05 24 11 36 15";
+//Rect r_box(640, 190, 320, 320);
+//#define motor_shaft_height_original 70
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 110
+//#define shaft_right 195
+//#define frame_start_index 0
+
+
+//// grape_blue2_rotated_2018 08 19 17 27 10.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_blue2_rotated_2018 08 19 17 27 10";
+//Rect r_box(980, 530, 120, 120);
+//#define motor_shaft_height_original 4
+//#define motor_shaft_height_scaled 1
+//#define color_distance 8
+//#define shaft_left 35
+//#define shaft_right 84
+//#define frame_start_index 328
+
+
+// grape_blue2_2018 08 19 17 26 37.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_blue2_2018 08 19 17 26 37";
+//Rect r_box(980, 530, 120, 120);
+//#define motor_shaft_height_original 5
+//#define motor_shaft_height_scaled 1
+//#define color_distance 8
+//#define shaft_left 35
+//#define shaft_right 84
+//#define frame_start_index 328
+
+//// grape_blue1_rotated_2018 08 19 17 29 52
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_blue1_rotated_2018 08 19 17 29 52";
+//Rect r_box(985, 550, 110, 110);
+//#define motor_shaft_height_original 14
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 30
+//#define shaft_right 83
+
+// grape_blue1_2018 08 19 17 29 13.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_blue1_2018 08 19 17 29 13";
+//Rect r_box(990, 550, 100, 100);
+//#define motor_shaft_height_original 5
+//#define motor_shaft_height_scaled 1
+//#define color_distance 8
+//#define shaft_left 30
+//#define shaft_right 75
+
+//// redcurrant_rotated_2018 06 08 12 57 50.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\redcurrant_rotated_2018 06 08 12 57 50";
+//Rect r_box(785, 390, 115, 115);
+//#define motor_shaft_height_original 9
+//#define motor_shaft_height_scaled 1
+//#define color_distance 10
+//#define shaft_left 10
+//#define shaft_right 110
+
+// redcurrant_2018 06 08 12 56 59.avi
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\redcurrant_2018 06 08 12 56 59";
+Rect r_box(785, 390, 115, 115);
+#define motor_shaft_height_original 9
+#define motor_shaft_height_scaled 1
+#define color_distance 10
+#define shaft_left 10
+#define shaft_right 110
+*/
+
+//cucumber_2018 08 19 18 01 46.avi // not extracted correctly
+/*
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\cucumber_2018 08 19 18 01 46";
+Rect r_box(835, 100, 420, 680);
+#define motor_shaft_height_original 6
+#define motor_shaft_height_scaled 1
+#define color_distance 1
+#define shaft_left 195
+#define shaft_right 255
+*/
+
 // nut_rotated2_2018 06 16 11 55 09.avi
+/*
 string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nut_rotated2_2018 06 16 11 55 09";
 Rect r_box(935, 600, 165, 165);
 #define motor_shaft_height_original 19
@@ -25,6 +117,7 @@ Rect r_box(935, 600, 165, 165);
 #define color_distance 10
 #define shaft_left 65
 #define shaft_right 105
+*/
 
 //nut_rotated_2018 06 16 11 54 24.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\nut_rotated_2018 06 16 11 54 24";

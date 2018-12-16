@@ -6,6 +6,7 @@
 // MIT license
 
 // compiled with Visual Studio 2017 Community Edition
+// requires OpenCV 4
 // if you get stack overflow ... just increase the stack reserve size from Linker menu  ...
 
 // How to use: 
@@ -28,7 +29,7 @@
 using namespace std;
 using namespace cv;
 
-#define VERSION "2018.06.12.1"
+#define VERSION "2018.12.06.0"
 
 //---------------------------------------------------------------------
 struct t_bounding_box { // rectangular bounding box
@@ -251,7 +252,7 @@ int main(void)
 	for (int i = 0; i < 6; i++)// skip first 3 frames
 		input_video >> input_image;
 
-	int frame_index = 0;
+	int frame_index = frame_start_index;
 	while (1) {
 		// take a capture from input stream
 		input_video >> input_image;
@@ -286,7 +287,7 @@ int main(void)
 			}
 #endif
 			frame_index++;
-			if (frame_index >= 328) // keep only the first 328 images
+			if (frame_index >= 328 + frame_start_index) // keep only the first 328 images
 				break;
 		}
 #endif		
