@@ -76,7 +76,7 @@ saver = tf.train.Saver()
 
 with tf.Session() as sess:
     sess.run(init)
-    # input tfrecord file
+    # input tfrecord files
     tfrecords_files = [(constants.data_dir + f) for f in os.listdir(constants.data_dir) if re.match('train', f)]
     images, labels = inputs(tfrecords_files, network.batch_size)
     coord = tf.train.Coordinator()

@@ -64,7 +64,8 @@ def test_model():
                 mislabeled[labels_text[batch_y[i]]] += 1
 
         correct = correct + numpy.sum(results[0:length])
-        print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_number_of_images - images_left_to_process, correct / (total_number_of_images - images_left_to_process)))
+        print("Predicted %d out of %d; partial accuracy %.4f" % (correct, total_number_of_images - images_left_to_process,
+                                                                 correct / (total_number_of_images - images_left_to_process)))
     print("Final accuracy on %s data: %.8f" % (file_name, correct / total_number_of_images))
 
 
@@ -92,7 +93,6 @@ with tf.Session() as sess:
 
     ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
     saver.restore(sess, ckpt.model_checkpoint_path)
-
     test_model()
     print(mislabeled)
 

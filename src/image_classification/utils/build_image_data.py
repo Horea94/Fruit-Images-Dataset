@@ -52,10 +52,10 @@ import tensorflow as tf
 
 from utils import constants
 
-tf.app.flags.DEFINE_string('train_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Training',
+tf.app.flags.DEFINE_string('train_directory', constants.training_images_dir,
                            'Training data directory')
 
-tf.app.flags.DEFINE_string('test_directory', 'D:\\Robots\\Fruit-Images-Dataset\\Test',
+tf.app.flags.DEFINE_string('test_directory', constants.test_images_dir,
                            'Test data directory')
 
 tf.app.flags.DEFINE_string('output_directory', constants.data_dir,
@@ -76,7 +76,7 @@ tf.app.flags.DEFINE_integer('num_threads', 3,
 #   flower
 # where each line corresponds to a label. We map each label contained in
 # the file to an integer corresponding to the line number starting from 0.
-tf.app.flags.DEFINE_string('labels_file', './labels', 'Labels file')
+tf.app.flags.DEFINE_string('labels_file', constants.labels_file, 'Labels file')
 
 FLAGS = tf.app.flags.FLAGS
 
