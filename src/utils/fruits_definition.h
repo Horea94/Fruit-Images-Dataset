@@ -17,15 +17,45 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//cherry2_rotated2_2018 05 24 11 37 40.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry2_rotated2_2018 05 24 11 37 40";
-Rect r_box(650, 140, 300, 300);
-#define motor_shaft_height_original 4
+//peach2_rotated2_2018 08 19 17 14 41.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\peach2_rotated2_2018 08 19 17 14 41";
+Rect r_box(825, 170, 330, 330);
+#define motor_shaft_height_original 23
 #define motor_shaft_height_scaled 1
 #define color_distance 4
-#define shaft_left 105
-#define shaft_right 175
+#define shaft_left 160
+#define shaft_right 190
 #define frame_start_index 0
+
+//peach2_rotated1_2018 08 19 17 13 56.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\peach2_rotated1_2018 08 19 17 13 56";
+//Rect r_box(815, 150, 350, 350);
+//#define motor_shaft_height_original 52
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 168
+//#define shaft_right 195
+//#define frame_start_index 0
+
+//peach2_2018 08 19 17 13 23.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\peach2_2018 08 19 17 13 23";
+//Rect r_box(830, 138, 310, 310);
+//#define motor_shaft_height_original 2
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 155
+//#define shaft_right 180
+//#define frame_start_index 0
+
+////cherry2_rotated2_2018 05 24 11 37 40.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry2_rotated2_2018 05 24 11 37 40";
+//Rect r_box(650, 140, 300, 300);
+//#define motor_shaft_height_original 4
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 105
+//#define shaft_right 175
+//#define frame_start_index 0
 
 //cherry2_rotated_2018 05 24 11 36 15.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\cherry2_rotated_2018 05 24 11 36 15";
