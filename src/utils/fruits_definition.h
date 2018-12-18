@@ -17,15 +17,45 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//grape_white4_rotated_2018 08 19 17 28 34.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white4_rotated_2018 08 19 17 28 34";
-Rect r_box(978, 535, 125, 125);
-#define motor_shaft_height_original 12
+//apple4_rotated2_2018 08 19 17 52 19.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\apple4_rotated2_2018 08 19 17 52 19";
+Rect r_box(890, 180, 295, 295);
+#define motor_shaft_height_original 15
 #define motor_shaft_height_scaled 1
-#define color_distance 4
-#define shaft_left 39
-#define shaft_right 89
+#define color_distance 6
+#define shaft_left 138
+#define shaft_right 168
 #define frame_start_index 0
+
+//apple4_rotated1_2018 08 19 17 50 26.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\apple4_rotated1_2018 08 19 17 50 26";
+//Rect r_box(905, 200, 290, 290);
+//#define motor_shaft_height_original 23
+//#define motor_shaft_height_scaled 1
+//#define color_distance 6
+//#define shaft_left 140
+//#define shaft_right 165
+//#define frame_start_index 0
+
+//apple4_2018 08 19 17 51 25.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\apple4_2018 08 19 17 51 25";
+//Rect r_box(878, 135, 325, 325);
+//#define motor_shaft_height_original 12
+//#define motor_shaft_height_scaled 1
+//#define color_distance 6
+//#define shaft_left 155
+//#define shaft_right 180
+//#define frame_start_index 0
+
+//grape_white4_rotated_2018 08 19 17 28 34.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white4_rotated_2018 08 19 17 28 34";
+//Rect r_box(978, 535, 125, 125);
+//#define motor_shaft_height_original 12
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 39
+//#define shaft_right 89
+//#define frame_start_index 0
 
 //grape_white4_2018 08 19 17 27 43.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white4_2018 08 19 17 27 43";
