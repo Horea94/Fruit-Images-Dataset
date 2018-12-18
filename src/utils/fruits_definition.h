@@ -17,15 +17,55 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//peach2_rotated2_2018 08 19 17 14 41.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\peach2_rotated2_2018 08 19 17 14 41";
-Rect r_box(825, 170, 330, 330);
-#define motor_shaft_height_original 23
+//grape_white4_rotated_2018 08 19 17 28 34.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white4_rotated_2018 08 19 17 28 34";
+Rect r_box(978, 535, 125, 125);
+#define motor_shaft_height_original 12
 #define motor_shaft_height_scaled 1
 #define color_distance 4
-#define shaft_left 160
-#define shaft_right 190
+#define shaft_left 39
+#define shaft_right 89
 #define frame_start_index 0
+
+//grape_white4_2018 08 19 17 27 43.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white4_2018 08 19 17 27 43";
+//Rect r_box(975, 530, 130, 130);
+//#define motor_shaft_height_original 14
+//#define motor_shaft_height_scaled 1
+//#define color_distance 6
+//#define shaft_left 41
+//#define shaft_right 91
+//#define frame_start_index 0
+
+//grape_white3_rotated_2018 08 19 17 46 06.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white3_rotated_2018 08 19 17 46 06";
+//Rect r_box(1020, 570, 90, 90);
+//#define motor_shaft_height_original 3
+//#define motor_shaft_height_scaled 1
+//#define color_distance 6
+//#define shaft_left 23
+//#define shaft_right 76
+//#define frame_start_index 0
+
+// grape_white3_2018 08 19 17 46 51.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\grape_white3_2018 08 19 17 46 51";
+//Rect r_box(1018, 570, 100, 100);
+//#define motor_shaft_height_original 12
+//#define motor_shaft_height_scaled 1
+//#define color_distance 6
+//#define shaft_left 25
+//#define shaft_right 76
+//#define frame_start_index 0
+
+//peach2_rotated2_2018 08 19 17 14 41.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\peach2_rotated2_2018 08 19 17 14 41";
+//Rect r_box(825, 170, 330, 330);
+//#define motor_shaft_height_original 23
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 160
+//#define shaft_right 190
+//#define frame_start_index 0
 
 //peach2_rotated1_2018 08 19 17 13 56.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\peach2_rotated1_2018 08 19 17 13 56";

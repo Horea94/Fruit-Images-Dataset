@@ -1,21 +1,21 @@
 # Fruits-360: A dataset of images containing fruits #
 
-## Version: 2018.12.17.0 ##
+## Version: 2018.12.18.0 ##
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White, White2), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red), Walnut.
+Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red), Walnut.
 
 ## Dataset properties ##
 
-Total number of images: 58233.
+Total number of images: 59482.
 
-Training set size: 43573 images (one fruit per image).
+Training set size: 44500 images (one fruit per image).
 
-Test set size: 14615 images (one fruit per image).
+Test set size: 14937 images (one fruit per image).
 
 Multi-fruits set size: 45 images (more than one fruit (or fruit class) per image)
 
-Number of classes: 84 (fruits).
+Number of classes: 86 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -112,7 +112,7 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2018.06.17 - Cherry Wax (Yellow, Red, Black).
 
-2018.08.19 - Grape Blue, Peach 2, Tomato Maroon, Tomato 1-4.
+2018.08.19 - Grape Blue, Grape White 2, Grape White 3, Peach 2, Tomato Maroon, Tomato 1-4.
 
 ## License ##
 
