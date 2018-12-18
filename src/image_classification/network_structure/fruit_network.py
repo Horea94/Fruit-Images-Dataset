@@ -1,6 +1,7 @@
 import tensorflow as tf
 import math
 from . import utils
+from utils import constants
 
 batch_size = 50
 input_size = utils.HEIGHT * utils.WIDTH * utils.NETWORK_DEPTH
@@ -21,15 +22,12 @@ Y = tf.placeholder(tf.int64, [batch_size], name="Y")
 # number of activation maps for each convolutional layer
 number_of_act_maps_conv1 = 16
 number_of_act_maps_conv2 = 32
-number_of_act_maps_conv3 = 32
+number_of_act_maps_conv3 = 64
 number_of_act_maps_conv4 = 128
 
 # number of outputs for each fully connected layer
 number_of_fcl_outputs1 = 1024
 number_of_fcl_outputs2 = 256
-
-# number of classes: number of fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
-num_classes = 82
 
 initial_learning_rate = 0.001
 final_learning_rate = 0.00001
@@ -75,7 +73,7 @@ weights = {
                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
     'fcl_weight2': utils.variable_with_weight_decay('fcl_weight2', [number_of_fcl_outputs1, number_of_fcl_outputs2],
                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'out_weight': utils.variable_with_weight_decay('out_weight', [number_of_fcl_outputs2, num_classes],
+    'out_weight': utils.variable_with_weight_decay('out_weight', [number_of_fcl_outputs2, constants.num_classes],
                                                    tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
 }
 biases = {
@@ -85,5 +83,5 @@ biases = {
     'conv_bias4': tf.Variable(tf.zeros([number_of_act_maps_conv4])),
     'fcl_bias1': tf.Variable(tf.zeros([number_of_fcl_outputs1])),
     'fcl_bias2': tf.Variable(tf.zeros([number_of_fcl_outputs2])),
-    'out_bias': tf.Variable(tf.zeros([num_classes]))
+    'out_bias': tf.Variable(tf.zeros([constants.num_classes]))
 }
