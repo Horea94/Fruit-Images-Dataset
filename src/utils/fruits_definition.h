@@ -17,15 +17,45 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//apple4_rotated2_2018 08 19 17 52 19.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\apple4_rotated2_2018 08 19 17 52 19";
-Rect r_box(890, 180, 295, 295);
-#define motor_shaft_height_original 15
+
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\banana_lady_finger_rotated2_2018 12 21 11 07 38";
+Rect r_box(610, 10, 700, 700);
+#define motor_shaft_height_original 190
 #define motor_shaft_height_scaled 1
-#define color_distance 6
-#define shaft_left 138
-#define shaft_right 168
+#define color_distance 4
+#define shaft_left 350
+#define shaft_right 382
 #define frame_start_index 0
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\banana_lady_finger_rotated1_2018 12 21 11 07 03";
+//Rect r_box(540, 10, 835, 835);
+//#define motor_shaft_height_original 275
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 420
+//#define shaft_right 480
+//#define frame_start_index 0
+
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\banana_lady_finger_2018 12 21 11 05 42";
+//Rect r_box(540, 10, 895, 895);
+//#define motor_shaft_height_original 65
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 432
+//#define shaft_right 488
+//#define frame_start_index 0
+
+
+//apple4_rotated2_2018 08 19 17 52 19.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\apple4_rotated2_2018 08 19 17 52 19";
+//Rect r_box(890, 180, 295, 295);
+//#define motor_shaft_height_original 15
+//#define motor_shaft_height_scaled 1
+//#define color_distance 6
+//#define shaft_left 138
+//#define shaft_right 168
+//#define frame_start_index 0
 
 //apple4_rotated1_2018 08 19 17 50 26.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\apple4_rotated1_2018 08 19 17 50 26";
