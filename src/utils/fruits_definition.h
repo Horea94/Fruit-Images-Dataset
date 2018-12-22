@@ -17,14 +17,42 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\mangostan_rotated_2018 12 20 15 55 44";
-Rect r_box(650, 148, 780, 780);
-#define motor_shaft_height_original 225
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\chestnut_rotated2_2018 12 20 15 52 19";
+Rect r_box(990, 80, 330, 330);
+#define motor_shaft_height_original 40
 #define motor_shaft_height_scaled 1
-#define color_distance 3
-#define shaft_left 375
-#define shaft_right 420
+#define color_distance 4
+#define shaft_left 160
+#define shaft_right 195
 #define frame_start_index 0
+
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\chestnut_rotated1_2018 12 20 15 51 06";
+//Rect r_box(1010, 70, 330, 330);
+//#define motor_shaft_height_original 43
+//#define motor_shaft_height_scaled 1
+//#define color_distance 4
+//#define shaft_left 135
+//#define shaft_right 170
+//#define frame_start_index 0
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\chestnut_2018 12 20 15 47 58";
+//Rect r_box(1010, 348, 330, 330);
+//#define motor_shaft_height_original 133
+//#define motor_shaft_height_scaled 1
+//#define color_distance 3
+//#define shaft_left 130
+//#define shaft_right 210
+//#define frame_start_index 0
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\mangostan_rotated_2018 12 20 15 55 44";
+//Rect r_box(650, 148, 780, 780);
+//#define motor_shaft_height_original 225
+//#define motor_shaft_height_scaled 1
+//#define color_distance 3
+//#define shaft_left 375
+//#define shaft_right 420
+//#define frame_start_index 0
 
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\mangostan_2018 12 20 15 54 20";
 //Rect r_box(710, 148, 580, 580);
