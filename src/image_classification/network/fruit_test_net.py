@@ -10,7 +10,7 @@ from utils import constants
 
 useTrain = False
 
-checkpoint_dir = os.getcwd() + '\\..\\fruit_models\\'
+checkpoint_dir = constants.fruit_models_dir
 keep_prob = tf.placeholder(tf.float32)
 
 if useTrain:
@@ -71,11 +71,6 @@ def test_model():
 
 logits = network.conv_net(network.X, network.weights, network.biases, keep_prob)
 prediction = tf.nn.softmax(logits)
-
-loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits,
-                                                                        labels=network.Y))
-optimizer = tf.train.AdamOptimizer(learning_rate=network.learning_rate)
-train_op = optimizer.minimize(loss=loss_op)
 
 correct_pred = tf.equal(tf.argmax(prediction, 1), network.Y)
 accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))

@@ -31,15 +31,19 @@ def inputs(filenames, batch_size):
     return images, labels
 
 
+# build the network
 logits = network.conv_net(network.X, network.weights, network.biases, keep_prob)
+# apply softmax on the final layer
 prediction = tf.nn.softmax(logits)
 
+# calculate the loss using the predicted labels vs the expected labels
 loss_operation = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits,
                                                                                labels=network.Y))
-
+# use adaptive moment estimation optimizer
 optimizer = tf.train.AdamOptimizer(learning_rate=network.learning_rate)
 train_op = optimizer.minimize(loss=loss_operation)
 
+# calculate the accuracy for this training step
 correct_prediction = tf.equal(tf.argmax(prediction, 1), network.Y)
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
