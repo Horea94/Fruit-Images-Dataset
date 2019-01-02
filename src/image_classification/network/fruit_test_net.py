@@ -37,7 +37,7 @@ labels_text = ["nothing"] + labels_text
 
 
 def inputs(filename, batch_size):
-    image, label = utils.read_file(filename)
+    image, label = utils.read_files(filename)
     image = utils.adjust_image_for_test(image)
     images, labels = tf.train.batch([image, label],
                                     batch_size=batch_size,

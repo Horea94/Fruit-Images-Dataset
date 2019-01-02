@@ -1,12 +1,5 @@
 import tensorflow as tf
 
-HEIGHT = 100
-WIDTH = 100
-# number of channels for an image - jpeg image has RGB channels
-CHANNELS = 3
-# number of channels for the input layer of the network: HSV + gray scale
-NETWORK_DEPTH = 4
-
 
 # perform data augmentation on images
 # add random hue and saturation
@@ -19,10 +12,8 @@ def adjust_image_for_train(image):
     image = tf.image.random_saturation(image, 0.9, 1.2)
     image = tf.image.random_flip_left_right(image)
     image = tf.image.random_flip_up_down(image)
-
     hsv_image = tf.image.rgb_to_hsv(image)
     gray_image = tf.image.rgb_to_grayscale(image)
-
     rez = tf.concat([hsv_image, gray_image], 2)
     return rez
 
@@ -46,8 +37,8 @@ def _bytes_feature(value):
     return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
 
 
-# read an image tensor from the tfrecord file
-def read_file(filenames):
+# read an image tensor from tfrecord files
+def read_files(filenames):
     file_queue = tf.train.string_input_producer(filenames)
     reader = tf.TFRecordReader()
     _, serialized_example = reader.read(file_queue)
@@ -61,14 +52,12 @@ def read_file(filenames):
         }
     )
     image = tf.image.decode_jpeg(features['image_raw'], channels=3)
-    height = tf.cast(features['height'], tf.int32)
-    width = tf.cast(features['width'], tf.int32)
-    image = tf.reshape(image, [HEIGHT, WIDTH, CHANNELS])
+    image = tf.reshape(image, [100, 100, 3])
     label = tf.cast(features['label'], tf.int32)
     return image, label
 
 
-def variable_with_weight_decay(name, shape, initializer):
+def get_variable(name, shape, initializer):
     return tf.get_variable(name, shape, initializer=initializer, dtype=tf.float32)
 
 

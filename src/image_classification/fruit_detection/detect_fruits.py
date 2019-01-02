@@ -6,7 +6,7 @@ with open(constants.root_dir + '\\utils\\labels') as f:
 labels = [x.strip() for x in labels]
 labels = ["nothing"] + labels
 
-tf.app.flags.DEFINE_string('image_path', 'images\\cherryWaxYellow.jpg', 'Path to image')
+tf.app.flags.DEFINE_string('image_path', 'images\\Lemon2.jpg', 'Path to image')
 FLAGS = tf.app.flags.FLAGS
 
 
