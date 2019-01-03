@@ -3,14 +3,23 @@ import math
 from . import utils
 from utils import constants
 
-batch_size = 50
-input_size = utils.HEIGHT * utils.WIDTH * utils.NETWORK_DEPTH
+HEIGHT = 100
+WIDTH = 100
+# number of channels for an image - jpeg image has RGB channels
+CHANNELS = 3
+# number of channels for the input layer of the network: HSV + gray scale
+NETWORK_DEPTH = 4
+
+batch_size = 60
+input_size = HEIGHT * WIDTH * NETWORK_DEPTH
 # number of max pool operations used in the network structure;
 # used when calculating the input size for the first fully connected layer
-# MUST BE UPDATED if the number of max pool operations changes or if the type of max pool changes
+# MUST BE UPDATED if the number of max pool operations changes or if the stride of max pool changes
 number_of_max_pools = 4
-new_width = math.ceil(utils.WIDTH/(1 << number_of_max_pools))
-new_height = math.ceil(utils.HEIGHT/(1 << number_of_max_pools))
+# this works because each max pool layer has a 2 x 2 filter and stride 2
+# in case this changes, the formula will no longer be accurate
+new_width = math.ceil(WIDTH/(1 << number_of_max_pools))
+new_height = math.ceil(HEIGHT/(1 << number_of_max_pools))
 # probability to keep the values after a training iteration
 dropout = 0.8
 
@@ -35,7 +44,7 @@ learning_rate = initial_learning_rate
 
 
 def conv_net(X, weights, biases, dropout):
-    X = tf.reshape(X, shape=[-1, utils.HEIGHT, utils.WIDTH, utils.NETWORK_DEPTH])
+    X = tf.reshape(X, shape=[-1, HEIGHT, WIDTH, NETWORK_DEPTH])
 
     conv1 = utils.conv2d('conv1', X, weights['conv_weight1'], biases['conv_bias1'])
     conv1 = utils.maxpool2d('max_pool1', conv1, k=2)
@@ -60,21 +69,25 @@ def conv_net(X, weights, biases, dropout):
     return out
 
 
+def update_learning_rate(acc, learn_rate):
+    return max(learn_rate - acc * learn_rate * 0.9, final_learning_rate)
+
+
 weights = {
-    'conv_weight1': utils.variable_with_weight_decay('conv_weight1', [5, 5, utils.NETWORK_DEPTH, number_of_act_maps_conv1],
-                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight2': utils.variable_with_weight_decay('conv_weight2', [5, 5, number_of_act_maps_conv1, number_of_act_maps_conv2],
-                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight3': utils.variable_with_weight_decay('conv_weight3', [5, 5, number_of_act_maps_conv2, number_of_act_maps_conv3],
-                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight4': utils.variable_with_weight_decay('conv_weight4', [5, 5, number_of_act_maps_conv3, number_of_act_maps_conv4],
-                                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight1': utils.variable_with_weight_decay('fcl_weight1', [new_width * new_height * number_of_act_maps_conv4, number_of_fcl_outputs1],
-                                                    tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight2': utils.variable_with_weight_decay('fcl_weight2', [number_of_fcl_outputs1, number_of_fcl_outputs2],
-                                                    tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'out_weight': utils.variable_with_weight_decay('out_weight', [number_of_fcl_outputs2, constants.num_classes],
-                                                   tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight1': utils.get_variable('conv_weight1', [5, 5, NETWORK_DEPTH, number_of_act_maps_conv1],
+                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight2': utils.get_variable('conv_weight2', [5, 5, number_of_act_maps_conv1, number_of_act_maps_conv2],
+                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight3': utils.get_variable('conv_weight3', [5, 5, number_of_act_maps_conv2, number_of_act_maps_conv3],
+                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'conv_weight4': utils.get_variable('conv_weight4', [5, 5, number_of_act_maps_conv3, number_of_act_maps_conv4],
+                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight1': utils.get_variable('fcl_weight1', [new_width * new_height * number_of_act_maps_conv4, number_of_fcl_outputs1],
+                                      tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'fcl_weight2': utils.get_variable('fcl_weight2', [number_of_fcl_outputs1, number_of_fcl_outputs2],
+                                      tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
+    'out_weight': utils.get_variable('out_weight', [number_of_fcl_outputs2, constants.num_classes],
+                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
 }
 biases = {
     'conv_bias1': tf.Variable(tf.zeros([number_of_act_maps_conv1])),

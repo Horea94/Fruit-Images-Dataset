@@ -6,7 +6,7 @@ with open(constants.root_dir + '\\utils\\labels') as f:
 labels = [x.strip() for x in labels]
 labels = ["nothing"] + labels
 
-tf.app.flags.DEFINE_string('image_path', 'images\\cherryWaxYellow.jpg', 'Path to image')
+tf.app.flags.DEFINE_string('image_path', 'images\\Lemon2.jpg', 'Path to image')
 FLAGS = tf.app.flags.FLAGS
 
 
@@ -33,7 +33,6 @@ def predict(sess, X, softmax, keep_prob, images):
     probability = sess.run(softmax, feed_dict={X: images, keep_prob: 1.0})
     # get the highest probability from the array and that should be the result
     prediction = sess.run(tf.argmax(probability, 1))
-    # print(probability)
     return prediction, probability[0][prediction]
 
 
