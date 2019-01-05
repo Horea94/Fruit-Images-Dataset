@@ -17,14 +17,30 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\hazelnut_rotated_2018 06 16 11 59 52";
-Rect r_box(958, 640, 115, 115);
-#define motor_shaft_height_original 14
-#define motor_shaft_height_scaled 1
-#define color_distance 5
-#define shaft_left 30
-#define shaft_right 82
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\pear_kaiser_rotated_2018 12 20 16 24 35";
+Rect r_box(490, 50, 1000, 1000);
+#define color_distance 3
+#define shaft_left 480
+#define shaft_right 520
+#define motor_shaft_height_original 165
 #define frame_start_index 0
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\pear_kaiser_2018 12 20 16 24 01";
+//Rect r_box(680, 195, 750, 750);
+//#define color_distance 3
+//#define shaft_left 300
+//#define shaft_right 340
+//#define motor_shaft_height_original 14
+//#define frame_start_index 0
+
+
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\hazelnut_rotated_2018 06 16 11 59 52";
+//Rect r_box(958, 640, 115, 115);
+//#define color_distance 5
+//#define shaft_left 30
+//#define shaft_right 82
+//#define motor_shaft_height_original 14
+//#define frame_start_index 0
 
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\huzelnut_2018 06 16 11 58 39";
 //Rect r_box(970, 640, 105, 105);
