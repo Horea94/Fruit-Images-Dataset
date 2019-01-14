@@ -1,21 +1,21 @@
 # Fruits-360: A dataset of images containing fruits #
 
-## Version: 2019.01.05.0 ##
+## Version: 2019.01.14.0 ##
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red, Lady Finger), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Chestnut, Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Hazelnut, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Mangostan, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Kaiser, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum, Pomegranate, Pomelo Sweetie, Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red), Walnut.
+Apples (different varieties: Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red, Lady Finger), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Chestnut, Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Hazelnut, Huckleberry, Kiwi, Kaki, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Mangostan, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Kaiser, Monster, Williams), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum (various varieties), Pomegranate, Pomelo Sweetie, Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red), Walnut.
 
 ## Dataset properties ##
 
-Total number of images: 63663.
+Total number of images: 64225.
 
-Training set size: 47585 images (one fruit per image).
+Training set size: 48005 images (one fruit per image).
 
-Test set size: 15975 images (one fruit per image).
+Test set size: 16117 images (one fruit per image).
 
 Multi-fruits set size: 103 images (more than one fruit (or fruit class) per image)
 
-Number of classes: 93 (fruits).
+Number of classes: 94 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -58,6 +58,8 @@ All marked pixels are considered as being background (which is then filled with 
 
 The maximum value for the distance between 2 neighbor pixels is a parameter of the algorithm and is set (by trial and error) for each movie.
 
+Pictures from the [test-multiple_fruits](test-multiple_fruits) were made with a Nexus 5X phone.
+
 ## Results ##
 
 We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in [this research paper](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning).
@@ -88,7 +90,7 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2018.01.19 - Huckleberry, Raspberry.
 
-2018.01.26 - Dates, Maracuja, Salak, Tamarillo.
+2018.01.26 - Dates, Maracuja, Plum 2, Salak, Tamarillo.
 
 2018.02.05 - Guava, Grape White 2, Lemon Meyer
 
