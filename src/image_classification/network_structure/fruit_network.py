@@ -1,5 +1,5 @@
 import tensorflow as tf
-import math
+import numpy as np
 from . import utils
 from utils import constants
 
@@ -12,60 +12,56 @@ NETWORK_DEPTH = 4
 
 batch_size = 60
 input_size = HEIGHT * WIDTH * NETWORK_DEPTH
-# number of max pool operations used in the network structure;
-# used when calculating the input size for the first fully connected layer
-# MUST BE UPDATED if the number of max pool operations changes or if the stride of max pool changes
-number_of_max_pools = 4
-# this works because each max pool layer has a 2 x 2 filter and stride 2
-# in case this changes, the formula will no longer be accurate
-new_width = math.ceil(WIDTH/(1 << number_of_max_pools))
-new_height = math.ceil(HEIGHT/(1 << number_of_max_pools))
 # probability to keep the values after a training iteration
 dropout = 0.8
+weight_decay = 0.0005
 
 # placeholder for input layer
 X = tf.placeholder(tf.float32, [None, input_size], name="X")
 # placeholder for actual labels
-Y = tf.placeholder(tf.int64, [batch_size], name="Y")
-
-# number of activation maps for each convolutional layer
-number_of_act_maps_conv1 = 16
-number_of_act_maps_conv2 = 32
-number_of_act_maps_conv3 = 64
-number_of_act_maps_conv4 = 128
-
-# number of outputs for each fully connected layer
-number_of_fcl_outputs1 = 1024
-number_of_fcl_outputs2 = 256
+Y = tf.placeholder(tf.int64, [None], name="Y")
 
 initial_learning_rate = 0.001
 final_learning_rate = 0.00001
 learning_rate = initial_learning_rate
 
 
-def conv_net(X, weights, biases, dropout):
-    X = tf.reshape(X, shape=[-1, HEIGHT, WIDTH, NETWORK_DEPTH])
+def conv_net(input_layer):
+    # number of activation maps for each convolutional layer
+    number_of_act_maps_conv1 = 16
+    number_of_act_maps_conv2 = 32
+    number_of_act_maps_conv3 = 64
+    number_of_act_maps_conv4 = 128
 
-    conv1 = utils.conv2d('conv1', X, weights['conv_weight1'], biases['conv_bias1'])
-    conv1 = utils.maxpool2d('max_pool1', conv1, k=2)
+    # number of outputs for each fully connected layer
+    number_of_fcl_outputs1 = 1024
+    number_of_fcl_outputs2 = 256
 
-    conv2 = utils.conv2d('conv2', conv1, weights['conv_weight2'], biases['conv_bias2'])
-    conv2 = utils.maxpool2d('max_pool2', conv2, k=2)
+    input_layer = tf.reshape(input_layer, shape=[-1, HEIGHT, WIDTH, NETWORK_DEPTH])
 
-    conv3 = utils.conv2d('conv3', conv2, weights['conv_weight3'], biases['conv_bias3'])
-    conv3 = utils.maxpool2d('max_pool3', conv3, k=2)
+    conv1 = utils.conv(input_layer, 'conv1', kernel_width=5, kernel_height=5, num_out_activation_maps=number_of_act_maps_conv1)
+    conv1 = utils.max_pool(conv1, 'max_pool1', kernel_height=2, kernel_width=2, stride_horizontal=2, stride_vertical=2)
 
-    conv4 = utils.conv2d('conv4', conv3, weights['conv_weight4'], biases['conv_bias4'])
-    conv4 = utils.maxpool2d('max_pool4', conv4, k=2)
+    conv2 = utils.conv(conv1, 'conv2', kernel_width=5, kernel_height=5, num_out_activation_maps=number_of_act_maps_conv2)
+    conv2 = utils.max_pool(conv2, 'max_pool2', kernel_height=2, kernel_width=2, stride_horizontal=2, stride_vertical=2)
 
-    fc1 = tf.reshape(conv4, shape=[-1, weights['fcl_weight1'].get_shape().as_list()[0]])
-    fc1 = tf.nn.relu(tf.add(tf.matmul(fc1, weights['fcl_weight1']), biases['fcl_bias1']))
-    fc1 = tf.nn.dropout(fc1, dropout)
+    conv3 = utils.conv(conv2, 'conv3', kernel_width=5, kernel_height=5, num_out_activation_maps=number_of_act_maps_conv3)
+    conv3 = utils.max_pool(conv3, 'max_pool3', kernel_height=2, kernel_width=2, stride_horizontal=2, stride_vertical=2)
 
-    fc2 = tf.nn.relu(tf.add(tf.matmul(fc1, weights['fcl_weight2']), biases['fcl_bias2']))
-    fc2 = tf.nn.dropout(fc2, dropout)
+    conv4 = utils.conv(conv3, 'conv4', kernel_width=5, kernel_height=5, num_out_activation_maps=number_of_act_maps_conv4)
+    conv4 = utils.max_pool(conv4, 'max_pool4', kernel_height=2, kernel_width=2, stride_horizontal=2, stride_vertical=2)
 
-    out = tf.add(tf.matmul(fc2, weights['out_weight']), biases['out_bias'], name='softmax')
+    flattened_shape = np.prod([s.value for s in conv4.get_shape()[1:]])
+    net = tf.reshape(conv4, [-1, flattened_shape], name="flatten")
+
+    fcl1 = utils.fully_connected(net, 'fcl1', number_of_fcl_outputs1)
+    fcl1 = tf.nn.dropout(fcl1, dropout)
+
+    fcl2 = utils.fully_connected(fcl1, 'fcl2', number_of_fcl_outputs2)
+    fcl2 = tf.nn.dropout(fcl2, dropout)
+
+    out = utils.fully_connected(fcl2, 'out', constants.num_classes, activation_fn=None)
+
     return out
 
 
@@ -73,28 +69,21 @@ def update_learning_rate(acc, learn_rate):
     return max(learn_rate - acc * learn_rate * 0.9, final_learning_rate)
 
 
-weights = {
-    'conv_weight1': utils.get_variable('conv_weight1', [5, 5, NETWORK_DEPTH, number_of_act_maps_conv1],
-                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight2': utils.get_variable('conv_weight2', [5, 5, number_of_act_maps_conv1, number_of_act_maps_conv2],
-                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight3': utils.get_variable('conv_weight3', [5, 5, number_of_act_maps_conv2, number_of_act_maps_conv3],
-                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'conv_weight4': utils.get_variable('conv_weight4', [5, 5, number_of_act_maps_conv3, number_of_act_maps_conv4],
-                                       tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight1': utils.get_variable('fcl_weight1', [new_width * new_height * number_of_act_maps_conv4, number_of_fcl_outputs1],
-                                      tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'fcl_weight2': utils.get_variable('fcl_weight2', [number_of_fcl_outputs1, number_of_fcl_outputs2],
-                                      tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-    'out_weight': utils.get_variable('out_weight', [number_of_fcl_outputs2, constants.num_classes],
-                                     tf.truncated_normal_initializer(stddev=5e-2, dtype=tf.float32)),
-}
-biases = {
-    'conv_bias1': tf.Variable(tf.zeros([number_of_act_maps_conv1])),
-    'conv_bias2': tf.Variable(tf.zeros([number_of_act_maps_conv2])),
-    'conv_bias3': tf.Variable(tf.zeros([number_of_act_maps_conv3])),
-    'conv_bias4': tf.Variable(tf.zeros([number_of_act_maps_conv4])),
-    'fcl_bias1': tf.Variable(tf.zeros([number_of_fcl_outputs1])),
-    'fcl_bias2': tf.Variable(tf.zeros([number_of_fcl_outputs2])),
-    'out_bias': tf.Variable(tf.zeros([constants.num_classes]))
-}
+def build_model():
+    # build the network
+    logits = conv_net(input_layer=X)
+    # apply softmax on the final layer
+    prediction = tf.nn.softmax(logits)
+
+    # calculate the loss using the predicted labels vs the expected labels
+    loss_operation = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=Y))
+    loss_weight_decay = tf.reduce_sum(tf.stack([tf.nn.l2_loss(i) for i in tf.get_collection('variables')]))
+    loss = loss_operation + weight_decay * loss_weight_decay
+    # use adaptive moment estimation optimizer
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+    train_op = optimizer.minimize(loss=loss)
+
+    # calculate the accuracy for this training step
+    correct_prediction = tf.equal(tf.argmax(prediction, 1), Y)
+
+    return train_op, loss, correct_prediction
