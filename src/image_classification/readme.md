@@ -6,7 +6,7 @@
   
 ### Bundle images into tf record files ###
 
-Use the [utils/build_image_data.py](utils/build_image_data.py) script to generate the train-00000-of-00001 and validation-00000-of-00001 tfrecords file which are needed for the train and test scripts. 
+Use the [utils/build_image_data.py](utils/build_image_data.py) script to generate the tfrecords files which are needed for the train and test scripts. 
 
 In the [utils/build_image_data.py](utils/build_image_data.py) file you can modify the path to the dataset, the location where the tfrecords are saved and the path to the labels file. The labels file contains the labels(names of folders) from the dataset that you want to include in the tfrecord files, each label must be on a newline.
 
