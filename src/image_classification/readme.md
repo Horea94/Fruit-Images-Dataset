@@ -2,13 +2,13 @@
 
   Make sure you have the latest version of tensorflow installed. Instalation guide [here](https://www.tensorflow.org/install/).
 
+  In order to run the project from the command line, first make sure the PYTHONPATH  system  variable  contains  the  path  to  the  root directory. Ensure that the utils/constants.py contains the proper paths.
+  
 ### Bundle images into tf record files ###
 
-Use the [utils/build_image_data.py](utils/build_image_data.py) script to generate the train-00000-of-00001 and validation-00000-of-00001 tfrecords file 
-which are needed for the train and test scripts. 
+Use the [utils/build_image_data.py](utils/build_image_data.py) script to generate the train-00000-of-00001 and validation-00000-of-00001 tfrecords file which are needed for the train and test scripts. 
 
-In the [utils/build_image_data.py](utils/build_image_data.py) file you can modify the path to the dataset, the location where the tfrecords are saved and 
-the path to the labels file. The labels file contains the labels(names of folders) from the dataset that you want to include in the tfrecord files, each label must be on a newline.
+In the [utils/build_image_data.py](utils/build_image_data.py) file you can modify the path to the dataset, the location where the tfrecords are saved and the path to the labels file. The labels file contains the labels(names of folders) from the dataset that you want to include in the tfrecord files, each label must be on a newline.
 
 Alternatively, the build_image_data.py can be run from the command line like this:
 
@@ -26,8 +26,8 @@ The available options are:
 
 ### Train the network ###
 
-Run the [network/fruit_train_net.py](network/fruit_train_net.py) to train the network - currently the network runs for 20000 iterations and saves the 
-network state every 50 steps. 
+Run the [network/fruit_train_net.py](network/fruit_train_net.py) to train the network - currently the network runs for 75000 iterations and saves the 
+network state every 1000 steps. 
 By default, the [network/fruit_train_net.py](network/fruit_train_net.py) and the [network/fruit_test_net.py](network/fruit_test_net.py) scripts expect the tfrecords files(obtained using the build_image_data.py script) to be in a folder called "data", at the same level as the network folder. This can be changed in the utils/constants.py by changing the "data_dir" variable.
 This script will generate the fruit_models/ folder where the network parameters and the graph meta data 
 are saved.
