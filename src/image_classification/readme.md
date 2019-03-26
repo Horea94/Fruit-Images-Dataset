@@ -1,8 +1,14 @@
 ### Requirements ###
 
-  Make sure you have the latest version of tensorflow installed. Instalation guide [here](https://www.tensorflow.org/install/).
+  TensorFlow 1.8.0.
 
   In order to run the project from the command line, first make sure the PYTHONPATH  system  variable  contains  the  path  to  the  root directory. Ensure that the utils/constants.py contains the proper paths.
+  
+### Warning ###
+
+  The project was developed using TensorFlow 1.8.0. If you use a newer version, you may receive deprecation warnings and some scripts may not work properly. In particular, the [utils/freeze_graph.py](utils/freeze_graph.py) script may produce errors since the format of the checkpoint files may differ in newer TensorFlow versions. This script is available in any TensorFlow version and so using the script provided in your TensorFlow distribution is recommended.
+
+The latest version can be found here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py
   
 ### Bundle images into tf record files ###
 
@@ -62,12 +68,8 @@ The [network_structure/utils.py](network_structure/utils.py) file contains a few
 | adjust_image_for_train | performs data augmentation on images by altering the hue and saturation and by randomly flipping the image vertically and orizontally; this method converts the image to HSV and adds a new layer with the grayscale version of the input image |
 | adjust_image_for_test  | converts the image to HSV and adds the grayscale channel |
 
-The [utils/freezegraph.py](utils/freezegraph.py) file creates a single file with the operations graph definition and weights values.
+The [utils/freeze_graph.py](utils/freeze_graph.py) file creates a single file with the operations graph definition and weights values.
 This file is provided with every version of TensorFlow. 
-
-Note that with newer versions of TensorFlow, this version of the script may produce some errors, so using the version provided in your TensorFlow distribution is recommended.
-
-The latest version can be found here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py
 
 For running the script, these flags are mandatory:
           
