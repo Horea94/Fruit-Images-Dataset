@@ -61,3 +61,20 @@ The [network_structure/utils.py](network_structure/utils.py) file contains a few
 |------------------------|--------|
 | adjust_image_for_train | performs data augmentation on images by altering the hue and saturation and by randomly flipping the image vertically and orizontally; this method converts the image to HSV and adds a new layer with the grayscale version of the input image |
 | adjust_image_for_test  | converts the image to HSV and adds the grayscale channel |
+
+The [utils/freezegraph.py](utils/freezegraph.py) file creates a single file with the operations graph definition and weights values.
+This file is provided with every version of TensorFlow. 
+
+Note that with newer versions of TensorFlow, this version of the script may produce some errors, so using the version provided in your TensorFlow distribution is recommended.
+
+The latest version can be found here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py
+
+For running the script, these flags are mandatory:
+          
+    --input_graph=path to the pbtxt file
+  
+    --input_checkpoint=path to the ckpt file
+  
+    --output_graph=name of the output file
+  
+    --output_node_names=name of the last layer of the network (found inthe network_structure/fruit_network.py file, in the convnet method, in this case the name of the last layer is ”out/out”)
