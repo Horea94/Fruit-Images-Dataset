@@ -9,6 +9,9 @@
   The project was developed using TensorFlow 1.8.0. If you use a newer version, you may receive deprecation warnings and some scripts may not work properly. In particular, the [utils/freeze_graph.py](utils/freeze_graph.py) script may produce errors since the format of the checkpoint files may differ in newer TensorFlow versions. This script is available in any TensorFlow version and so using the script provided in your TensorFlow distribution is recommended.
 
 The latest version can be found here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py
+
+An implementation of the same network that is adapted to the latest TensorFlow version can be found on Kaggle in a Python Notebook:
+https://www.kaggle.com/mitch9090/fruit-dataset-image-classification-network
   
 ### Bundle images into tf record files ###
 
