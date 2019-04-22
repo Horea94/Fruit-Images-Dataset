@@ -15,7 +15,7 @@ Test set size: 17383 images (one fruit per image).
 
 Multi-fruits set size: 103 images (more than one fruit (or fruit class) per image)
 
-Number of classes: 98 (fruits).
+Number of classes: 100 (fruits).
 
 Image size: 100x100 pixels.
 
