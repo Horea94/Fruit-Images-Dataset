@@ -1,21 +1,21 @@
 # Fruits-360: A dataset of images containing fruits #
 
-## Version: 2019.04.22.1 ##
+## Version: 2019.05.06.0 ##
 
 A high-quality, dataset of images containing fruits. The following fruits are included: 
-Apples (different varieties: Crimson Snow, Golden, Golden-Red, Granny Smith, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red, Lady Finger), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Chestnut, Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Hazelnut, Huckleberry, Kiwi, Kaki, Kohlrabi, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Mangostan, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Kaiser, Monster, Red, Williams), Pepper (Red, Green, Yellow), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum (different varieties), Pomegranate, Pomelo Sweetie, Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red), Walnut.
+Apples (different varieties: Crimson Snow, Golden, Golden-Red, Granny Smith, Pink Lady, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red, Lady Finger), Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Chestnut, Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Hazelnut, Huckleberry, Kiwi, Kaki, Kohlrabi, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango, Mangostan, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine, Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Kaiser, Monster, Red, Williams), Pepper (Red, Green, Yellow), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum (different varieties), Pomegranate, Pomelo Sweetie, Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red), Walnut.
 
 ## Dataset properties ##
 
-Total number of images: 69905.
+Total number of images: 70513.
 
-Training set size: 52262 images (one fruit per image).
+Training set size: 52718 images (one fruit per image).
 
-Test set size: 17540 images (one fruit per image).
+Test set size: 17692 images (one fruit per image).
 
 Multi-fruits set size: 103 images (more than one fruit (or fruit class) per image)
 
-Number of classes: 101 (fruits).
+Number of classes: 102 (fruits).
 
 Image size: 100x100 pixels.
 
@@ -122,7 +122,7 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2018.12.22 - Pomelo Sweetie.
 
-2019.04.21 - Apple Crimson Snow, Kohlrabi, Pear Red, Pepper (Red, Yellow, Green).
+2019.04.21 - Apple Crimson Snow, Apple Pink Lady, Kohlrabi, Pear Red, Pepper (Red, Yellow, Green).
 
 ## License ##
 
