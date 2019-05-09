@@ -26,6 +26,8 @@ def setup_test_data():
     return mislabeled, labels_text
 
 
+# create a dataset on the tfrecord files
+# iterate once over all the images in the dataset to calculate accuracy
 def build_dataset(filenames, batch_size):
     test_dataset = tf.data.TFRecordDataset(filenames)
     test_dataset = test_dataset.map(utils.parse_single_example).map(lambda image, label: (utils.build_hsv_grayscale_image(image), label))

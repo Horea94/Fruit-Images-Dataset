@@ -14,5 +14,5 @@ test_images_dir = 'D:\\Robots\\Fruit-Images-Dataset\\Test'
 with open(labels_file) as f:
     labels = f.readlines()
     num_classes = len(labels) + 1
-number_train_images = 48905
-number_test_images = 16421
+number_train_images = 53177
+number_test_images = 17845

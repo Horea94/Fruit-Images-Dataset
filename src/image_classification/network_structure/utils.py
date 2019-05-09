@@ -15,7 +15,7 @@ def augment_image(image):
     return build_hsv_grayscale_image(image)
 
 
-# for test just convert the image to HSV and add the gray scale channel
+# convert the image to HSV and add the gray scale channel
 def build_hsv_grayscale_image(image):
     image = tf.image.convert_image_dtype(image, tf.float32)
     gray_image = tf.image.rgb_to_grayscale(image)
