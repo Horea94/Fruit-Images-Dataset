@@ -14,7 +14,6 @@ batch_size = 60
 input_size = HEIGHT * WIDTH * NETWORK_DEPTH
 # probability to keep the values after a training iteration
 dropout = 0.8
-weight_decay = 0.0005
 
 # placeholder for input layer
 X = tf.placeholder(tf.float32, [None, input_size], name="X")
@@ -76,9 +75,7 @@ def build_model():
     prediction = tf.nn.softmax(logits)
 
     # calculate the loss using the predicted labels vs the expected labels
-    loss_operation = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=Y))
-    loss_weight_decay = tf.reduce_sum(tf.stack([tf.nn.l2_loss(i) for i in tf.get_collection('variables')]))
-    loss = loss_operation + weight_decay * loss_weight_decay
+    loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=Y))
     # use adaptive moment estimation optimizer
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
     train_op = optimizer.minimize(loss=loss)

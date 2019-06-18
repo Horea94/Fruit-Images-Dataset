@@ -11,15 +11,19 @@ from utils import constants
 
 # default number of iterations to run the training
 iterations = 75000
-# default amount of iterations after we display the loss and accuracy
-display_interval = 1000
-# default amount of iterations after we save the model
-save_interval = 100
-step_display = 100
+# default number of iterations after we display the loss and accuracy
+acc_display_interval = 1000
+# default number of iterations after we save the model
+save_interval = 5000
+# default number of iterations after we display the total number of steps done and the time spent training the past step_display_interval iterations
+step_display_interval = 100
 # use the saved model and continue training
 useCkpt = False
 
 
+# create two datasets from the previously created training tfrecord files
+# the first dataset will apply data augmentation and shuffle its elements and will continuously queue new items - used for training
+# the second dataset will iterate once over the training images - used for evaluating the loss and accuracy during the training
 def build_datasets(filenames, batch_size):
     train_dataset = tf.data.TFRecordDataset(filenames).repeat()
     train_dataset = train_dataset.map(utils.parse_single_example).map(lambda image, label: (utils.augment_image(image), label))
@@ -43,12 +47,12 @@ def train_model(session, train_operation, loss_operation, correct_prediction, it
         batch_x = np.reshape(batch_x, [network.batch_size, network.input_size])
         session.run(train_operation, feed_dict={network.X: batch_x, network.Y: batch_y})
 
-        if i % step_display == 0:
+        if i % step_display_interval == 0:
             time2 = time.time()
             print("time: %.4f step: %d" % (time2 - time1, i))
             time1 = time.time()
 
-        if i % display_interval == 0:
+        if i % acc_display_interval == 0:
             acc_value, loss = calculate_intermediate_accuracy_and_loss(session, correct_prediction, loss_operation,
                                                                        test_images_with_labels, test_init_op, constants.number_train_images)
             network.learning_rate = network.update_learning_rate(acc_value, learn_rate=network.learning_rate)
