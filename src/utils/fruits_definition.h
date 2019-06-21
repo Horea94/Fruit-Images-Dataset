@@ -17,14 +17,59 @@ using namespace cv;
 #define SAVE_IMAGES_TO_DISK
 //#define DISPLAY_ONLY
 
-//potato_red_2019 06 18 10 33 31.avi
-string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\potato_red_2019 06 18 10 33 31";
-Rect r_box(780, 170, 750, 750);
-#define motor_shaft_height_original 10
-#define color_distance 1
-#define shaft_left 220
-#define shaft_right 280
+//potato_red_washed_rotated1_2019 06 18 10 45 15.avi
+string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\potato_red_washed_rotated1_2019 06 18 10 45 15";
+Rect r_box(650, 100, 750, 750);
+#define motor_shaft_height_original 150
+#define color_distance 3
+#define shaft_left 330
+#define shaft_right 380
 #define frame_start_index 0
+
+//potato_red_washed_rotated_2019 06 18 10 44 35.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\potato_red_washed_rotated_2019 06 18 10 44 35";
+//Rect r_box(680, 100, 670, 670);
+//#define motor_shaft_height_original 7
+//#define color_distance 3
+//#define shaft_left 300
+//#define shaft_right 340
+//#define frame_start_index 0
+
+//potato_red_washed_2019 06 18 10 44 05.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\potato_red_washed_2019 06 18 10 44 05";
+//Rect r_box(680, 100, 670, 670);
+//#define motor_shaft_height_original 7
+//#define color_distance 3
+//#define shaft_left 300
+//#define shaft_right 340
+//#define frame_start_index 0
+
+//beetroot_red_2019 06 18 10 40 29.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\beetroot_red_2019 06 18 10 40 29";
+//Rect r_box(680, 40, 900, 900);
+//#define motor_shaft_height_original 30
+//#define color_distance 2
+//#define shaft_left 280
+//#define shaft_right 360
+//#define frame_start_index 0
+
+//carrot_2019 06 18 10 47 48.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\carrot_2019 06 18 10 47 48";
+//Rect r_box(780, 70, 700, 700);
+//#define motor_shaft_height_original 25
+//#define color_distance 2
+//#define shaft_left 190
+//#define shaft_right 250
+//#define frame_start_index 0
+
+//potato_red_2019 06 18 10 33 31.avi
+//string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\potato_red_2019 06 18 10 33 31";
+//Rect r_box(780, 170, 750, 750);
+//#define motor_shaft_height_original 10
+//#define color_distance 1
+//#define shaft_left 220
+//#define shaft_right 280
+//#define frame_start_index 0
 
 //onion_white_rotated1_2019 06 18 10 26 24.avi
 //string input_file_name = "c:\\Mihai\\Dropbox\\fruits\\to be processed\\onion_white_rotated1_2019 06 18 10 26 24";
