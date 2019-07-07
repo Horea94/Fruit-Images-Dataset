@@ -1,21 +1,21 @@
 # Fruits-360: A dataset of images containing fruits and vegetables #
 
-## Version: 2019.06.29.0 ##
+## Version: 2019.07.07.0 ##
 
 A high-quality, dataset of images containing fruits and vegetables. The following fruits and vegetables are included: 
-Apples (different varieties: Crimson Snow, Golden, Golden-Red, Granny Smith, Pink Lady, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red, Lady Finger), Blueberry, Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Chestnut, Clementine, Cocos, Dates, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Hazelnut, Huckleberry, Kiwi, Kaki, Kohlrabi, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango (Green, Red), Mangostan, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine (Regular, Flat), Onion (Red, White), Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Kaiser, Monster, Red, Williams), Pepper (Red, Green, Yellow), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum (different varieties), Pomegranate, Pomelo Sweetie, Potato (Red, White), Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red, Yellow), Walnut.
+Apples (different varieties: Crimson Snow, Golden, Golden-Red, Granny Smith, Pink Lady, Red, Red Delicious), Apricot, Avocado, Avocado ripe, Banana (Yellow, Red, Lady Finger), Blueberry, Cactus fruit, Cantaloupe (2 varieties), Carambula, Cherry (different varieties, Rainier), Cherry Wax (Yellow, Red, Black), Chestnut, Clementine, Cocos, Dates, Ginger Root, Granadilla, Grape (Blue, Pink, White (different varieties)), Grapefruit (Pink, White), Guava, Hazelnut, Huckleberry, Kiwi, Kaki, Kohlrabi, Kumsquats, Lemon (normal, Meyer), Lime, Lychee, Mandarine, Mango (Green, Red), Mangostan, Maracuja, Melon Piel de Sapo, Mulberry, Nectarine (Regular, Flat), Nut (Forest, Pecan), Onion (Red, White), Orange, Papaya, Passion fruit, Peach (different varieties), Pepino, Pear (different varieties, Abate, Kaiser, Monster, Red, Williams), Pepper (Red, Green, Yellow), Physalis (normal, with Husk), Pineapple (normal, Mini), Pitahaya Red, Plum (different varieties), Pomegranate, Pomelo Sweetie, Potato (Red, White), Quince, Rambutan, Raspberry, Redcurrant, Salak, Strawberry (normal, Wedge), Tamarillo, Tangelo, Tomato (different varieties, Maroon, Cherry Red, Yellow), Walnut.
 
 ## Dataset properties ##
 
-Total number of images: 75937.
+Total number of images: 77917.
 
-Training set size: 56781 images (one fruit or vegetable per image).
+Training set size: 58266 images (one fruit or vegetable per image).
 
-Test set size: 19053 images (one fruit or vegetable per image).
+Test set size: 19548 images (one fruit or vegetable per image).
 
 Multi-fruits set size: 103 images (more than one fruit (or fruit class) per image)
 
-Number of classes: 111 (fruits and vegetables).
+Number of classes: 114 (fruits and vegetables).
 
 Image size: 100x100 pixels.
 
@@ -116,7 +116,7 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2018.08.19 - Apple Red Yellow 2, Grape Blue, Grape White 2, Grape White 3, Peach 2, Plum 3, Tomato Maroon, Tomato 1-4.
 
-2018.12.20 - Pear Kaiser, Tomato Yellow.
+2018.12.20 - Nut Pecan, Pear Kaiser, Tomato Yellow.
 
 2018.12.21 - Banana Lady Finger, Chesnut, Mangostan.
 
@@ -124,7 +124,7 @@ Fruits were filmed at the dates given below (YYYY.MM.DD):
 
 2019.04.21 - Apple Crimson Snow, Apple Pink Lady, Blueberry, Kohlrabi, Mango Red, Pear Red, Pepper (Red, Yellow, Green).
 
-2019.06.18 - Nectarine Flat, Onion Red, Onion Red Peeled, Onion White, Potato Red Washed, Potato White.
+2019.06.18 - Ginger Root, Nectarine Flat, Nut Forest, Onion Red, Onion Red Peeled, Onion White, Potato Red Washed, Potato White.
 
 ## License ##
 
