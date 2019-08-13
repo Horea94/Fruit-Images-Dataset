@@ -5,16 +5,17 @@
 // authors: Mihai Oltean & Horea Muresan
 // MIT license
 
-// compiled with Visual Studio 2017 Community Edition
+// compiled with Visual Studio 2019 Community Edition
 // requires OpenCV 4
 // if you get stack overflow ... just increase the stack reserve size from Linker menu  ...
 
 // How to use: 
-// 1. modify the fruits_definition.h file for a new fruit; r_box parameters must be modified for each fruit (see step 3)
-// 2. comment SAVE_IMAGES_TO_DISK and uncomment DISPLAY_ONLY
-// 3. you must play with r_box parameters until the fruit fits inside the r_box
-// 4. uncomment SAVE_IMAGES_TO_DISK an comment DISPLAY_ONLY
-// 5. modify the motor_shaft_height and color_distance if needed
+// 1. Modify the fruits_definition.h file for a new fruit; r_box parameters must be modified for each fruit (see step 3)
+// 2. Comment SAVE_IMAGES_TO_DISK and uncomment DISPLAY_ONLY
+// 3. You must play with r_box parameters until the fruit fits inside the r_box. 
+//		Also must play with motor_shaft_height_original, shaft_left and shaft_right parameters until motor shaft fits inside the white rectangle.
+// 4. Uncomment SAVE_IMAGES_TO_DISK an comment DISPLAY_ONLY
+// 5. Modify the color_distance if needed. If color distance is too big the object will not appear. If it is too low the margins of the object are fuzzy.
 
 
 #include <opencv2/opencv.hpp>
@@ -29,21 +30,10 @@
 using namespace std;
 using namespace cv;
 
-#define VERSION "2018.12.06.0"
+#define VERSION "2019.08.03.0"
 
-//---------------------------------------------------------------------
-struct t_bounding_box { // rectangular bounding box
-	Point min, max;
-	t_bounding_box(int min_x, int min_y, int max_x, int max_y) {
-		min.x = min_x;
-		min.y = min_y;
-		max.x = max_x;
-		max.y = max_y;
-	}
-	t_bounding_box() {
-		min.x = min.y = max.x = max.y = 0;
-	}
-};
+#define MAX_IMAGES_TO_EXTRACT 312
+
 //---------------------------------------------------------------------
 
 #define smaller_image_size 100 // result is stored in 100x100 matrices
@@ -55,176 +45,195 @@ struct t_bounding_box { // rectangular bounding box
 int get_color_distance(Vec3b &color1, Vec3b &color2)
 {
 	// distance between 2 colors
-	int c0 = abs(color1[0] - color2[0]);
-	int c1 = abs(color1[1] - color2[1]);
-	int c2 = abs(color1[2] - color2[2]);
+	int c_red = abs(color1[0] - color2[0]);
+	int c_green = abs(color1[1] - color2[1]);
+	int c_blue = abs(color1[2] - color2[2]);
 
-	int max = c0;
-	if (max < c1)
-		max = c1;
-	if (max < c2)
-		max = c2;
+	int max = c_red;
+	if (max < c_green)
+		max = c_green;
+	if (max < c_blue)
+		max = c_blue;
 
 	return  max;
 }
 //---------------------------------------------------------------------
-void flood_fill_background(int x, int y, Mat *picture, char** filled_matrix, int color_tolerance, int image_size)
+void flood_fill_background(int row, int col, Mat &picture, char** filled_matrix, int color_tolerance, int image_size, Vec3b &initial_color)
 {
-	// flood fill starting with position (x,y)
+	// flood fill starting with position (row, col)
 	// only 4 neighbours of the current pixel are considered
 	// 2 pixels are connected if their color distance is smaller than color_tolerance value
 	// picture matrix is from where the color of pixels are taken
 	// the flood result is stored in matrix filled_matrix (1 if flooded, 0 otherwise)
-	if (filled_matrix[x][y] == NOT_MARKED_PIXEL) {
-		filled_matrix[x][y] = BACKGROUND_PIXEL;
+	/*
+	for (int i = 0; i < image_size; i++)
+		for (int j = 0; j < image_size; j++)
+			if (get_color_distance(picture->at<Vec3b>(Point(0, 0)), picture->at<Vec3b>(Point(i, j))) <= color_tolerance) {
+				filled_matrix[i][j] = BACKGROUND_PIXEL;
+			}
+			*/
+	
+	if (filled_matrix[row][col] == NOT_MARKED_PIXEL) {
+		filled_matrix[row][col] = BACKGROUND_PIXEL;
 
-		if (y + 1 < image_size && get_color_distance(picture->at<Vec3b>(Point(y, x)), picture->at<Vec3b>(Point(y + 1, x))) <= color_tolerance)
-			flood_fill_background(x, y + 1, picture, filled_matrix, color_tolerance, image_size);
+		if (col + 1 < image_size && 
+			get_color_distance(picture.at<Vec3b>(row, col), picture.at<Vec3b>(row, col + 1)) <= color_tolerance
+			//&& get_color_distance(initial_color, picture->at<Vec3b>(Point(y + 1, x))) <= color_tolerance
+			)
+			flood_fill_background(row, col + 1, picture, filled_matrix, color_tolerance, image_size, initial_color);
 
-		if (y - 1 >= 0 && get_color_distance(picture->at<Vec3b>(Point(y, x)), picture->at<Vec3b>(Point(y - 1, x))) <= color_tolerance)
-			flood_fill_background(x, y - 1, picture, filled_matrix, color_tolerance, image_size);
+		if (col - 1 >= 0 && get_color_distance(picture.at<Vec3b>(row, col), picture.at<Vec3b>(row, col - 1)) <= color_tolerance
+			//&& get_color_distance(initial_color, picture->at<Vec3b>(Point(y - 1, x))) <= color_tolerance
+			)
+			flood_fill_background(row, col - 1, picture, filled_matrix, color_tolerance, image_size, initial_color);
 
-		if (x + 1 < image_size && get_color_distance(picture->at<Vec3b>(Point(y, x)), picture->at<Vec3b>(Point(y, x + 1))) <= color_tolerance)
-			flood_fill_background(x + 1, y, picture, filled_matrix, color_tolerance, image_size);
+		if (row + 1 < image_size &&
+			get_color_distance(picture.at<Vec3b>(row, col), picture.at<Vec3b>(row + 1, col)) <= color_tolerance
+			//&& get_color_distance(initial_color, picture->at<Vec3b>(Point(y, x + 1))) <= color_tolerance
+			)
+			flood_fill_background(row + 1, col, picture, filled_matrix, color_tolerance, image_size, initial_color);
 
-		if (x - 1 >= 0 && get_color_distance(picture->at<Vec3b>(Point(y, x)), picture->at<Vec3b>(Point(y, x - 1))) <= color_tolerance)
-			flood_fill_background(x - 1, y, picture, filled_matrix, color_tolerance, image_size);
+		if (row - 1 >= 0 &&
+			get_color_distance(picture.at<Vec3b>(row, col), picture.at<Vec3b>(row - 1, col)) <= color_tolerance
+			//&& get_color_distance(initial_color, picture->at<Vec3b>(Point(y, x - 1))) <= color_tolerance
+			)
+			flood_fill_background(row - 1, col, picture, filled_matrix, color_tolerance, image_size, initial_color);
 	}
+	
 }
 //---------------------------------------------------------------------
-void flood_fill_fruit(int x, int y, char** filled_matrix, int image_size)
+void flood_fill_fruit(int row, int col, char** filled_matrix, int image_size)
 // fills an island of pixels having the same value 1
 {
 	// only 4 neighbours are considered
-	if (filled_matrix[x][y] == NOT_MARKED_PIXEL) {
-		filled_matrix[x][y] = FRUIT_PIXEL;
+	if (filled_matrix[row][col] == NOT_MARKED_PIXEL) {
+		filled_matrix[row][col] = FRUIT_PIXEL;
 
-		if (y + 1 < image_size && filled_matrix[x][y + 1] == NOT_MARKED_PIXEL)
-			flood_fill_fruit(x, y + 1, filled_matrix, image_size);
+		if (col + 1 < image_size && filled_matrix[row][col + 1] == NOT_MARKED_PIXEL)
+			flood_fill_fruit(row, col + 1, filled_matrix, image_size);
 
-		if (y - 1 >= 0 && filled_matrix[x][y - 1] == NOT_MARKED_PIXEL)
-			flood_fill_fruit(x, y - 1, filled_matrix, image_size);
+		if (col - 1 >= 0 && filled_matrix[row][col - 1] == NOT_MARKED_PIXEL)
+			flood_fill_fruit(row, col - 1, filled_matrix, image_size);
 
-		if (x + 1 < image_size && filled_matrix[x + 1][y] == NOT_MARKED_PIXEL)
-			flood_fill_fruit(x + 1, y, filled_matrix, image_size);
+		if (row + 1 < image_size && filled_matrix[row + 1][col] == NOT_MARKED_PIXEL)
+			flood_fill_fruit(row + 1, col, filled_matrix, image_size);
 
-		if (x - 1 >= 0 && filled_matrix[x - 1][y] == NOT_MARKED_PIXEL)
-			flood_fill_fruit(x - 1, y, filled_matrix, image_size);
+		if (row - 1 >= 0 && filled_matrix[row - 1][col] == NOT_MARKED_PIXEL)
+			flood_fill_fruit(row - 1, col, filled_matrix, image_size);
 	}
 }
 //---------------------------------------------------------------------
-t_bounding_box compute_fruit_bounding_box(char** matrix, int image_size)
+Rect compute_fruit_bounding_box(char** matrix, int image_size)
 {// compute the bounding box of the fruit
-	t_bounding_box bbox;
+	Rect bbox;
 	// maximal bbox is :
-	bbox.min.x = image_size - 1;
-	bbox.min.y = image_size - 1;
-	bbox.max.x = 0;
-	bbox.max.y = 0;
+	bbox.x = image_size - 1;
+	bbox.y = image_size - 1;
+	int right = 0;
+	int bottom = 0;
 
-	for (int i = 0; i < image_size; i++)
-		for (int j = 0; j < image_size; j++)
-			if (matrix[i][j] == FRUIT_PIXEL) {
-				if (bbox.min.x > i)
-					bbox.min.x = i;
-				if (bbox.min.y > j)
-					bbox.min.y = j;
-				if (bbox.max.x < i)
-					bbox.max.x = i;
-				if (bbox.max.y < j)
-					bbox.max.y = j;
+	for (int row = 0; row < image_size; row++)
+		for (int col = 0; col < image_size; col++)
+			if (matrix[row][col] == FRUIT_PIXEL) {
+				if (bbox.x > col)
+					bbox.x = col;
+				if (bbox.y > row)
+					bbox.y = row;
+				if (right < col)
+					right = col;
+				if (bottom < row)
+					bottom = row;
 			}
+	bbox.width = right - bbox.x + 1;
+	bbox.height = bottom - bbox.y + 1;
 	return bbox;
 }
 //---------------------------------------------------------------------
-bool remove_background(Mat &image)
+bool remove_background(Mat &input_image, Mat &out_image)
 {
-	int image_width = image.cols; //smaller_image_size;
-	int image_height = image.rows;  //smaller_image_size;
+	int image_width = input_image.cols; //smaller_image_size;
+	int image_height = input_image.rows;  //smaller_image_size;
 	// allocate memory
 	char **matrix = new char*[image_height];
-	for (int i = 0; i < image_height; i++) {
-		matrix[i] = new char[image_width];
-		for (int j = 0; j < image_width; j++)
-			matrix[i][j] = NOT_MARKED_PIXEL; // 2 - fruit // 1- background
+	for (int row = 0; row < image_height; row++) {
+		matrix[row] = new char[image_width];
+		for (int col = 0; col < image_width; col++)
+			matrix[row][col] = NOT_MARKED_PIXEL; // 2 - fruit // 1- background
 	}
 		
 	// star	point is every pixel from the border
 	// top side
-	for (int i = 0; i < image_width; i++)
-		flood_fill_background(0, i, &image, matrix, color_distance, image_width);
+	for (int col = 0; col < image_width; col++)
+		flood_fill_background(0, col, input_image, matrix, color_distance, image_width, input_image.at<Vec3b>(0, col));
 
 	// left side
-	for (int i = 0; i < image_height; i++)
-		flood_fill_background(i, 0, &image, matrix, color_distance, image_width);
+	for (int row = 0; row < image_height; row++)
+		flood_fill_background(row, 0, input_image, matrix, color_distance, image_width, input_image.at<Vec3b>(row, 0));
 
 	// right side
-	for (int i = 0; i < image_height; i++)
-		flood_fill_background(i, image_width - 1, &image, matrix, color_distance, image_width);
-
+	for (int row = 0; row < image_height; row++)
+		flood_fill_background(row, image_width - 1, input_image, matrix, color_distance, image_width, input_image.at<Vec3b>(row, image_width - 1));
+	/*
 	// try to remove the motor shaft
-	for (int i = 0; i < image_width; i++)
-		if (i < shaft_left || i > shaft_right)
-		flood_fill_background(image_height - motor_shaft_height_original - 1, i, &image, matrix, 1, image_width);
-
+	for (int col = 0; col < image_width; col++)
+		if (col < shaft_left || col > shaft_right)
+			flood_fill_background(image_height - motor_shaft_height_original - 1, col, input_image, matrix, 1, image_width,
+				input_image.at<Vec3b>(image_height - motor_shaft_height_original - 1, col)
+			);
+			*/
 	// now I start from the center and fill the object
 	// I did that because we can have multiple islands and only 1 is of interest
-	flood_fill_fruit(image_height - motor_shaft_height_original - 30, image_width / 2, matrix, image_width);
+	flood_fill_fruit((image_height - motor_shaft_height_original) / 2, image_width / 2, matrix, image_width);
 	
 	// ignore everything that is below shaft
-	for (int i = image_height - motor_shaft_height_original; i < image_height; i++)
-		for (int j = 0; j < image_width; j++)
-			matrix[i][j] = BACKGROUND_PIXEL;
-
-	// find bounding box
-	t_bounding_box fruit_bbox(0, 0, image_width - 1, image_height - 1);
-	fruit_bbox = compute_fruit_bounding_box(matrix, image_width);
-	
-	// now apply the mask and make bakground white
-	for (int i = 0; i < image_height; i++)
-		for (int j = 0; j < image_width; j++)
-			if (matrix[i][j] != FRUIT_PIXEL) {// not fruit
-				image.at<Vec3b>(Point(j, i))[0] = 255; // make it WHITE
-				image.at<Vec3b>(Point(j, i))[1] = 255;
-				image.at<Vec3b>(Point(j, i))[2] = 255;
-			}
-	// fill with WHITE everything below shaft position
-	for (int i = image_height - motor_shaft_height_original; i < image_height; i++)
-		for (int j = 0; j < image_width; j++){
-				image.at<Vec3b>(Point(j, i))[0] = 255; // make it WHITE
-				image.at<Vec3b>(Point(j, i))[1] = 255;
-				image.at<Vec3b>(Point(j, i))[2] = 255;
-			}
+	for (int row = image_height - motor_shaft_height_original; row < image_height; row++)
+		for (int col = 0; col < image_width; col++)
+			matrix[row][col] = BACKGROUND_PIXEL;
 			
-	// delete memory
-	for (int i = 0; i < image_height; i++)
-		delete[] matrix[i];
-	delete[] matrix;
-	
+	// find bounding box
+	Rect fruit_bbox;// (0, 0, image_width - 1, image_height - 1);
+	fruit_bbox = compute_fruit_bounding_box(matrix, image_width);
+
 	// keep only the part of the image that contains the fruit
-	if ((fruit_bbox.min.x < fruit_bbox.max.x) && (fruit_bbox.min.y < fruit_bbox.max.y)) {
+	if (fruit_bbox.width > 0 && fruit_bbox.height > 0) {
 		// clone the fruit only in a temporary matrix
+
+		//Mat fruit_clone = image(fruit_bbox).clone();
+		int max_size = fruit_bbox.height;
+		if (max_size < fruit_bbox.width)
+			max_size = fruit_bbox.width;
+		Mat fruit_clone = Mat(max_size + 5, max_size + 5, input_image.type());
+		fruit_clone.setTo(Scalar(255, 255, 255));
+
+		for (int row = 0; row < image_height; row++)
+			for (int col = 0; col < image_width; col++)
+				if (matrix[row][col] == FRUIT_PIXEL) // fruit
+					fruit_clone.at<Vec3b>(row - fruit_bbox.y + (max_size - fruit_bbox.height) / 2, col - fruit_bbox.x + (max_size - fruit_bbox.width) / 2) = input_image.at<Vec3b>(row, col);
+				
+
+		// make the out image white
 		
-		cv::Mat tmp = image(cv::Rect(fruit_bbox.min.y, fruit_bbox.min.x, fruit_bbox.max.y - fruit_bbox.min.y + 1, fruit_bbox.max.x - fruit_bbox.min.x + 1)).clone();
-		// make the original image white
-		image.setTo(Scalar(255, 255, 255));
+		out_image.setTo(Scalar(255, 255, 255));
 
-		int max_size = fruit_bbox.max.y - fruit_bbox.min.y + 1;
-		if (max_size < fruit_bbox.max.x - fruit_bbox.min.x + 1)
-			max_size = fruit_bbox.max.x - fruit_bbox.min.x + 1;
-
-		// create a new matrix whose size is exactly as the bounding box of the fruit
-		Mat tmp_new = Mat(max_size, max_size, image.type());
-		tmp_new.setTo(Scalar(255, 255, 255)); // make everything white, otherwise is grey
-		// copy from tmp to tmp_new
-		tmp.copyTo(tmp_new(cv::Rect((max_size - (fruit_bbox.max.y - fruit_bbox.min.y + 1)) / 2, (max_size - (fruit_bbox.max.x - fruit_bbox.min.x + 1)) / 2, fruit_bbox.max.y - fruit_bbox.min.y + 1, fruit_bbox.max.x - fruit_bbox.min.x + 1)));
 		// replace the original matrix with the smaller image containig the fruit
-		image = tmp_new;
 		
+		out_image = fruit_clone; // new_image;
+		
+			// delete memory
+		for (int row = 0; row < image_height; row++)
+			delete[] matrix[row];
+		delete[] matrix;
+
 		return true;
 	}
-	else
+	else {
+		// delete memory
+		for (int row = 0; row < image_height; row++)
+			delete[] matrix[row];
+		delete[] matrix;
+
 		return false; // image is empty; no fruit detected; change parameters !
+	}
 }
 //---------------------------------------------------------------------
 int main(void)
@@ -246,10 +255,11 @@ int main(void)
 	Mat input_image;
 
 	// create window
-	namedWindow("image", 1);
+	namedWindow("out_image", 1);
 	Mat smaller_image;
+	Mat out_image;
 
-	for (int i = 0; i < 6; i++)// skip first 3 frames
+	for (int i = 0; i < 3; i++)// skip first 3 frames
 		input_video >> input_image;
 
 	int frame_index = frame_start_index;
@@ -271,28 +281,28 @@ int main(void)
 		// resize
 		//resize(smaller_image, smaller_image, Size(smaller_image_size, smaller_image_size));
 		// remove margins
-		if (remove_background(smaller_image)) {
+		if (remove_background(smaller_image, out_image)) {
 
-			imshow("image", smaller_image);
+			imshow("out_image", out_image);
 			// show the results on the screen
-			resize(smaller_image, smaller_image, Size(smaller_image_size, smaller_image_size));
+			resize(out_image, out_image, Size(smaller_image_size, smaller_image_size));
 			// resize again
 //			imshow("image", smaller_image);
 
 
 #ifdef SAVE_IMAGES_TO_DISK
-			if (!imwrite(out_filename, smaller_image)) {
+			if (!imwrite(out_filename, out_image)) {
 				printf("Cannot write image!\n");
 				break;
 			}
 #endif
 			frame_index++;
-			if (frame_index >= 328 + frame_start_index) // keep only the first 328 images
+			if (frame_index >= MAX_IMAGES_TO_EXTRACT + frame_start_index) // keep only the first 328 images
 				break;
 		}
 #endif		
 #ifdef SAVE_IMAGES_TO_DISK
-		if (!imwrite(out_filename, smaller_image)) {
+		if (!imwrite(out_filename, out_image)) {
 			printf("Cannot write image!\n");
 			break;
 		}
@@ -309,7 +319,7 @@ int main(void)
 	}
 
 	input_video.release();
-	destroyWindow("image");
+	destroyWindow("out_image");
 
 	return 0;
 }
