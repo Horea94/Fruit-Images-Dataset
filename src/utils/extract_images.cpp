@@ -30,7 +30,7 @@
 using namespace std;
 using namespace cv;
 
-#define VERSION "2019.08.03.0"
+#define VERSION "2019.08.13.0"
 
 #define MAX_IMAGES_TO_EXTRACT 312
 
@@ -256,7 +256,6 @@ int main(void)
 
 	// create window
 	namedWindow("out_image", 1);
-	Mat smaller_image;
 	Mat out_image;
 
 	for (int i = 0; i < 3; i++)// skip first 3 frames
@@ -271,7 +270,15 @@ int main(void)
 			break;
 		// extract a submatrix (having corners stored in r_box) from the original matrix
 		
-		smaller_image = input_image(r_box);
+		Mat smaller_image(r_box.width, r_box.height, input_image.type());
+		smaller_image.setTo(Scalar(255, 255, 255));
+		for (int row = 0; row < r_box.height; row++)
+			for (int col = 0; col < r_box.width; col++)
+				if (row + r_box.y < input_image.rows && col + r_box.x < input_image.cols)
+					smaller_image.at<Vec3b>(row, col) = input_image.at<Vec3b>(row + r_box.y, col + r_box.x);
+
+
+		//smaller_image = input_image(r_box);
 
 		// compute image file name
 		string out_filename = input_file_name + "\\" + to_string(frame_index) + "_" + to_string(smaller_image_size) + ".jpg";
