@@ -38,4 +38,4 @@ If you name the model (in this example we named the model "fruit-360 model", as 
 
     -- a graph showing the evolution of the accuracy and loss during training
     -- the confusion matrix for the model
-    -- a classification report file detailing the precision, recall and F1-score per each class
+    -- a classification report file detailing the precision, recall and F1-score per class
