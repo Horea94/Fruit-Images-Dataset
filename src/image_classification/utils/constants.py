@@ -1,13 +1,14 @@
 import os
 
-root_dir = os.getcwd() + '\\..'
-data_dir = root_dir + '\\data\\'
-fruit_models_dir = root_dir + '\\fruit_models\\'
-labels_file = root_dir + '\\utils\\labels'
+project_root = os.path.join(os.getcwd(), '../../../')
+parent_dir = os.path.join(os.getcwd(), '../')
+data_dir = os.path.join(parent_dir, 'data/')
+fruit_models_dir = os.path.join(parent_dir, 'fruit_models/')
+labels_file = os.path.join(parent_dir, 'utils/labels')
 
 # change this to the path of the folders that hold the images
-training_images_dir = 'D:\\Robots\\Fruit-Images-Dataset\\Training'
-test_images_dir = 'D:\\Robots\\Fruit-Images-Dataset\\Test'
+training_images_dir = os.path.join(project_root, 'Training/')
+test_images_dir = os.path.join(project_root, 'Test/')
 
 # number of classes: number of fruit classes + 1 resulted due to the build_image_data.py script that leaves the first class as a background class
 # using the labels file that is also used in the build_image_data.py

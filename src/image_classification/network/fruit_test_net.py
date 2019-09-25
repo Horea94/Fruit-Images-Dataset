@@ -14,7 +14,7 @@ def setup_test_data():
     mislabeled = {}
 
     # associate the label number with the actual human readable label name
-    with open(constants.root_dir + '\\utils\\labels') as f:
+    with open(constants.labels_file) as f:
         labels_text = f.readlines()
     labels_text = [x.strip() for x in labels_text]
     for label in labels_text:
