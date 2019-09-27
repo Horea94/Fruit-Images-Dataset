@@ -20,6 +20,10 @@ step_display_interval = 100
 # use the saved model and continue training
 useCkpt = False
 
+train_iterator_key = "train_iterator"
+validation_iterator_key = "validation_iterator"
+validation_iterator_init_op_key = "validation_init_op"
+
 
 # create two datasets from the previously created training tfrecord files
 # the first dataset will apply data augmentation and shuffle its elements and will continuously queue new items - used for training
@@ -37,11 +41,11 @@ def build_datasets(filenames, batch_size):
 
 def train_model(session, train_operation, loss_operation, correct_prediction, iterator_map):
     time1 = time.time()
-    train_iterator = iterator_map["train_iterator"]
-    test_iterator = iterator_map["test_iterator"]
-    test_init_op = iterator_map["test_init_op"]
+    train_iterator = iterator_map[train_iterator_key]
+    validation_iterator = iterator_map[validation_iterator_key]
+    validation_init_op = iterator_map[validation_iterator_init_op_key]
     train_images_with_labels = train_iterator.get_next()
-    test_images_with_labels = test_iterator.get_next()
+    validation_images_with_labels = validation_iterator.get_next()
     for i in range(1, iterations + 1):
         batch_x, batch_y = session.run(train_images_with_labels)
         batch_x = np.reshape(batch_x, [network.batch_size, network.input_size])
@@ -53,8 +57,7 @@ def train_model(session, train_operation, loss_operation, correct_prediction, it
             time1 = time.time()
 
         if i % acc_display_interval == 0:
-            acc_value, loss = calculate_intermediate_accuracy_and_loss(session, correct_prediction, loss_operation,
-                                                                       test_images_with_labels, test_init_op, constants.number_train_images)
+            acc_value, loss = calculate_intermediate_accuracy_and_loss(session, correct_prediction, loss_operation, validation_images_with_labels, validation_init_op, constants.number_train_images)
             network.learning_rate = network.update_learning_rate(acc_value, learn_rate=network.learning_rate)
             print("step: %d loss: %.4f accuracy: %.4f" % (i, loss, acc_value))
         if i % save_interval == 0:
@@ -87,13 +90,13 @@ if __name__ == '__main__':
 
         # input tfrecord files
         tfrecords_files = [(constants.data_dir + f) for f in os.listdir(constants.data_dir) if re.match('train', f)]
-        train_dataset, test_dataset = build_datasets(filenames=tfrecords_files, batch_size=network.batch_size)
+        train_dataset, validation_dataset = build_datasets(filenames=tfrecords_files, batch_size=network.batch_size)
         train_iterator = train_dataset.make_one_shot_iterator()
-        test_iterator = tf.data.Iterator.from_structure(test_dataset.output_types, test_dataset.output_shapes)
-        test_init_op = test_iterator.make_initializer(test_dataset)
-        iterator_map = {"train_iterator": train_iterator,
-                        "test_iterator": test_iterator,
-                        "test_init_op": test_init_op}
+        test_iterator = tf.data.Iterator.from_structure(validation_dataset.output_types, validation_dataset.output_shapes)
+        test_init_op = test_iterator.make_initializer(validation_dataset)
+        iterator_map = {train_iterator_key: train_iterator,
+                        validation_iterator_key: test_iterator,
+                        validation_iterator_init_op_key: test_init_op}
 
         train_op, loss, correct_prediction = network.build_model()
         init = tf.global_variables_initializer()
