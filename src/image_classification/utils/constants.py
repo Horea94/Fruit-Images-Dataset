@@ -1,10 +1,12 @@
 import os
 
-project_root = os.path.join(os.getcwd(), '../../../')
-parent_dir = os.path.join(os.getcwd(), '../')
+
+project_root = os.path.join('/Users/yangboz/git/Fruit-Images-Dataset/')
+print("project_root:",project_root)
+parent_dir = os.path.join('/Users/yangboz/git/Fruit-Images-Dataset/')
 data_dir = os.path.join(parent_dir, 'data/')
 fruit_models_dir = os.path.join(parent_dir, 'fruit_models/')
-labels_file = os.path.join(parent_dir, 'utils/labels')
+labels_file = os.path.join(parent_dir, 'src/image_classification/utils/labels')
 
 # change this to the path of the folders that hold the images
 training_images_dir = os.path.join(project_root, 'Training/')

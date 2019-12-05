@@ -5,9 +5,9 @@ import os
 import re
 
 from network_structure import fruit_network as network
-from network_structure import utils
-
-from utils import constants
+#from network_structure import utils
+import utils
+import constants
 
 # default number of iterations to run the training
 iterations = 75000

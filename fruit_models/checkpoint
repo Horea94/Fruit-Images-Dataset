@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/yangboz/git/Fruit-Images-Dataset/fruit_models/model.ckpt"
+all_model_checkpoint_paths: "/Users/yangboz/git/Fruit-Images-Dataset/fruit_models/model.ckpt"

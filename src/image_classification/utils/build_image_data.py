@@ -50,7 +50,8 @@ import threading
 import numpy as np
 import tensorflow as tf
 
-from utils import constants
+#from utils import constants
+import constants
 
 tf.app.flags.DEFINE_string('train_directory', constants.training_images_dir,
                            'Training data directory')

@@ -1,7 +1,7 @@
 import tensorflow as tf
-from utils import constants
+import constants
 
-with open(constants.root_dir + '\\utils\\labels') as f:
+with open(constants.root_dir + '/src/image_classification/utils/labels') as f:
     labels = f.readlines()
 labels = [x.strip() for x in labels]
 labels = ["nothing"] + labels
