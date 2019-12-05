@@ -63,6 +63,17 @@ Pictures from the [test-multiple_fruits](test-multiple_fruits) folder were made 
 ## Results ##
 
 We have run [TensorFlow](https://github.com/tensorflow/tensorflow) on these data and the results are presented in [this research paper](https://www.researchgate.net/publication/321475443_Fruit_recognition_from_images_using_deep_learning).
+```
+step: 8000 loss: 0.0277 accuracy: 0.9910
+time: 1116.1775 step: 8100
+time: 219.1325 step: 8200
+time: 270.3366 step: 8300
+time: 232.8639 step: 8400
+time: 229.6171 step: 8500
+time: 233.3997 step: 8600
+time: 338.8619 step: 8700
+time: 275.2202 step: 8800
+```
 
 ## History ##
 
