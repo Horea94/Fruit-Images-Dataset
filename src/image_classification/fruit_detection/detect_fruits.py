@@ -6,8 +6,10 @@ with open(constants.root_dir + '/src/image_classification/utils/labels') as f:
 labels = [x.strip() for x in labels]
 labels = ["nothing"] + labels
 
-tf.app.flags.DEFINE_string('image_path', 'images\\Lemon2.jpg', 'Path to image')
+#tf.app.flags.DEFINE_string('image_path', 'images\\Lemon2.jpg', 'Path to image')
 FLAGS = tf.app.flags.FLAGS
+
+image_path = ""
 
 
 # load image
@@ -48,8 +50,13 @@ def process_image(sess, X, softmax, image, image_height, image_width, image_dept
     print('Label index: %d - Label: %s - Probability: %.4f' % (rez, labels[rez[0]], prob))
 
 
+def predict_TF(image_path):
+
+    tf.app.flags.DEFINE_string('image_path', image_path)
+
 with tf.Session() as sess:
-    image_path = FLAGS.image_path
+    #image_path = FLAGS.image_path
+    image_path = "/Users/yangboz/git/Fruit-Images-Dataset/test-multiple_fruits/apple.jpg"
     image_reader = tf.WholeFileReader()
 
     # restore the trained model from the saved checkpoint; provide the path to the meta file
