@@ -29,7 +29,9 @@ Folders [Training](Training) and [Test](Test) contain images for training and te
 
 Folder [test-multiple_fruits](test-multiple_fruits) contains images with multiple fruits. Some of them are partially covered by other fruits. This is an excelent test for real-world detection.
 
-Folder [src/image_classification](src/image_classification) contains the python code for training the neural network. It uses the TensorFlow library.
+Folder [src/image_classification](src/image_classification) contains the python code for training the neural network. It uses the TensorFlow 2.0 library.
+
+Folder [src/image_classification_tf_1.8.0](src/image_classification_tf_1.8.0) contains the old version of the python code for training the neural network. It uses the TensorFlow 1.8.0 library.
 
 Folder [src/utils](src/utils) contains the C++ code used for extracting the fruits or vegetables from background.
 
