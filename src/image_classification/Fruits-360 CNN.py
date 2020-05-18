@@ -128,7 +128,7 @@ def network(input_shape, num_classes):
     x = Flatten()(x)
     x = Dense(1024, activation='relu', name='fcl1')(x)
     x = Dropout(0.2)(x)
-    x = Dense(128, activation='relu', name='fcl2')(x)
+    x = Dense(256, activation='relu', name='fcl2')(x)
     x = Dropout(0.2)(x)
     out = Dense(num_classes, activation='softmax', name='predictions')(x)
     rez = Model(inputs=img_input, outputs=out)
