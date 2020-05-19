@@ -104,7 +104,7 @@ def build_data_generators(train_folder, test_folder, labels=None, image_size=(10
 # RGB to HSV and grayscale and concatenates the results
 # forming in input of size 100 x 100 x 4
 def image_process(x):
-    x = tf.image.random_saturation(x, 0.9, 1.1)
+    x = tf.image.random_saturation(x, 0.9, 1.2)
     x = tf.image.random_hue(x, 0.02)
     hsv = tf.image.rgb_to_hsv(x)
     gray = tf.image.rgb_to_grayscale(x)
