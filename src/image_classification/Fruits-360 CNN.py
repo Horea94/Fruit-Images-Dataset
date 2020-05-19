@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sn
 import os
+import tensorflow as tf
 from sklearn.metrics import confusion_matrix, classification_report
 
 from tensorflow.keras.models import Model
@@ -88,7 +89,7 @@ def build_data_generators(train_folder, test_folder, labels=None, image_size=(10
         height_shift_range=0.0,
         zoom_range=0.0,
         horizontal_flip=True,
-        vertical_flip=True) # randomly flip images
+        vertical_flip=True)  # randomly flip images
 
     test_datagen = ImageDataGenerator()
 
@@ -103,7 +104,8 @@ def build_data_generators(train_folder, test_folder, labels=None, image_size=(10
 # RGB to HSV and grayscale and concatenates the results
 # forming in input of size 100 x 100 x 4
 def image_process(x):
-    import tensorflow as tf
+    x = tf.image.random_saturation(x, 0.9, 1.1)
+    x = tf.image.random_hue(x, 0.02)
     hsv = tf.image.rgb_to_hsv(x)
     gray = tf.image.rgb_to_grayscale(x)
     rez = tf.concat([hsv, gray], axis=-1)
@@ -153,13 +155,13 @@ def train_and_evaluate_model(model, name="", epochs=25, batch_size=50, verbose=v
     learning_rate_reduction = ReduceLROnPlateau(monitor='loss', patience=patience, verbose=verbose,
                                                 factor=learning_rate_reduction_factor, min_lr=min_learning_rate)
     save_model = ModelCheckpoint(filepath=model_out_dir + "/model.h5", monitor='loss', verbose=verbose,
-                                 save_best_only=True, save_weights_only=False, mode='min', period=1)
+                                 save_best_only=True, save_weights_only=False, mode='min', save_freq='epoch')
 
-    history = model.fit_generator(generator=trainGen,
-                                  epochs=epochs,
-                                  steps_per_epoch=(trainGen.n // batch_size) + 1,
-                                  verbose=verbose,
-                                  callbacks=[learning_rate_reduction, save_model])
+    history = model.fit(trainGen,
+                        epochs=epochs,
+                        steps_per_epoch=(trainGen.n // batch_size) + 1,
+                        verbose=verbose,
+                        callbacks=[learning_rate_reduction, save_model])
 
     model.load_weights(model_out_dir + "/model.h5")
 
@@ -177,7 +179,6 @@ def train_and_evaluate_model(model, name="", epochs=25, batch_size=50, verbose=v
 
     with open(model_out_dir + "/classification_report.txt", "w") as text_file:
         text_file.write("%s" % class_report)
-    # print(class_report)
 
 
 print(labels)
