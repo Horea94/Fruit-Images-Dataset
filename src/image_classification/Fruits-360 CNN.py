@@ -75,6 +75,13 @@ def plot_confusion_matrix(y_true, y_pred, classes, out_path=""):
     return ax
 
 
+# Randomly changes hue and saturation of the image to simulate variable lighting conditions
+def augment_image(x):
+    x = tf.image.random_saturation(x, 0.9, 1.2)
+    x = tf.image.random_hue(x, 0.02)
+    return x
+
+
 # given the train and test folder paths and a validation to test ratio, this method creates three generators
 #  - the training generator uses (100 - validation_percent) of images from the train set
 #    it applies random horizontal and vertical flips for data augmentation and generates batches randomly
@@ -89,7 +96,8 @@ def build_data_generators(train_folder, test_folder, labels=None, image_size=(10
         height_shift_range=0.0,
         zoom_range=0.0,
         horizontal_flip=True,
-        vertical_flip=True)  # randomly flip images
+        vertical_flip=True,  # randomly flip images
+        preprocessing_function=augment_image)  # augmentation is done only on the train set (and optionally validation)
 
     test_datagen = ImageDataGenerator()
 
@@ -103,9 +111,7 @@ def build_data_generators(train_folder, test_folder, labels=None, image_size=(10
 # Create a custom layer that converts the original image from
 # RGB to HSV and grayscale and concatenates the results
 # forming in input of size 100 x 100 x 4
-def image_process(x):
-    x = tf.image.random_saturation(x, 0.9, 1.2)
-    x = tf.image.random_hue(x, 0.02)
+def convert_to_hsv_and_grayscale(x):
     hsv = tf.image.rgb_to_hsv(x)
     gray = tf.image.rgb_to_grayscale(x)
     rez = tf.concat([hsv, gray], axis=-1)
@@ -114,7 +120,7 @@ def image_process(x):
 
 def network(input_shape, num_classes):
     img_input = Input(shape=input_shape, name='data')
-    x = Lambda(image_process)(img_input)
+    x = Lambda(convert_to_hsv_and_grayscale)(img_input)
     x = Conv2D(16, (5, 5), strides=(1, 1), padding='same', name='conv1')(x)
     x = Activation('relu', name='conv1_relu')(x)
     x = MaxPooling2D((2, 2), strides=(2, 2), padding='valid', name='pool1')(x)
