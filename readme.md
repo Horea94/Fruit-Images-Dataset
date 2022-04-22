@@ -1,3 +1,12 @@
+# Fruit classification tensorflow quantized models
+
+For 8 fruit classes.
+
+## New code ##
+
+[src/image_classification_tensorflow_quant](src/image_classification_tensorflow_quant)  
+Follow the requirements in there.
+
 # Fruits-360: A dataset of images containing fruits and vegetables #
 
 ## Version: 2020.05.18.0 ##
