@@ -1,3 +1,6 @@
+The Fruits-360 dataset has been moved here: [https://github.com/fruits-360/](https://github.com/fruits-360/)
+
+
 # Fruits-360: A dataset of images containing fruits and vegetables #
 
 ## Version: 2020.05.18.0 ##
